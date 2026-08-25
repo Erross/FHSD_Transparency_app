@@ -29,7 +29,7 @@ _MONTHS = {
     "december": 12,
 }
 _ABSOLUTE = re.compile(
-    r"^(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday\s+)?"
+    r"^(?:(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s+)?"
     r"(?P<day>\d{1,2})\s+(?P<month>[A-Za-z]+)\s+(?P<year>\d{4})"
     r"(?:\s+at\s+\d{1,2}:\d{2})?$",
     re.IGNORECASE,
@@ -181,7 +181,7 @@ def apply_coverage_snapshot(
     outside_ids: set[str] = set()
     for rid in prior_ids:
         entity = before["entities"][rid]
-        content_date, quality = resolve_content_date(entity)
+        content_date, _quality = resolve_content_date(entity)
         if content_date is None:
             unknown_date_ids.add(rid)
         elif start <= content_date <= end:
