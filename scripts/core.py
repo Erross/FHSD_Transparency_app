@@ -106,21 +106,61 @@ def parent_entity_id(item: dict[str, Any]) -> str:
     return f"post:url:{digest(parent_link)}" if parent_link else ""
 
 
+_COMMENT_PREFIX = re.compile(
+    r"^\s*\d+\s*(?:s|m|h|d|w)\s*(?:(?:·\s*)?(?:by author|author|pinned comment)\s*)*",
+    re.IGNORECASE,
+)
+_COMMENT_SUFFIX = re.compile(r"\s*LikeReply(?:Edited)?\d*\s*$", re.IGNORECASE)
+_POST_MORE = re.compile(r"\s*(?:…|\.\.\.)?\s*See more\s*$", re.IGNORECASE)
+_POST_LESS = re.compile(r"\s*See less\s*$", re.IGNORECASE)
+
+
+def content_completeness(item: dict[str, Any]) -> str:
+    raw = normalize_space(item.get("bodyText") or item.get("text"))
+    if normalize_space(item.get("itemType")).lower() == "post" and _POST_MORE.search(raw):
+        return "truncated"
+    return "full"
+
+
+def normalize_content_text(item: dict[str, Any]) -> str:
+    """Strip Facebook UI chrome that changes between observations.
+
+    Relative ages, reaction totals, Like/Reply labels, and See more/less controls
+    are observation metadata, not authored content. They must not create false
+    edit events.
+    """
+    raw = normalize_space(item.get("bodyText") or item.get("text"))
+    item_type = normalize_space(item.get("itemType") or "item").lower()
+    if item_type == "post":
+        raw = _POST_MORE.sub("", raw)
+        raw = _POST_LESS.sub("", raw)
+    else:
+        raw = _COMMENT_PREFIX.sub("", raw)
+        raw = _COMMENT_SUFFIX.sub("", raw)
+    return normalize_space(raw)
+
+
 def normalize_item(item: dict[str, Any], observed_at: str) -> dict[str, Any]:
-    text = normalize_space(item.get("bodyText") or item.get("text"))
+    raw_text = normalize_space(item.get("bodyText") or item.get("text"))
+    content_text = normalize_content_text(item)
+    completeness = content_completeness(item)
+    post_id = resolve_post_id(item)
     return {
         "id": entity_id(item),
         "identityQuality": identity_quality(item),
         "itemType": normalize_space(item.get("itemType") or "item").lower(),
         "author": normalize_space(item.get("author")),
-        "text": text,
-        "textHash": digest(text, 64),
+        "text": content_text,
+        "textHash": digest(content_text, 64),
+        "rawObservedText": raw_text,
+        "contentCompleteness": completeness,
         "timestampText": normalize_space(item.get("timestampText")),
         "timestampExact": normalize_space(item.get("timestampExact")),
         "permalink": normalize_space(item.get("permalink")),
         "parentPostPermalink": normalize_space(item.get("parentPostPermalink")),
         "parentId": parent_entity_id(item),
-        "postId": resolve_post_id(item),
+        "postId": post_id,
+        "observedPostId": post_id,
         "commentId": normalize_space(item.get("commentId") or item.get("replyCommentId")),
         "parentCommentId": normalize_space(item.get("parentCommentId")),
         "capturedAt": normalize_space(item.get("capturedAt")) or observed_at,
@@ -137,6 +177,8 @@ def _version(record: dict[str, Any], observed_at: str) -> dict[str, Any]:
     return {
         "text": record["text"],
         "textHash": record["textHash"],
+        "rawObservedText": record.get("rawObservedText", ""),
+        "contentCompleteness": record.get("contentCompleteness", "full"),
         "firstSeen": observed_at,
         "lastSeen": observed_at,
         "timestampText": record.get("timestampText", ""),
@@ -163,7 +205,68 @@ def _richer(left: dict[str, Any], right: dict[str, Any]) -> dict[str, Any]:
     fields = ("text", "permalink", "timestampExact", "timestampText", "author", "commentId")
     left_score = sum(bool(left.get(key)) for key in fields) + len(left.get("text", "")) / 10000
     right_score = sum(bool(right.get(key)) for key in fields) + len(right.get("text", "")) / 10000
+    if left.get("contentCompleteness") == "full":
+        left_score += 2
+    if right.get("contentCompleteness") == "full":
+        right_score += 2
     return right if right_score > left_score else left
+
+
+def _append_alias(entity: dict[str, Any], field: str, *values: str) -> None:
+    aliases = entity.setdefault(field, [])
+    for value in values:
+        if value and value not in aliases:
+            aliases.append(value)
+
+
+def _build_post_alias_map(entities: dict[str, dict[str, Any]], records: list[dict[str, Any]]) -> dict[str, str]:
+    """Infer post-ID aliases from comments with stable comment IDs.
+
+    Facebook/crawler permalink recovery can yield a different story_fbid for the
+    same thread on different crawls. A stable comment ID observed under both
+    parent IDs is strong evidence that those parent references are aliases.
+    """
+    aliases: dict[str, str] = {}
+    for record in records:
+        if record.get("itemType") == "post" or not record.get("commentId"):
+            continue
+        existing = entities.get(record["id"])
+        if not existing:
+            continue
+        old_post_id = normalize_space(existing.get("postId"))
+        new_post_id = normalize_space(record.get("postId"))
+        if old_post_id and new_post_id and old_post_id != new_post_id:
+            aliases[new_post_id] = old_post_id
+    return aliases
+
+
+def _canonicalize_parent_alias(record: dict[str, Any], post_aliases: dict[str, str]) -> dict[str, Any]:
+    if not record.get("postId"):
+        return record
+    observed_post_id = record["postId"]
+    canonical_post_id = post_aliases.get(observed_post_id)
+    if not canonical_post_id:
+        return record
+    record = dict(record)
+    record["observedPostId"] = observed_post_id
+    record["postId"] = canonical_post_id
+    if record.get("itemType") == "post":
+        record["id"] = f"post:{canonical_post_id}"
+    else:
+        record["parentId"] = f"post:{canonical_post_id}"
+    return record
+
+
+def _is_capture_expansion(existing_version: dict[str, Any], record: dict[str, Any]) -> bool:
+    old_text = normalize_space(existing_version.get("text"))
+    new_text = normalize_space(record.get("text"))
+    old_kind = existing_version.get("contentCompleteness", "full")
+    new_kind = record.get("contentCompleteness", "full")
+    if new_kind == "truncated" and old_text.startswith(new_text):
+        return True
+    if old_kind == "truncated" and new_kind == "full" and new_text.startswith(old_text):
+        return True
+    return False
 
 
 def apply_snapshot(
@@ -179,10 +282,14 @@ def apply_snapshot(
     entities = out.setdefault("entities", {})
     events = out.setdefault("events", [])
 
+    source_records = list(records)
+    post_aliases = _build_post_alias_map(entities, source_records)
+
     current: dict[str, dict[str, Any]] = {}
     input_count = 0
-    for record in records:
+    for source_record in source_records:
         input_count += 1
+        record = _canonicalize_parent_alias(source_record, post_aliases)
         rid = record["id"]
         current[rid] = _richer(current[rid], record) if rid in current else record
 
@@ -201,6 +308,9 @@ def apply_snapshot(
                 "missingCount": 0,
                 "versions": [_version(record, observed_at)],
                 "observationCount": 1,
+                "postIdAliases": [record.get("observedPostId") or record.get("postId")]
+                if (record.get("observedPostId") or record.get("postId"))
+                else [],
             }
             if not is_baseline:
                 events.append(_event("new", observed_at, record, text=record["text"]))
@@ -213,15 +323,39 @@ def apply_snapshot(
         else:
             existing["status"] = "active"
 
+        old_post_id = normalize_space(existing.get("postId"))
+        observed_post_id = normalize_space(record.get("observedPostId") or record.get("postId"))
+        if old_post_id or observed_post_id:
+            _append_alias(existing, "postIdAliases", old_post_id, observed_post_id)
+        old_parent_link = normalize_space(existing.get("parentPostPermalink"))
+        new_parent_link = normalize_space(record.get("parentPostPermalink"))
+        if old_parent_link or new_parent_link:
+            _append_alias(existing, "parentPostPermalinkAliases", old_parent_link, new_parent_link)
+
         versions = existing.setdefault("versions", [])
-        if not versions or versions[-1].get("textHash") != record["textHash"]:
-            before = versions[-1]["text"] if versions else ""
+        latest = versions[-1] if versions else None
+        if latest and latest.get("textHash") != record["textHash"] and _is_capture_expansion(latest, record):
+            if latest.get("contentCompleteness") == "truncated" and record.get("contentCompleteness") == "full":
+                versions[-1] = _version(record, latest.get("firstSeen", observed_at))
+                versions[-1]["lastSeen"] = observed_at
+                existing["text"] = record["text"]
+                existing["textHash"] = record["textHash"]
+                existing["contentCompleteness"] = "full"
+            else:
+                latest["lastSeen"] = observed_at
+        elif not latest or latest.get("textHash") != record["textHash"]:
+            before = latest["text"] if latest else ""
             versions.append(_version(record, observed_at))
             events.append(_event("edited", observed_at, record, beforeText=before, afterText=record["text"]))
-        elif versions:
-            versions[-1]["lastSeen"] = observed_at
+        else:
+            latest["lastSeen"] = observed_at
 
+        skip_content_fields = record.get("contentCompleteness") == "truncated" and existing.get("contentCompleteness") == "full"
         for key, value in record.items():
+            if skip_content_fields and key in {"text", "textHash", "contentCompleteness"}:
+                continue
+            if key == "postId" and post_aliases.get(record.get("observedPostId", "")):
+                continue
             if value not in (None, "") or not existing.get(key):
                 existing[key] = value
         existing["lastSeen"] = observed_at
@@ -301,6 +435,7 @@ def apply_snapshot(
             "uniqueEntityCount": len(current),
             "duplicateEntityCount": input_count - len(current),
             "missingDetectionApplied": allow_missing,
+            "postAliasCount": len(post_aliases),
         }
     )
     return out
