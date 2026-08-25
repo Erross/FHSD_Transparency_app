@@ -1,0 +1,13 @@
+{
+  "targets": [
+    {
+      "id": "school-watchlist",
+      "displayName": "School Watchlist",
+      "description": "Public archive of the FHSD School Watchlist Facebook page and its visible discussion threads.",
+      "platform": "facebook",
+      "sourceUrls": ["https://www.facebook.com/profile.php?id=61581121856469"],
+      "summary": {"entities":0,"posts":0,"comments":0,"active":0,"missing":0,"confirmedUnavailable":0,"editedEntities":0,"events":0,"snapshots":0},
+      "latestSnapshot": ""
+    }
+  ]
+}

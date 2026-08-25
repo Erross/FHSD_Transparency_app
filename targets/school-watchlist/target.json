@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "school-watchlist",
+  "displayName": "School Watchlist",
+  "description": "Public archive of the FHSD School Watchlist Facebook page and its visible discussion threads.",
+  "platform": "facebook",
+  "sourceUrls": [
+    "https://www.facebook.com/profile.php?id=61581121856469"
+  ],
+  "authorAliases": [
+    "School Watchlist",
+    "FHSD School Watchlist"
+  ],
+  "crawl": {
+    "comparisonMode": "full_snapshot",
+    "requiresCompleteSnapshotForMissing": true,
+    "missingRecheckThreshold": 2,
+    "confirmationRequiresDirectCheck": true,
+    "bulkMissingAbsoluteThreshold": 5,
+    "bulkMissingRatioThreshold": 0.1
+  },
+  "publicNotes": "The archive records what the collector observed. Absence from a later crawl is not attributed to a specific person without independent evidence."
+}
