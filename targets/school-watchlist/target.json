@@ -17,7 +17,8 @@
     "missingRecheckThreshold": 2,
     "confirmationRequiresDirectCheck": true,
     "bulkMissingAbsoluteThreshold": 5,
-    "bulkMissingRatioThreshold": 0.1
+    "bulkMissingRatioThreshold": 0.1,
+    "bulkThreadMissingAbsoluteThreshold": 3
   },
   "publicNotes": "The archive records what the collector observed. Absence from a later crawl is not attributed to a specific person without independent evidence."
 }
