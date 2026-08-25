@@ -1,9 +1,10 @@
 """Date-coverage aware snapshot application.
 
-A date-limited Facebook crawl is only evidence about entities that can be
-placed inside that crawl's declared window. Items outside the window, or whose
-content date cannot be resolved, must not become missing merely because they
-were absent from the later export.
+A date-limited Facebook crawl is only evidence about entities that the crawl
+should actually have visited. Posts are scoped by their content date. Comments
+and replies are scoped more strictly: their parent post must have been observed
+in the later complete crawl, avoiding false deletion cascades from old or
+unvisited threads.
 """
 from __future__ import annotations
 
@@ -146,7 +147,7 @@ def apply_coverage_snapshot(
     complete: bool,
     target_config: dict[str, Any],
 ) -> dict[str, Any]:
-    """Apply a snapshot, restricting negative inference to its date window."""
+    """Apply a snapshot, restricting negative inference to comparable coverage."""
     window = declared_date_window(snapshot_meta, observed_at)
     if not complete or window is None:
         return apply_snapshot(
@@ -162,8 +163,7 @@ def apply_coverage_snapshot(
     prior_ids = set(before.get("entities", {}))
 
     # Positive observations, edits, aliases, and reappearances are handled by the
-    # core engine. We deliberately disable its global missing pass and apply the
-    # narrower coverage-aware pass below.
+    # core engine. We disable its global missing pass and apply a narrower pass.
     out = apply_snapshot(
         state,
         records,
@@ -176,20 +176,38 @@ def apply_coverage_snapshot(
     events = out.setdefault("events", [])
     start, end = window
 
+    seen_prior_ids = {rid for rid in prior_ids if entities.get(rid, {}).get("lastSeen") == observed_at}
+    observed_parent_posts = {
+        rid
+        for rid, entity in entities.items()
+        if entity.get("itemType") == "post" and entity.get("lastSeen") == observed_at
+    }
+
     eligible_ids: set[str] = set()
-    unknown_date_ids: set[str] = set()
-    outside_ids: set[str] = set()
+    unknown_date_post_ids: set[str] = set()
+    outside_post_ids: set[str] = set()
+    deferred_comment_ids: set[str] = set()
+    comment_parent_observed_ids: set[str] = set()
+
     for rid in prior_ids:
         entity = before["entities"][rid]
+        if entity.get("itemType") != "post":
+            parent_id = normalize_space(entity.get("parentId"))
+            if parent_id and parent_id in observed_parent_posts:
+                eligible_ids.add(rid)
+                comment_parent_observed_ids.add(rid)
+            else:
+                deferred_comment_ids.add(rid)
+            continue
+
         content_date, _quality = resolve_content_date(entity)
         if content_date is None:
-            unknown_date_ids.add(rid)
+            unknown_date_post_ids.add(rid)
         elif start <= content_date <= end:
             eligible_ids.add(rid)
         else:
-            outside_ids.add(rid)
+            outside_post_ids.add(rid)
 
-    seen_prior_ids = {rid for rid in prior_ids if entities.get(rid, {}).get("lastSeen") == observed_at}
     absent_ids = eligible_ids - seen_prior_ids
     newly_absent: list[dict[str, Any]] = []
 
@@ -235,13 +253,15 @@ def apply_coverage_snapshot(
                 "entityIds": [entity["id"] for entity in newly_absent],
                 "coverageStart": start.isoformat(),
                 "coverageEnd": end.isoformat(),
-                "note": "Previously observed entities dated inside this crawl's declared coverage window were absent; causation is not attributed.",
+                "note": "Previously observed entities inside comparable crawl coverage were absent; causation is not attributed.",
             }
         )
 
     thread_threshold = max(2, int(crawl_cfg.get("bulkThreadMissingAbsoluteThreshold", 3)))
     by_parent: dict[str, list[dict[str, Any]]] = {}
     for entity in newly_absent:
+        if entity.get("itemType") == "post":
+            continue
         parent_id = entity.get("parentId", "")
         if parent_id:
             by_parent.setdefault(parent_id, []).append(entity)
@@ -256,7 +276,7 @@ def apply_coverage_snapshot(
                     "entityIds": [entity["id"] for entity in group],
                     "coverageStart": start.isoformat(),
                     "coverageEnd": end.isoformat(),
-                    "note": "A cluster of previously observed comments/replies dated inside this crawl's declared coverage window was absent; causation is not attributed.",
+                    "note": "A cluster of previously observed comments/replies was absent from a parent thread that was revisited in this complete crawl; causation is not attributed.",
                 }
             )
 
@@ -267,7 +287,12 @@ def apply_coverage_snapshot(
     snapshot["coverageStart"] = start.isoformat()
     snapshot["coverageEnd"] = end.isoformat()
     snapshot["coverageEligiblePriorEntities"] = len(eligible_ids)
-    snapshot["coverageUnknownDatePriorEntities"] = len(unknown_date_ids)
-    snapshot["coverageOutsidePriorEntities"] = len(outside_ids)
+    snapshot["coverageEligiblePriorPosts"] = sum(
+        before["entities"][rid].get("itemType") == "post" for rid in eligible_ids
+    )
+    snapshot["coverageEligibleCommentsByObservedParent"] = len(comment_parent_observed_ids)
+    snapshot["coverageUnknownDatePriorPosts"] = len(unknown_date_post_ids)
+    snapshot["coverageOutsidePriorPosts"] = len(outside_post_ids)
+    snapshot["coverageDeferredCommentsParentNotObserved"] = len(deferred_comment_ids)
     snapshot["coverageAbsentEligibleEntities"] = len(absent_ids)
     return out
