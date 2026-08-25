@@ -1,59 +1,74 @@
 # Greenwood Repository
 
-A public-record archive and change-tracking system for publicly visible social-media pages relevant to Francis Howell School District and related campaigns.
+A multi-target public-record archive and change tracker for publicly visible social-media pages relevant to Francis Howell School District and related campaigns.
 
-The project is deliberately **multi-target**. School Watchlist is the first configured target, but the data model, ingestion pipeline, diff engine, and website are designed to track any number of pages or public figures without hardcoding one account.
+School Watchlist is the first configured target, but **nothing in the archive engine is hardcoded to that page**. Campaign pages, spin-off pages, PACs, public figures, or other public sources can be added through target configuration.
 
-## Goals
+## What it does
 
-- Preserve periodic raw crawler exports without rewriting history.
-- Normalize posts, comments, and replies into stable entities.
-- Detect new, edited, missing, reappeared, and bulk-disappearance events.
-- Avoid overclaiming: a missing comment is recorded as **no longer observed**, not as "deleted by" a particular person unless independent evidence establishes that.
-- Provide a readable archive and visual change history rather than exposing users to raw JSON.
-- Support multiple tracked targets with independent aliases, source URLs, and crawl settings.
-- Keep deployment inexpensive: the website is static and can be hosted on GitHub Pages when the repository is made public or otherwise published through an appropriate static host.
+- Preserves periodic raw crawler exports.
+- SHA-256 hashes the original captured bytes.
+- Normalizes posts, comments, and replies into stable entities.
+- Stores every observed text version.
+- Detects edits, disappearance/recheck states, reappearance, and bulk disappearance events.
+- Refuses to infer who deleted something merely because Facebook stopped rendering it.
+- Produces a readable static archive with search, filters, source links, change cards, and before/after edit views.
 
-## Initial architecture
+## Layout
 
 ```text
-targets/                 Target configuration
-archive/<target>/raw/    Immutable crawler exports (future snapshots)
-data/                    Generated normalized data and event history
-scripts/                 Ingestion / normalization / diff tooling
-site/                    Static archive UI
-.github/workflows/       Validation and site build workflows
-tests/                   Regression tests for the diff engine
+targets/                 target configuration
+archive/<target>/raw/    immutable gzip snapshots + original-byte SHA-256
+data/<target>/            compressed normalized state
+scripts/                 ingestion, diff, verification, site build
+site/                    static archive UI
+tests/                   regression tests
+.github/workflows/       CI validation
 ```
 
 ## First target
 
-`school-watchlist` is configured as the first target. Additional targets can be added by copying its `target.json` and supplying a unique target ID, display name, aliases, source URLs, and crawler metadata.
+`targets/school-watchlist/target.json`
 
-## Status vocabulary
+To add another source, create `targets/<slug>/target.json`; the ingest and site-build code will discover it automatically.
 
-The archive distinguishes observation from attribution:
-
-- `active` — seen in the latest successful snapshot.
-- `missing_once` — absent in one successful later snapshot.
-- `missing_recheck` — absent in multiple successful later snapshots but not yet confirmed by a direct check.
-- `confirmed_unavailable` — repeated absence plus a configured confirmation rule.
-- `reappeared` — previously unavailable but visible again.
-
-The software should not label an item "deleted by page owner" solely from absence in a Facebook crawl.
-
-## Local use
+## Ingest a snapshot
 
 ```bash
 python -m scripts.ingest --target school-watchlist path/to/facebook-export.json
+```
+
+That archives the source but **does not** infer disappearances. When a crawl is known to be a complete comparable pull:
+
+```bash
+python -m scripts.ingest --target school-watchlist --complete path/to/full-export.json
+```
+
+Missing detection is intentionally opt-in because Facebook comment rendering is not deterministic.
+
+## Build/read the site
+
+```bash
 python -m scripts.build_site
 python -m http.server 8000 -d site
 ```
 
-The ingestion command writes generated target data under `data/` and preserves a timestamped raw copy under `archive/<target>/raw/`.
+Then open `http://localhost:8000`.
 
-## Evidentiary preservation
+## Availability vocabulary
 
-Each raw snapshot is preserved byte-for-byte and accompanied by a SHA-256 manifest. Generated entity histories retain first-seen/last-seen metadata and every observed text version.
+- `active` — observed in the latest complete snapshot.
+- `missing_once` — absent from one later complete snapshot.
+- `missing_recheck` — absent repeatedly.
+- `confirmed_unavailable` — separately verified as unavailable.
+- `reappeared` — previously missing and later observed again.
 
-Do not commit Facebook authentication cookies, browser profiles, credentials, access tokens, or other private session material to this repository.
+Use `scripts.verify_missing` to record a direct/manual confirmation with an optional evidence URL and note.
+
+## Storage and evidentiary preservation
+
+Raw captures are deterministically gzip-compressed for repository efficiency. The `.sha256` sidecar hashes the **original uncompressed export**, so the exact source bytes can be reconstructed and verified.
+
+Never commit Facebook authentication cookies, browser profiles, credentials, access tokens, or private session material.
+
+See `docs/ARCHITECTURE.md` for design rationale and the planned local Playwright collector.
