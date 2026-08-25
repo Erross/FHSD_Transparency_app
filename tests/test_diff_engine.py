@@ -68,6 +68,33 @@ class DiffEngineTests(unittest.TestCase):
         self.assertEqual("edited", state["events"][-1]["type"])
         self.assertEqual("first", state["events"][-1]["beforeText"])
 
+    def test_comment_ui_chrome_does_not_create_false_edit(self):
+        first = comment("c1", "17h · by authorMaster schedules are hard.LikeReply8")
+        later = comment("c1", "22h · by authorMaster schedules are hard.LikeReply9")
+        state = self.apply(initial_state("school-watchlist"), [post("p1", "one"), first], "t1")
+        state = self.apply(state, [post("p1", "one"), later], "t2")
+        entity = state["entities"]["comment:c1"]
+        self.assertEqual("Master schedules are hard.", entity["text"])
+        self.assertEqual(1, len(entity["versions"]))
+        self.assertFalse(any(e["type"] == "edited" for e in state["events"]))
+
+    def test_collapsed_see_more_does_not_create_false_edit(self):
+        state = self.apply(initial_state("school-watchlist"), [post("p1", "A long post with details See less")], "t1")
+        state = self.apply(state, [post("p1", "A long post… See more")], "t2")
+        entity = state["entities"]["post:p1"]
+        self.assertEqual("A long post with details", entity["text"])
+        self.assertEqual(1, len(entity["versions"]))
+        self.assertFalse(any(e["type"] == "edited" for e in state["events"]))
+
+    def test_comment_parent_id_change_creates_post_alias_not_duplicate_thread(self):
+        state = self.apply(initial_state("school-watchlist"), [post("old", "schedule"), comment("c1", "same", "old")], "t1")
+        state = self.apply(state, [post("new", "schedule"), comment("c1", "same", "new")], "t2")
+        self.assertIn("post:old", state["entities"])
+        self.assertNotIn("post:new", state["entities"])
+        self.assertEqual("post:old", state["entities"]["comment:c1"]["parentId"])
+        self.assertIn("new", state["entities"]["comment:c1"]["postIdAliases"])
+        self.assertEqual(1, state["snapshots"][-1]["postAliasCount"])
+
     def test_incomplete_snapshot_never_marks_missing(self):
         state = self.apply(initial_state("school-watchlist"), [post("p1", "one"), post("p2", "two")], "t1", complete=True)
         state = self.apply(state, [post("p1", "one")], "t2", complete=False)
