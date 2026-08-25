@@ -8,7 +8,8 @@ import re
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
-from .core import apply_snapshot, initial_state, normalize_item, normalize_space, now_iso, summary
+from .core import initial_state, normalize_item, normalize_space, now_iso, summary
+from .coverage import apply_coverage_snapshot
 from .io_utils import read_json, write_json_gz, write_raw_gz
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -131,7 +132,7 @@ def main():
         "coverageMode": "complete" if args.complete else "partial",
         "targetValidation": validation,
     }
-    state = apply_snapshot(
+    state = apply_coverage_snapshot(
         state,
         normalized,
         observed_at=observed,
@@ -141,6 +142,14 @@ def main():
     )
     write_json_gz(state_path, state)
     print(json.dumps(summary(state), indent=2))
+    latest_snapshot = state.get("snapshots", [])[-1] if state.get("snapshots") else {}
+    if latest_snapshot.get("coverageStart"):
+        print(
+            "Coverage window: "
+            f"{latest_snapshot['coverageStart']} through {latest_snapshot['coverageEnd']} | "
+            f"eligible prior entities={latest_snapshot.get('coverageEligiblePriorEntities', 0)} | "
+            f"unknown-date prior entities={latest_snapshot.get('coverageUnknownDatePriorEntities', 0)}"
+        )
     for warning in validation["warnings"]:
         print(f"WARNING [{warning['code']}]: {warning['message']}")
     if not args.complete:
