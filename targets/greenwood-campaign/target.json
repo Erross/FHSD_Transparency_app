@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "greenwood-campaign",
+  "displayName": "Greenwood for FHSD School Board",
+  "description": "Public archive of the Greenwood for FHSD School Board Facebook campaign page and visible discussion threads.",
+  "platform": "facebook",
+  "sourceUrls": [
+    "https://www.facebook.com/profile.php?id=61585847713690"
+  ],
+  "authorAliases": [
+    "Greenwood for FHSD School Board"
+  ],
+  "crawl": {
+    "comparisonMode": "full_snapshot",
+    "requiresCompleteSnapshotForMissing": true,
+    "missingRecheckThreshold": 2,
+    "confirmationRequiresDirectCheck": true,
+    "bulkMissingAbsoluteThreshold": 5,
+    "bulkMissingRatioThreshold": 0.1,
+    "bulkThreadMissingAbsoluteThreshold": 3
+  },
+  "publicNotes": "The archive records what the collector observed. Absence from a later crawl is not attributed to a specific person without independent evidence."
+}
