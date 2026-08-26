@@ -40,7 +40,6 @@ vm.runInThisContext(code, { filename: 'site/date-safety.js' });
 // Chromium/JavaScript may otherwise invent year 2001 for a yearless date.
 assert.strictEqual(dateValue('August 25'), null, 'yearless Facebook label must not be browser-parsed');
 assert.strictEqual(dateValue('2001-08-25'), null, 'pre-Facebook date must be rejected');
-assert.strictEqual(dateValue('2023-12-31'), null, 'target-specific pre-archive date must be rejected');
 
 const valid = dateValue('2026-08-25');
 assert(valid instanceof Date, 'valid ISO date should parse');
@@ -48,6 +47,7 @@ assert.strictEqual(valid.getFullYear(), 2026);
 assert.strictEqual(valid.getMonth(), 7);
 assert.strictEqual(valid.getDate(), 25);
 assert(!authorBlock({ author: 'School Watchlist', timestampText: 'August 25' }).includes('2001'), 'rendered yearless label must never display 2001');
+assert(authorBlock({ author: 'School Watchlist', publishedDate: '2023-12-31' }).includes('invalid captured date'), 'target-specific pre-archive publication date must be rejected at the publication layer');
 
 current.entities = [
   { id: 'post:2024', itemType: 'post', publishedDate: '2024-06-01', author: 'School Watchlist', text: '2024' },
