@@ -7,6 +7,7 @@ from typing import Any
 
 from .core import dumps, initial_state, normalize_space, summary
 from .io_utils import read_json
+from .relationships import repair_parent_relationships
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -103,7 +104,15 @@ def main():
         state_path = ROOT / "data" / tid / "state.json.gz"
         legacy = ROOT / "data" / tid / "state.json"
         state = read_json(state_path) if state_path.exists() else (read_json(legacy) if legacy.exists() else initial_state(tid))
-        entities = sorted(state.get("entities", {}).values(), key=_activity_key, reverse=True)
+
+        # Older normalized states can contain comments whose numeric postId does
+        # not equal the page post's pfbid. Repair public-facing relationships
+        # from strong captured source-link evidence at build time so existing
+        # archives benefit immediately without rewriting immutable raw evidence.
+        raw_entities = list(state.get("entities", {}).values())
+        entities, relationship_diagnostics = repair_parent_relationships(raw_entities)
+        entities = sorted(entities, key=_activity_key, reverse=True)
+
         events = sorted(state.get("events", []), key=lambda e: e.get("observedAt", ""), reverse=True)
         snaps = sorted(state.get("snapshots", []), key=lambda s: s.get("observedAt", ""), reverse=True)
         authors = _author_index(entities)
@@ -116,6 +125,7 @@ def main():
             "snapshots": snaps,
             "authors": authors,
             "discussionCounts": discussions,
+            "relationshipDiagnostics": relationship_diagnostics,
             "latestDelta": _latest_delta(events, snaps),
         }
         (target_out / f"{tid}.json").write_text(dumps(public), encoding="utf-8")
@@ -150,6 +160,14 @@ def main():
             row["latestActivity"] = max(row["latestActivity"], author.get("latestActivity", ""))
             if not row["profileUrl"] and author.get("profileUrl"):
                 row["profileUrl"] = author["profileUrl"]
+
+        if relationship_diagnostics.get("totalComments"):
+            print(
+                f"{tid}: linked {relationship_diagnostics.get('linkedComments', 0)}/"
+                f"{relationship_diagnostics.get('totalComments', 0)} comments to archived posts; "
+                f"repaired {relationship_diagnostics.get('repairedComments', 0)} existing relationships; "
+                f"unresolved {relationship_diagnostics.get('orphanComments', 0)}"
+            )
 
     people = sorted(global_people.values(), key=lambda a: (a["comments"], a["posts"], a["latestActivity"]), reverse=True)
     (out / "catalog.json").write_text(dumps({"targets": catalog}), encoding="utf-8")
