@@ -10,6 +10,7 @@ from urllib.parse import parse_qs, urlparse
 
 from .core import initial_state, normalize_item, normalize_space, now_iso, summary
 from .coverage import apply_coverage_snapshot
+from .enrich import enrich_normalized
 from .io_utils import read_json, write_json_gz, write_raw_gz
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -120,15 +121,27 @@ def main():
     legacy = folder / "state.json"
     state = read_json(state_path) if state_path.exists() else (read_json(legacy) if legacy.exists() else initial_state(args.target))
 
-    normalized = [normalize_item(item, observed) for item in items if isinstance(item, dict)]
+    normalized = []
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        base = normalize_item(item, observed)
+        normalized.append(enrich_normalized(item, base, observed))
+
+    crawl_meta = payload.get("crawl") if isinstance(payload.get("crawl"), dict) else {}
     meta = {
         "sourceFile": archived.relative_to(ROOT).as_posix(),
         "rawSha256": sha,
         "exportSchemaVersion": payload.get("schemaVersion"),
         "exportedAt": observed,
         "targetAuthor": payload.get("targetAuthor", ""),
+        "crawlScope": payload.get("crawlScope", ""),
         "declaredItemCount": payload.get("itemCount"),
         "collectionLimit": payload.get("collectionLimit", {}),
+        "crawl": crawl_meta,
+        "crawlerVersion": crawl_meta.get("crawlerVersion", payload.get("crawlerVersion", "")),
+        "reachedHistoricalStart": crawl_meta.get("reachedHistoricalStart"),
+        "completionReason": crawl_meta.get("completionReason", ""),
         "coverageMode": "complete" if args.complete else "partial",
         "targetValidation": validation,
     }
