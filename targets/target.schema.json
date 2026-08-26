@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.invalid/greenwood-repository/target.schema.json",
+  "$id": "https://example.invalid/fhsd-transparency-app/target.schema.json",
   "title": "Archive target",
   "type": "object",
   "required": ["schemaVersion", "id", "displayName", "platform", "sourceUrls", "authorAliases", "crawl"],
@@ -12,6 +12,7 @@
     "platform": {"type": "string", "minLength": 1},
     "sourceUrls": {"type": "array", "minItems": 1, "items": {"type": "string"}},
     "authorAliases": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "filenameAliases": {"type": "array", "items": {"type": "string", "minLength": 1}},
     "crawl": {"type": "object", "required": ["comparisonMode", "requiresCompleteSnapshotForMissing"]},
     "publicNotes": {"type": "string"}
   }
