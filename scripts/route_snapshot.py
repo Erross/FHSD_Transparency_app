@@ -1,8 +1,10 @@
 """Resolve an incoming crawler export to a configured archive target.
 
 Routing prefers stable evidence from the export itself (target id/profile id),
-then declared author aliases, then filename aliases. Filename evidence is a
-cross-check/fallback, never permission to override conflicting content evidence.
+then crawl-page context, declared author aliases, and finally filename aliases.
+Per-item ``profileId`` values are deliberately NOT used for routing because
+older crawler schemas may populate them with authors/pages merely appearing
+inside the captured material.
 """
 from __future__ import annotations
 
@@ -43,14 +45,24 @@ def configured_profile_ids(config: dict[str, Any]) -> set[str]:
 
 
 def observed_profile_ids(payload: dict[str, Any]) -> set[str]:
+    """Return IDs that identify the crawl/page context, not incidental actors.
+
+    v10-style target metadata is strongest. For older schemas, item ``pageUrl``
+    is usable because it represents the page/thread context the crawler was
+    visiting. ``item.profileId`` is intentionally ignored: historical exports
+    use it for many actors appearing in posts/comments and it therefore cannot
+    safely identify the target account.
+    """
     ids: set[str] = set()
     target = payload.get("target") if isinstance(payload.get("target"), dict) else {}
+
     for value in (
         payload.get("profileId"),
         target.get("profileId"),
     ):
         if value:
             ids.add(str(value).strip())
+
     for value in (
         payload.get("pageUrl"),
         payload.get("sourceUrl"),
@@ -60,15 +72,15 @@ def observed_profile_ids(payload: dict[str, Any]) -> set[str]:
         pid = _profile_id(str(value or ""))
         if pid:
             ids.add(pid)
+
     for item in payload.get("items", []):
         if not isinstance(item, dict):
             continue
-        value = str(item.get("profileId") or "").strip()
-        if value:
-            ids.add(value)
+        # pageUrl is crawl/thread context. Do not use item.profileId here.
         pid = _profile_id(str(item.get("pageUrl") or ""))
         if pid:
             ids.add(pid)
+
     return ids
 
 
@@ -112,13 +124,17 @@ def resolve_target(payload: dict[str, Any], filename: str, configs: list[dict[st
     filename_target = unique(by_filename)
 
     if len({c.get("id") for c in by_profile}) > 1:
-        return {"ok": False, "reason": f"Observed Facebook profile IDs match multiple configured targets: {sorted(observed_ids)}"}
+        return {
+            "ok": False,
+            "reason": f"Crawl/page context matches multiple configured targets: {sorted(observed_ids)}",
+        }
     if explicit and not explicit_target:
         return {"ok": False, "reason": f"Export declares unknown targetId {explicit!r}."}
     if explicit_target and profile_target and explicit_target["id"] != profile_target["id"]:
-        return {"ok": False, "reason": "Export targetId conflicts with observed Facebook profile identity."}
+        return {"ok": False, "reason": "Export targetId conflicts with crawl/page profile identity."}
 
-    chosen = profile_target or explicit_target or author_target or filename_target
+    # Prefer explicit schema identity, then page context, then legacy author name.
+    chosen = explicit_target or profile_target or author_target or filename_target
     if not chosen:
         return {
             "ok": False,
@@ -127,7 +143,12 @@ def resolve_target(payload: dict[str, Any], filename: str, configs: list[dict[st
             "declaredTargetAuthor": declared,
         }
 
-    strong_target = profile_target or explicit_target
+    strong_target = explicit_target or profile_target
+    if author_target and strong_target and author_target["id"] != strong_target["id"]:
+        return {
+            "ok": False,
+            "reason": f"Declared target author suggests {author_target['id']!r} but crawl identity resolves to {strong_target['id']!r}.",
+        }
     if filename_target and strong_target and filename_target["id"] != strong_target["id"]:
         return {
             "ok": False,
@@ -138,8 +159,8 @@ def resolve_target(payload: dict[str, Any], filename: str, configs: list[dict[st
         "ok": True,
         "targetId": chosen["id"],
         "method": (
-            "profile_id" if profile_target else
             "target_id" if explicit_target else
+            "page_profile_id" if profile_target else
             "author_alias" if author_target else
             "filename_alias"
         ),
