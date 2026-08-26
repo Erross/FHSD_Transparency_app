@@ -2,7 +2,9 @@ name: Ingest uploaded snapshots
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - feature/multi-target-archive-foundation
     paths:
       - 'incoming/complete/*.json'
       - 'incoming/partial/*.json'
