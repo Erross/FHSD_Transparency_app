@@ -1,13 +1,46 @@
 {
   "targets": [
     {
+      "id": "greenwood-campaign",
+      "displayName": "Greenwood for FHSD School Board",
+      "description": "Public archive of the Greenwood for FHSD School Board Facebook campaign page and visible discussion threads.",
+      "platform": "facebook",
+      "sourceUrls": [
+        "https://www.facebook.com/profile.php?id=61585847713690"
+      ],
+      "summary": {
+        "entities": 0,
+        "posts": 0,
+        "comments": 0,
+        "active": 0,
+        "missing": 0,
+        "confirmedUnavailable": 0,
+        "editedEntities": 0,
+        "events": 0,
+        "snapshots": 0
+      },
+      "latestSnapshot": ""
+    },
+    {
       "id": "school-watchlist",
       "displayName": "School Watchlist",
       "description": "Public archive of the FHSD School Watchlist Facebook page and its visible discussion threads.",
       "platform": "facebook",
-      "sourceUrls": ["https://www.facebook.com/profile.php?id=61581121856469"],
-      "summary": {"entities":0,"posts":0,"comments":0,"active":0,"missing":0,"confirmedUnavailable":0,"editedEntities":0,"events":0,"snapshots":0},
-      "latestSnapshot": ""
+      "sourceUrls": [
+        "https://www.facebook.com/profile.php?id=61581121856469"
+      ],
+      "summary": {
+        "entities": 1216,
+        "posts": 213,
+        "comments": 1003,
+        "active": 1216,
+        "missing": 0,
+        "confirmedUnavailable": 0,
+        "editedEntities": 0,
+        "events": 0,
+        "snapshots": 1
+      },
+      "latestSnapshot": "2026-08-25T14:17:42.384Z"
     }
   ]
 }
