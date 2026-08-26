@@ -8,6 +8,9 @@ on:
       - 'site/**'
       - 'data/**'
       - 'targets/**'
+  workflow_run:
+    workflows: ['Ingest uploaded snapshots']
+    types: [completed]
 
 permissions:
   contents: read
@@ -20,13 +23,18 @@ concurrency:
 
 jobs:
   build:
-    if: ${{ vars.ENABLE_PAGES == 'true' }}
+    if: ${{ vars.ENABLE_PAGES == 'true' && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success') }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # The ingest workflow commits generated state with GITHUB_TOKEN; those
+          # commits intentionally do not trigger a second push workflow. Always
+          # deploy the latest main branch after ingest completes.
+          ref: main
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
