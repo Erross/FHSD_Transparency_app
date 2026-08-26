@@ -6,12 +6,12 @@ import hashlib
 import json
 import re
 from pathlib import Path
-from urllib.parse import parse_qs, urlparse
 
 from .core import initial_state, normalize_item, normalize_space, now_iso, summary
 from .coverage import apply_coverage_snapshot
 from .enrich import enrich_normalized
 from .io_utils import read_json, write_json_gz, write_raw_gz
+from .route_snapshot import configured_profile_ids, observed_profile_ids
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -38,30 +38,19 @@ def preserve_raw(target_id, raw, exported_at):
     return dest, sha
 
 
-def _profile_id(url: str) -> str:
-    try:
-        parsed = urlparse(url or "")
-        values = parse_qs(parsed.query).get("id", [])
-        return values[0] if values else ""
-    except ValueError:
-        return ""
-
-
 def validate_export_target(config: dict, payload: dict) -> dict:
-    aliases = {normalize_space(value).casefold() for value in config.get("authorAliases", []) if normalize_space(value)}
-    declared = normalize_space(payload.get("targetAuthor"))
+    aliases = {
+        normalize_space(value).casefold()
+        for value in config.get("authorAliases", []) + [config.get("displayName", "")]
+        if normalize_space(value)
+    }
+    target = payload.get("target") if isinstance(payload.get("target"), dict) else {}
+    declared = normalize_space(payload.get("targetAuthor") or target.get("displayName"))
     declared_match = not declared or declared.casefold() in aliases
 
-    configured_profile_ids = {_profile_id(url) for url in config.get("sourceUrls", [])}
-    configured_profile_ids.discard("")
-    observed_profile_ids = set()
-    for item in payload.get("items", []):
-        if not isinstance(item, dict):
-            continue
-        observed_profile_ids.add(normalize_space(item.get("profileId")))
-        observed_profile_ids.add(_profile_id(normalize_space(item.get("pageUrl"))))
-    observed_profile_ids.discard("")
-    source_match = not configured_profile_ids or bool(configured_profile_ids & observed_profile_ids)
+    configured_ids = configured_profile_ids(config)
+    observed_ids = observed_profile_ids(payload)
+    source_match = not configured_ids or bool(configured_ids & observed_ids)
 
     warnings = []
     if not declared_match:
@@ -82,8 +71,8 @@ def validate_export_target(config: dict, payload: dict) -> dict:
     return {
         "declaredTargetAuthor": declared,
         "declaredTargetMatches": declared_match,
-        "configuredProfileIds": sorted(configured_profile_ids),
-        "observedProfileIds": sorted(observed_profile_ids),
+        "configuredProfileIds": sorted(configured_ids),
+        "observedProfileIds": sorted(observed_ids),
         "sourceProfileMatches": source_match,
         "completeEligible": bool(declared_match and source_match),
         "warnings": warnings,
@@ -120,6 +109,13 @@ def main():
     state_path = folder / "state.json.gz"
     legacy = folder / "state.json"
     state = read_json(state_path) if state_path.exists() else (read_json(legacy) if legacy.exists() else initial_state(args.target))
+
+    # Uploading the same raw export twice must not create another observation or
+    # advance missing/recheck state. The immutable raw artifact is already
+    # content-addressed by SHA, so duplicate ingestion is a clean no-op.
+    if any(snapshot.get("rawSha256") == sha for snapshot in state.get("snapshots", [])):
+        print(f"Duplicate snapshot SHA {sha}; already ingested for target {args.target}. No state change made.")
+        return
 
     normalized = []
     for item in items:
