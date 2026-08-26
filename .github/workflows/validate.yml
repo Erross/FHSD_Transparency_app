@@ -14,5 +14,8 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Build static indexes
         run: python -m scripts.build_site
-      - name: Verify generated catalog
-        run: test -s site/data/catalog.json
+      - name: Verify generated site data and JavaScript
+        run: |
+          test -s site/data/catalog.json
+          test -s site/data/people.json
+          node --check site/app.js
