@@ -31,8 +31,10 @@ def _author_identity(item: dict[str, Any], normalized: dict[str, Any]) -> tuple[
     profile_url = normalize_space(item.get("authorProfileUrl"))
     profile_id = normalize_space(item.get("authorProfileId"))
 
-    # Older page-post exports already expose the page profile id/url. Do not
-    # reuse those fields for comments because they describe the tracked page,
+    # Older page-post exports already expose the tracked page profile id/url.
+    # That is valid identity evidence for a post author, including Facebook
+    # attribution strings such as "School Watchlist is with ...". Do not reuse
+    # those page fields for comments because they describe the tracked page,
     # not necessarily the commenter.
     if normalized.get("itemType") == "post":
         profile_id = profile_id or normalize_space(item.get("profileId"))
@@ -44,12 +46,18 @@ def _author_identity(item: dict[str, Any], normalized: dict[str, Any]) -> tuple[
         profile_id = _profile_id_from_url(profile_url)
 
     supplied_key = normalize_space(item.get("authorKey"))
-    if supplied_key:
+    # A real Facebook profile/page id is stronger than older crawler authorKey
+    # strings, which were often merely normalized display names. This prevents
+    # "School Watchlist" and "School Watchlist is with ..." from fragmenting
+    # into separate people in the public archive.
+    if supplied_key.casefold().startswith("facebook:"):
         author_key = supplied_key
     elif profile_id:
         author_key = f"facebook:{profile_id}"
     elif profile_url:
         author_key = f"facebook-url:{profile_url.casefold()}"
+    elif supplied_key:
+        author_key = supplied_key if ":" in supplied_key else f"name:{supplied_key.casefold()}"
     else:
         author_key = f"name:{display.casefold()}" if display else "name:unknown"
     return display, profile_url, profile_id, author_key
