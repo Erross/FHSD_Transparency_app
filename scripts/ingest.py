@@ -11,6 +11,7 @@ from .core import initial_state, normalize_item, normalize_space, now_iso, summa
 from .coverage import apply_coverage_snapshot
 from .enrich import enrich_normalized
 from .io_utils import read_json, write_json_gz, write_raw_gz
+from .relationships import repair_parent_relationships
 from .route_snapshot import configured_profile_ids, observed_profile_ids
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -124,6 +125,12 @@ def main():
         base = normalize_item(item, observed)
         normalized.append(enrich_normalized(item, base, observed))
 
+    # Facebook can expose a page post as a pfbid while comments in the same
+    # thread carry a numeric postId. Reconcile those representations before the
+    # diff/coverage engine sees the snapshot so comments inherit the canonical
+    # archived parent post whenever strong source-link evidence is available.
+    normalized, relationship_diagnostics = repair_parent_relationships(normalized)
+
     crawl_meta = payload.get("crawl") if isinstance(payload.get("crawl"), dict) else {}
     meta = {
         "sourceFile": archived.relative_to(ROOT).as_posix(),
@@ -140,6 +147,7 @@ def main():
         "completionReason": crawl_meta.get("completionReason", ""),
         "coverageMode": "complete" if args.complete else "partial",
         "targetValidation": validation,
+        "relationshipDiagnostics": relationship_diagnostics,
     }
     state = apply_coverage_snapshot(
         state,
@@ -151,6 +159,13 @@ def main():
     )
     write_json_gz(state_path, state)
     print(json.dumps(summary(state), indent=2))
+    print(
+        "Relationships: "
+        f"linked={relationship_diagnostics.get('linkedComments', 0)}/"
+        f"{relationship_diagnostics.get('totalComments', 0)} comments; "
+        f"repaired={relationship_diagnostics.get('repairedComments', 0)}; "
+        f"unresolved={relationship_diagnostics.get('orphanComments', 0)}"
+    )
     latest_snapshot = state.get("snapshots", [])[-1] if state.get("snapshots") else {}
     if latest_snapshot.get("coverageStart"):
         print(
