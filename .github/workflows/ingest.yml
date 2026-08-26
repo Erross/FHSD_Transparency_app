@@ -31,6 +31,7 @@ jobs:
           test -s site/data/catalog.json
           test -s site/data/people.json
           node --check site/app.js
+          node --check site/threading.js
       - name: Commit archive update
         run: |
           git config user.name 'fhsd-archive-bot'
