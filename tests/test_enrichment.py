@@ -23,6 +23,25 @@ class EnrichmentTests(unittest.TestCase):
         self.assertTrue(enriched["bodyComplete"])
         self.assertEqual(enriched["attachmentSummary"], "Example | EXAMPLE.COM")
 
+    def test_page_profile_id_unifies_facebook_attribution_variants(self):
+        observed = "2026-08-26T15:48:39Z"
+        base = {
+            "itemType": "post",
+            "profileId": "61581121856469",
+            "pageUrl": "https://www.facebook.com/profile.php?id=61581121856469",
+            "bodyText": "Post body",
+        }
+        normal = {**base, "author": "School Watchlist", "authorKey": "school watchlist"}
+        tagged = {
+            **base,
+            "author": "School Watchlist is with REAL TALK 93.3FM.",
+            "authorKey": "school watchlist is with real talk 93.3fm.",
+        }
+        a = enrich_normalized(normal, normalize_item(normal, observed), observed)
+        b = enrich_normalized(tagged, normalize_item(tagged, observed), observed)
+        self.assertEqual(a["authorKey"], "facebook:61581121856469")
+        self.assertEqual(b["authorKey"], a["authorKey"])
+
     def test_truncated_post_is_marked_incomplete(self):
         raw = {"itemType": "post", "author": "School Watchlist", "bodyText": "Long post… See more"}
         observed = "2026-08-26T15:48:39Z"
