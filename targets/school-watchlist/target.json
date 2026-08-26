@@ -16,6 +16,7 @@
     "School Watchlist",
     "FHSD_School_Watchlist"
   ],
+  "earliestPublicationDate": "2024-01-01",
   "crawl": {
     "comparisonMode": "full_snapshot",
     "requiresCompleteSnapshotForMissing": true,
