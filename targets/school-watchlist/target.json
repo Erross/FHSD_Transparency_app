@@ -11,6 +11,11 @@
     "School Watchlist",
     "FHSD School Watchlist"
   ],
+  "filenameAliases": [
+    "School_Watchlist",
+    "School Watchlist",
+    "FHSD_School_Watchlist"
+  ],
   "crawl": {
     "comparisonMode": "full_snapshot",
     "requiresCompleteSnapshotForMissing": true,
