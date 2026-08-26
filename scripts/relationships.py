@@ -46,8 +46,8 @@ def _comment_ids(url: str) -> set[str]:
 
 
 def _post_alias_map(posts: Iterable[dict[str, Any]]) -> dict[str, str]:
-    """Map every known Facebook post identifier to the archive post entity id."""
-    aliases: dict[str, str] = {}
+    """Map strong known Facebook post identifiers to archive post entity ids."""
+    owners: dict[str, set[str]] = {}
     for post in posts:
         entity_id = _norm(post.get("id"))
         if not entity_id:
@@ -59,10 +59,21 @@ def _post_alias_map(posts: Iterable[dict[str, Any]]) -> dict[str, str]:
         candidates.update(_norm(value) for value in post.get("postIdAliases", []) if _norm(value))
         if entity_id.startswith("post:") and not entity_id.startswith("post:url:"):
             candidates.add(entity_id.removeprefix("post:"))
+
+        # A post's own canonical permalink is strong alias evidence. Do not use
+        # arbitrary post.links here: legacy Facebook DOM captures can contain
+        # links from many neighboring/modal records.
+        for field in ("permalink", "parentPostPermalink"):
+            value = _story_id(_norm(post.get(field)))
+            if value:
+                candidates.add(value)
+
         for value in candidates:
             if value:
-                aliases.setdefault(value, entity_id)
-    return aliases
+                owners.setdefault(value, set()).add(entity_id)
+
+    # Ambiguous aliases are intentionally omitted rather than guessed.
+    return {value: next(iter(entity_ids)) for value, entity_ids in owners.items() if len(entity_ids) == 1}
 
 
 def _exact_source_story(entity: dict[str, Any]) -> str:
@@ -132,7 +143,6 @@ def repair_parent_relationships(entities: Iterable[dict[str, Any]]) -> tuple[lis
     records = [dict(entity) for entity in entities]
     posts = [entity for entity in records if entity.get("itemType") == "post"]
     post_aliases = _post_alias_map(posts)
-    post_entity_ids = {_norm(post.get("id")) for post in posts}
 
     diagnostics = Counter(totalComments=0, linkedComments=0, repairedComments=0, orphanComments=0)
 
@@ -147,20 +157,17 @@ def repair_parent_relationships(entities: Iterable[dict[str, Any]]) -> tuple[lis
         method = ""
         confidence = ""
 
-        if original_parent in post_entity_ids:
-            resolved_entity_id = original_parent
-            resolved_post_id = _norm(entity.get("postId"))
-            method = "existing_parent_id"
-            confidence = "high"
-        else:
-            for candidate, candidate_method, candidate_confidence in _relationship_candidates(entity):
-                archive_post_id = post_aliases.get(candidate, "")
-                if archive_post_id:
-                    resolved_entity_id = archive_post_id
-                    resolved_post_id = candidate
-                    method = candidate_method
-                    confidence = candidate_confidence
-                    break
+        # Always evaluate the ordered evidence. This lets an exact source link
+        # correct a stale-but-existing parent alias rather than automatically
+        # preserving the weaker prior normalization.
+        for candidate, candidate_method, candidate_confidence in _relationship_candidates(entity):
+            archive_post_id = post_aliases.get(candidate, "")
+            if archive_post_id:
+                resolved_entity_id = archive_post_id
+                resolved_post_id = candidate
+                method = candidate_method
+                confidence = candidate_confidence
+                break
 
         if resolved_entity_id:
             diagnostics["linkedComments"] += 1
