@@ -4,7 +4,8 @@ on:
   push:
     branches: [main]
     paths:
-      - 'incoming/**/*.json'
+      - 'incoming/complete/*.json'
+      - 'incoming/partial/*.json'
 
 permissions:
   contents: write
