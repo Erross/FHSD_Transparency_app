@@ -10,6 +10,11 @@
   "authorAliases": [
     "Greenwood for FHSD School Board"
   ],
+  "filenameAliases": [
+    "Greenwood_for_FHSD_School_Board",
+    "Greenwood for FHSD School Board",
+    "Greenwood_Campaign"
+  ],
   "crawl": {
     "comparisonMode": "full_snapshot",
     "requiresCompleteSnapshotForMissing": true,
