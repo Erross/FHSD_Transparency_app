@@ -21,3 +21,4 @@ jobs:
           node --check site/app.js
           node --check site/delta.js
           node --check site/threading.js
+          node --check site/date-safety.js
