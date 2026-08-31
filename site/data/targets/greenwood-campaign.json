@@ -43,6 +43,12 @@
   "snapshots": [],
   "authors": [],
   "discussionCounts": {},
+  "relationshipDiagnostics": {
+    "totalComments": 0,
+    "linkedComments": 0,
+    "repairedComments": 0,
+    "orphanComments": 0
+  },
   "latestDelta": {
     "observedAt": "",
     "previousObservedAt": "",
