@@ -1,0 +1,6 @@
+[project]
+name = "greenwood-public-archive"
+version = "0.1.0"
+description = "Multi-target public social-media archive and change tracker"
+requires-python = ">=3.11"
+dependencies = []

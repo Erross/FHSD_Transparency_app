@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A searchable historical archive of publicly visible social-media activity relating to Francis Howell School District.">
+  <title>FHSD Transparency Archive</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./delta.css">
+  <link rel="stylesheet" href="./threading.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div>
+        <p class="eyebrow">PUBLIC SOCIAL-MEDIA ARCHIVE</p>
+        <h1>FHSD Transparency Archive</h1>
+        <p class="lede">A searchable historical record of prominent public social-media activity relating to Francis Howell School District.</p>
+      </div>
+      <div class="notice">Independent archive. Not affiliated with Facebook, FHSD, any candidate, campaign, or archived page. “Missing” means not observed; it does not by itself establish deletion or who caused it.</div>
+    </div>
+  </header>
+
+  <nav class="primary-nav" aria-label="Archive sections">
+    <div class="nav-inner">
+      <button data-view="changes" class="nav-button">What changed</button>
+      <button data-view="feed" class="nav-button">Account feed</button>
+      <button data-view="people" class="nav-button">People</button>
+      <button data-view="archive" class="nav-button">Search archive</button>
+      <button data-view="methodology" class="nav-button">Methodology</button>
+    </div>
+  </nav>
+
+  <main>
+    <section class="toolbar panel" aria-label="Archive controls">
+      <label>Tracked account
+        <select id="targetSelect"></select>
+      </label>
+      <label class="search-label">Search
+        <input id="searchInput" type="search" placeholder="posts, comments, author name, phrase…" autocomplete="off">
+      </label>
+      <button id="searchButton" class="primary-button" type="button">Search archive</button>
+    </section>
+
+    <section id="targetIntro" class="target-intro panel"></section>
+    <section id="metrics" class="metrics" aria-label="Archive statistics"></section>
+    <section id="viewRoot" aria-live="polite"></section>
+  </main>
+
+  <footer>
+    <p>Raw captures are preserved with SHA-256 hashes. The archive distinguishes what was observed from claims about why content changed or disappeared.</p>
+  </footer>
+  <script src="./app.js" defer></script>
+  <script src="./delta.js" defer></script>
+  <script src="./threading.js" defer></script>
+  <script src="./date-safety.js" defer></script>
+</body>
+</html>
