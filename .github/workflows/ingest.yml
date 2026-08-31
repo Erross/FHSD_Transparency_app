@@ -38,6 +38,7 @@ jobs:
           node --check site/threading.js
           node --check site/date-safety.js
           node tests/date_safety_test.js
+          node tests/feed_interactions_test.js
       - name: Commit archive update
         run: |
           git config user.name 'fhsd-archive-bot'
