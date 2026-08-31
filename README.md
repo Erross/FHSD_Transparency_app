@@ -2,7 +2,20 @@
 
 A multi-target public-record archive and change tracker for publicly visible social-media activity relevant to Francis Howell School District and its political/community sphere.
 
+**Live archive: [Open the FHSD Transparency Archive](https://erross.github.io/FHSD_Transparency_app/)**
+
 The repository is **`FHSD_Transparency_app`**. School Watchlist is the first configured tracked account, but nothing in the archive engine or site is hardcoded to that page. Additional campaign pages, advocacy pages, public figures, PACs, and other prominent public sources can be added through target configuration.
+
+## Current production status
+
+The MVP is merged into `main`, the repository is public, and the static archive is published through GitHub Pages.
+
+- **School Watchlist** is the current populated target, with five ingested snapshots through August 31, 2026.
+- The production corpus contains **2,704 entities**: 410 posts and 2,294 comments/replies.
+- **2,643 entities are active** in the latest observation. Another 61 are absent from at least one comparable observation; none has yet been manually confirmed unavailable.
+- 34 entities have observed substantive edits after Facebook interface noise and capture-expansion changes are filtered out.
+- **Greenwood for FHSD School Board** is configured as a second target but has no ingested snapshots yet.
+- The site opens on the populated School Watchlist dataset. Discussions expand in place within feed cards, using adaptive batches for very large threads.
 
 ## MVP experience
 
@@ -43,7 +56,7 @@ data/<target>/            compressed canonical state and event history
 scripts/                 routing, ingestion, enrichment, diff, verification, site build
 site/                    static FHSD Transparency Archive UI
 tests/                   regression tests
-.github/workflows/       validation, automated ingest, optional Pages deployment
+.github/workflows/       validation, automated ingest, and Pages deployment
 ```
 
 ## Normal ingest workflow
@@ -180,10 +193,12 @@ Give it source URLs/profile identity, author aliases, and useful `filenameAliase
 
 ## Static deployment
 
-Enable GitHub Pages using **GitHub Actions** as its publishing source. The
-`.github/workflows/pages.yml` workflow then builds and deploys the latest
-`main` branch automatically whenever site files, generated data, or target
-configuration changes. It can also be run manually from the Actions tab.
+The production site is available at
+[erross.github.io/FHSD_Transparency_app](https://erross.github.io/FHSD_Transparency_app/).
+
+GitHub Pages uses `.github/workflows/pages.yml` to build and deploy the latest
+`main` branch whenever site files, generated data, or target configuration
+changes. The deployment can also be started manually from the Actions tab.
 
 ## Storage and evidentiary preservation
 
