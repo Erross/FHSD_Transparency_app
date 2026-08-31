@@ -98,6 +98,11 @@ threading.window = threading;
 vm.createContext(threading);
 vm.runInContext(fs.readFileSync('site/threading.js', 'utf8'), threading, { filename: 'site/threading.js' });
 
+assert.strictEqual(threading.ArchiveThreading.expansionBatch(1397), 250, 'very large threads expand in useful batches');
+assert.strictEqual(threading.ArchiveThreading.expansionBatch(700), 100);
+assert.strictEqual(threading.ArchiveThreading.expansionBatch(200), 50);
+assert.strictEqual(threading.ArchiveThreading.expansionBatch(20), 20, 'the final small batch is revealed at once');
+
 assert(threading.archiveInlineDiscussionControls({ id: 'post' }, comments.length).includes('View all 7 comments'));
 assert.strictEqual(threading.archiveInlineDiscussionPanel({ id: 'post' }), '', 'discussion starts collapsed');
 

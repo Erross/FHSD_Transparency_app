@@ -4,10 +4,16 @@
   if (typeof commentEntities !== 'function' || typeof commentCard !== 'function' || typeof viewRecord !== 'function') return;
 
   const INITIAL_ROOTS = 3;
-  const ROOT_BATCH = 5;
   const INITIAL_REPLIES = 2;
-  const REPLY_BATCH = 3;
   const inlineState = new Map();
+
+  function expansionBatch(remaining) {
+    const count = Math.max(0, Number(remaining) || 0);
+    if (count > 1000) return 250;
+    if (count > 500) return 100;
+    if (count > 100) return 50;
+    return Math.min(25, count);
+  }
 
   function stateKey(postId) {
     return `${current?.target?.id || ''}::${postId}`;
@@ -99,8 +105,9 @@
         .map(reply => renderNode(reply, safeDepth + 1, nextLineage))
         .join('');
       const hiddenReplies = replies.length - replyLimit;
+      const nextReplyBatch = expansionBatch(hiddenReplies);
       const moreReplies = progressive && hiddenReplies > 0
-        ? `<button class="inline-replies-more depth-${Math.min(safeDepth + 1, 4)}" type="button" data-action="more-inline-replies" data-post-id="${esc(options.postId)}" data-comment-id="${esc(comment.id)}">View ${Math.min(REPLY_BATCH, hiddenReplies)} more repl${Math.min(REPLY_BATCH, hiddenReplies) === 1 ? 'y' : 'ies'} <span>(${hiddenReplies} remaining)</span></button>`
+        ? `<button class="inline-replies-more depth-${Math.min(safeDepth + 1, 4)}" type="button" data-action="more-inline-replies" data-post-id="${esc(options.postId)}" data-comment-id="${esc(comment.id)}">View ${nextReplyBatch} more repl${nextReplyBatch === 1 ? 'y' : 'ies'} <span>(${hiddenReplies} remaining)</span></button>`
         : '';
 
       return `<div class="comment-thread depth-${safeDepth}">${commentCard(comment, { highlight: comment.id === options.highlightedId })}${nested}${moreReplies}</div>`;
@@ -135,8 +142,9 @@
       postId: post.id
     });
     const total = model.comments.length;
+    const nextRootBatch = expansionBatch(rendered.hiddenRoots);
     const moreRoots = rendered.hiddenRoots > 0
-      ? `<button class="inline-comments-more" type="button" data-action="more-inline-comments" data-post-id="${esc(post.id)}">View ${Math.min(ROOT_BATCH, rendered.hiddenRoots)} more comment${Math.min(ROOT_BATCH, rendered.hiddenRoots) === 1 ? '' : 's'}</button>`
+      ? `<button class="inline-comments-more" type="button" data-action="more-inline-comments" data-post-id="${esc(post.id)}">View ${nextRootBatch} more comment${nextRootBatch === 1 ? '' : 's'} <span>(${rendered.hiddenRoots} remaining)</span></button>`
       : '';
 
     return `<section class="inline-discussion" id="inline-thread-${esc(domToken(post.id))}" aria-label="Archived comments">
@@ -174,7 +182,7 @@
 
   window.archiveInlineDiscussionControls = inlineDiscussionControls;
   window.archiveInlineDiscussionPanel = inlineDiscussionPanel;
-  window.ArchiveThreading = { buildThread, renderThread };
+  window.ArchiveThreading = { buildThread, renderThread, expansionBatch };
 
   document.addEventListener('click', event => {
     const action = event.target.closest(
@@ -190,13 +198,16 @@
       state.expanded = !state.expanded;
     } else if (action.dataset.action === 'more-inline-comments') {
       state.expanded = true;
-      state.visibleRoots += ROOT_BATCH;
+      const model = buildThread(postId);
+      state.visibleRoots += expansionBatch(model.roots.length - state.visibleRoots);
       focusAction = 'more-inline-comments';
     } else {
       state.expanded = true;
       const parentId = action.dataset.commentId;
       const currentLimit = state.replyLimits.get(parentId) ?? INITIAL_REPLIES;
-      state.replyLimits.set(parentId, currentLimit + REPLY_BATCH);
+      const model = buildThread(postId);
+      const remaining = (model.children.get(parentId) || []).length - currentLimit;
+      state.replyLimits.set(parentId, currentLimit + expansionBatch(remaining));
       focusAction = 'more-inline-replies';
     }
     replacePostCard(action, postId, focusAction);
