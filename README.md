@@ -180,13 +180,10 @@ Give it source URLs/profile identity, author aliases, and useful `filenameAliase
 
 ## Static deployment
 
-`.github/workflows/pages.yml` contains the opt-in GitHub Pages deployment. Set repository variable:
-
-```text
-ENABLE_PAGES=true
-```
-
-and enable GitHub Pages using **GitHub Actions** as its source.
+Enable GitHub Pages using **GitHub Actions** as its publishing source. The
+`.github/workflows/pages.yml` workflow then builds and deploys the latest
+`main` branch automatically whenever site files, generated data, or target
+configuration changes. It can also be run manually from the Actions tab.
 
 ## Storage and evidentiary preservation
 
