@@ -1,10 +1,9 @@
 """Resolve an incoming crawler export to a configured archive target.
 
 Routing prefers stable evidence from the export itself (target id/profile id),
-then crawl-page context, declared author aliases, and finally filename aliases.
-Per-item ``profileId`` values are deliberately NOT used for routing because
-older crawler schemas may populate them with authors/pages merely appearing
-inside the captured material.
+then declared author aliases and filename aliases. Per-item page/profile context is
+kept only as a legacy fallback because cumulative/shared-content exports can
+legitimately contain material captured while visiting other configured pages.
 """
 from __future__ import annotations
 
@@ -44,15 +43,8 @@ def configured_profile_ids(config: dict[str, Any]) -> set[str]:
     return ids
 
 
-def observed_profile_ids(payload: dict[str, Any]) -> set[str]:
-    """Return IDs that identify the crawl/page context, not incidental actors.
-
-    v10-style target metadata is strongest. For older schemas, item ``pageUrl``
-    is usable because it represents the page/thread context the crawler was
-    visiting. ``item.profileId`` is intentionally ignored: historical exports
-    use it for many actors appearing in posts/comments and it therefore cannot
-    safely identify the target account.
-    """
+def top_level_profile_ids(payload: dict[str, Any]) -> set[str]:
+    """Return profile IDs explicitly identifying the export/crawl target."""
     ids: set[str] = set()
     target = payload.get("target") if isinstance(payload.get("target"), dict) else {}
 
@@ -73,15 +65,35 @@ def observed_profile_ids(payload: dict[str, Any]) -> set[str]:
         if pid:
             ids.add(pid)
 
+    return ids
+
+
+def item_page_profile_ids(payload: dict[str, Any]) -> set[str]:
+    """Return profile IDs seen in item page URLs for legacy fallback/debugging.
+
+    Item page URLs are not authoritative target identity. A cumulative page
+    export can contain shared/revisited material from another configured page,
+    so treating every item.pageUrl as equally strong target evidence can create
+    a false multi-target ambiguity.
+    """
+    ids: set[str] = set()
     for item in payload.get("items", []):
         if not isinstance(item, dict):
             continue
-        # pageUrl is crawl/thread context. Do not use item.profileId here.
         pid = _profile_id(str(item.get("pageUrl") or ""))
         if pid:
             ids.add(pid)
-
     return ids
+
+
+def observed_profile_ids(payload: dict[str, Any]) -> set[str]:
+    """Return all target/page IDs observed for validation diagnostics.
+
+    This union intentionally includes item-level page context so existing
+    validation diagnostics retain full visibility. Routing itself distinguishes
+    authoritative top-level identity from item-level legacy context.
+    """
+    return top_level_profile_ids(payload) | item_page_profile_ids(payload)
 
 
 def _filename_matches(config: dict[str, Any], filename: str) -> bool:
@@ -104,10 +116,13 @@ def resolve_target(payload: dict[str, Any], filename: str, configs: list[dict[st
     target_obj = payload.get("target") if isinstance(payload.get("target"), dict) else {}
     explicit = str(payload.get("targetId") or target_obj.get("id") or "").strip()
     declared = str(payload.get("targetAuthor") or target_obj.get("displayName") or "").strip()
-    observed_ids = observed_profile_ids(payload)
+    strong_observed_ids = top_level_profile_ids(payload)
+    legacy_item_ids = item_page_profile_ids(payload)
+    observed_ids = strong_observed_ids | legacy_item_ids
 
     by_id = [c for c in configs if explicit and c.get("id") == explicit]
-    by_profile = [c for c in configs if configured_profile_ids(c) & observed_ids]
+    by_profile = [c for c in configs if configured_profile_ids(c) & strong_observed_ids]
+    by_legacy_page_profile = [c for c in configs if configured_profile_ids(c) & legacy_item_ids]
     by_author = [
         c for c in configs
         if declared and _norm(declared) in {_norm(v) for v in c.get("authorAliases", []) + [c.get("displayName", "")]}
@@ -122,26 +137,17 @@ def resolve_target(payload: dict[str, Any], filename: str, configs: list[dict[st
     profile_target = unique(by_profile)
     author_target = unique(by_author)
     filename_target = unique(by_filename)
+    legacy_profile_target = unique(by_legacy_page_profile)
 
     if len({c.get("id") for c in by_profile}) > 1:
         return {
             "ok": False,
-            "reason": f"Crawl/page context matches multiple configured targets: {sorted(observed_ids)}",
+            "reason": f"Top-level crawl/page context matches multiple configured targets: {sorted(strong_observed_ids)}",
         }
     if explicit and not explicit_target:
         return {"ok": False, "reason": f"Export declares unknown targetId {explicit!r}."}
     if explicit_target and profile_target and explicit_target["id"] != profile_target["id"]:
-        return {"ok": False, "reason": "Export targetId conflicts with crawl/page profile identity."}
-
-    # Prefer explicit schema identity, then page context, then legacy author name.
-    chosen = explicit_target or profile_target or author_target or filename_target
-    if not chosen:
-        return {
-            "ok": False,
-            "reason": f"Could not identify a unique target from export metadata or filename {filename!r}.",
-            "observedProfileIds": sorted(observed_ids),
-            "declaredTargetAuthor": declared,
-        }
+        return {"ok": False, "reason": "Export targetId conflicts with top-level crawl/page profile identity."}
 
     strong_target = explicit_target or profile_target
     if author_target and strong_target and author_target["id"] != strong_target["id"]:
@@ -154,17 +160,48 @@ def resolve_target(payload: dict[str, Any], filename: str, configs: list[dict[st
             "ok": False,
             "reason": f"Filename suggests {filename_target['id']!r} but export identity resolves to {strong_target['id']!r}.",
         }
+    if author_target and filename_target and author_target["id"] != filename_target["id"]:
+        return {
+            "ok": False,
+            "reason": f"Declared target author suggests {author_target['id']!r} but filename suggests {filename_target['id']!r}.",
+        }
+
+    # Item-level page URLs are a legacy fallback only. If stronger export,
+    # author, or filename evidence identifies a target, incidental/shared page
+    # URLs must not override it or create a false multi-target rejection.
+    chosen = explicit_target or profile_target or author_target or filename_target
+    method = (
+        "target_id" if explicit_target else
+        "page_profile_id" if profile_target else
+        "author_alias" if author_target else
+        "filename_alias" if filename_target else
+        ""
+    )
+
+    if not chosen:
+        if len({c.get("id") for c in by_legacy_page_profile}) > 1:
+            return {
+                "ok": False,
+                "reason": f"Legacy item page context matches multiple configured targets: {sorted(legacy_item_ids)}",
+            }
+        chosen = legacy_profile_target
+        method = "page_profile_id" if legacy_profile_target else ""
+
+    if not chosen:
+        return {
+            "ok": False,
+            "reason": f"Could not identify a unique target from export metadata or filename {filename!r}.",
+            "observedProfileIds": sorted(observed_ids),
+            "declaredTargetAuthor": declared,
+        }
 
     return {
         "ok": True,
         "targetId": chosen["id"],
-        "method": (
-            "target_id" if explicit_target else
-            "page_profile_id" if profile_target else
-            "author_alias" if author_target else
-            "filename_alias"
-        ),
+        "method": method,
         "observedProfileIds": sorted(observed_ids),
+        "strongObservedProfileIds": sorted(strong_observed_ids),
+        "itemPageProfileIds": sorted(legacy_item_ids),
         "declaredTargetAuthor": declared,
         "filenameMatched": bool(filename_target),
     }
