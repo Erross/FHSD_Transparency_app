@@ -17,9 +17,58 @@ def _activity_key(entity: dict[str, Any]) -> str:
         entity.get("publishedAt")
         or entity.get("publishedDate")
         or entity.get("timestampExact")
+        or entity.get("publishedAtUpperBound")
         or entity.get("lastSeen")
         or entity.get("firstSeen")
     )
+
+
+def _publication_key(entity: dict[str, Any]) -> str:
+    """Return the strongest sortable ISO-like publication value available."""
+    return normalize_space(
+        entity.get("publishedAt")
+        or entity.get("publishedDate")
+        or entity.get("timestampExact")
+    )
+
+
+def _infer_post_upper_bounds(entities: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Give undated posts a conservative chronology from their earliest comment.
+
+    A comment proves only that its parent post existed no later than the comment
+    time, so this is stored as an upper bound rather than an exact publication
+    timestamp. Existing exact/relative crawler publication evidence is never
+    overwritten.
+    """
+    earliest_by_parent: dict[str, str] = {}
+    for entity in entities:
+        if entity.get("itemType") == "post":
+            continue
+        parent = normalize_space(entity.get("parentId"))
+        if not parent:
+            continue
+        value = _publication_key(entity)
+        if not value:
+            continue
+        current_value = earliest_by_parent.get(parent)
+        if current_value is None or value < current_value:
+            earliest_by_parent[parent] = value
+
+    out: list[dict[str, Any]] = []
+    for entity in entities:
+        if entity.get("itemType") != "post" or _publication_key(entity):
+            out.append(entity)
+            continue
+        inferred = earliest_by_parent.get(normalize_space(entity.get("id")))
+        if not inferred:
+            out.append(entity)
+            continue
+        enriched = dict(entity)
+        enriched["publishedAtUpperBound"] = inferred
+        enriched["publishedAtUpperBoundSource"] = "earliest-archived-comment"
+        enriched["publishedAtPrecision"] = enriched.get("publishedAtPrecision") or "upper-bound"
+        out.append(enriched)
+    return out
 
 
 def _author_key(entity: dict[str, Any]) -> str:
@@ -111,6 +160,7 @@ def main():
         # archives benefit immediately without rewriting immutable raw evidence.
         raw_entities = list(state.get("entities", {}).values())
         entities, relationship_diagnostics = repair_parent_relationships(raw_entities)
+        entities = _infer_post_upper_bounds(entities)
         entities = sorted(entities, key=_activity_key, reverse=True)
 
         events = sorted(state.get("events", []), key=lambda e: e.get("observedAt", ""), reverse=True)
