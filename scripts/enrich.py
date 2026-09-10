@@ -12,6 +12,7 @@ from urllib.parse import parse_qs, urlparse
 
 from .core import normalize_space
 from .coverage import resolve_content_date
+from .publication_evidence import evidence_from_item
 
 _SEE_MORE = re.compile(r"(?:…|\.\.\.)?\s*See more\s*$", re.IGNORECASE)
 _EDITED_UI = re.compile(r"LikeReplyEdited(?:\d+)?\s*$", re.IGNORECASE)
@@ -30,26 +31,15 @@ def _author_identity(item: dict[str, Any], normalized: dict[str, Any]) -> tuple[
     display = normalize_space(item.get("authorDisplayName") or item.get("author") or normalized.get("author"))
     profile_url = normalize_space(item.get("authorProfileUrl"))
     profile_id = normalize_space(item.get("authorProfileId"))
-
-    # Older page-post exports already expose the tracked page profile id/url.
-    # That is valid identity evidence for a post author, including Facebook
-    # attribution strings such as "School Watchlist is with ...". Do not reuse
-    # those page fields for comments because they describe the tracked page,
-    # not necessarily the commenter.
     if normalized.get("itemType") == "post":
         profile_id = profile_id or normalize_space(item.get("profileId"))
         page_url = normalize_space(item.get("pageUrl"))
         if not profile_url and profile_id and _profile_id_from_url(page_url) == profile_id:
             profile_url = page_url
-
     if not profile_id and profile_url:
         profile_id = _profile_id_from_url(profile_url)
 
     supplied_key = normalize_space(item.get("authorKey"))
-    # A real Facebook profile/page id is stronger than older crawler authorKey
-    # strings, which were often merely normalized display names. This prevents
-    # "School Watchlist" and "School Watchlist is with ..." from fragmenting
-    # into separate people in the public archive.
     if supplied_key.casefold().startswith("facebook:"):
         author_key = supplied_key
     elif profile_id:
@@ -67,12 +57,8 @@ def _published_metadata(item: dict[str, Any], normalized: dict[str, Any]) -> tup
     published_at = normalize_space(item.get("publishedAt"))
     precision = normalize_space(item.get("publishedAtPrecision"))
     source = normalize_space(item.get("publishedAtSource"))
-
-    # Older exports cannot always supply exact times, but coverage.py can still
-    # recover a defensible content date from exact/relative Facebook labels.
     content_date, quality = resolve_content_date(normalized)
     published_date = content_date.isoformat() if content_date else ""
-
     if published_at and not precision:
         precision = "exact"
     if published_at and not source:
@@ -172,4 +158,13 @@ def enrich_normalized(item: dict[str, Any], normalized: dict[str, Any], observed
             "groupUrl": normalize_space(item.get("groupUrl")),
         }
     )
+
+    # Persist the crawler's own date evidence now, rather than relying on a
+    # later raw-file rehydration pass.  Existing archives are still repaired at
+    # build time by publication_evidence.py.
+    evidence = evidence_from_item(item, observed_at)
+    if evidence and not published_at:
+        for key, value in evidence.items():
+            if value not in (None, ""):
+                out[key] = value
     return out
