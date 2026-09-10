@@ -8,6 +8,7 @@ on:
       - 'site/**'
       - 'data/**'
       - 'targets/**'
+      - 'scripts/**'
   workflow_run:
     workflows: ['Ingest uploaded snapshots']
     types: [completed]
@@ -43,6 +44,7 @@ jobs:
           node --check site/app.js
           node --check site/delta.js
           node --check site/threading.js
+          node --check site/date-inference.js
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
