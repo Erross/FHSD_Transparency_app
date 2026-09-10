@@ -8,6 +8,7 @@ from typing import Any
 from .comment_visibility import latest_comment_visibility
 from .core import dumps, initial_state, normalize_space, summary
 from .io_utils import read_json
+from .publication_evidence import enrich_publication_evidence
 from .relationships import repair_parent_relationships
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -18,6 +19,7 @@ def _activity_key(entity: dict[str, Any]) -> str:
         entity.get("publishedAt")
         or entity.get("publishedDate")
         or entity.get("timestampExact")
+        or entity.get("publishedAtEstimated")
         or entity.get("publishedAtUpperBound")
         or entity.get("lastSeen")
         or entity.get("firstSeen")
@@ -25,7 +27,7 @@ def _activity_key(entity: dict[str, Any]) -> str:
 
 
 def _publication_key(entity: dict[str, Any]) -> str:
-    """Return the strongest sortable ISO-like publication value available."""
+    """Return the strongest exact ISO-like publication value available."""
     return normalize_space(
         entity.get("publishedAt")
         or entity.get("publishedDate")
@@ -34,12 +36,11 @@ def _publication_key(entity: dict[str, Any]) -> str:
 
 
 def _infer_post_upper_bounds(entities: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Give undated posts a conservative chronology from their earliest comment.
+    """Give otherwise-undated posts a conservative chronology from their earliest comment.
 
-    A comment proves only that its parent post existed no later than the comment
-    time, so this is stored as an upper bound rather than an exact publication
-    timestamp. Existing exact/relative crawler publication evidence is never
-    overwritten.
+    Crawler-supplied exact or bounded relative publication evidence wins. A
+    comment proves only that its parent post existed no later than the comment
+    time, so comment-derived chronology remains an upper bound.
     """
     earliest_by_parent: dict[str, str] = {}
     for entity in entities:
@@ -57,7 +58,12 @@ def _infer_post_upper_bounds(entities: list[dict[str, Any]]) -> list[dict[str, A
 
     out: list[dict[str, Any]] = []
     for entity in entities:
-        if entity.get("itemType") != "post" or _publication_key(entity):
+        if (
+            entity.get("itemType") != "post"
+            or _publication_key(entity)
+            or normalize_space(entity.get("publishedAtEstimated"))
+            or normalize_space(entity.get("publishedAtUpperBound"))
+        ):
             out.append(entity)
             continue
         inferred = earliest_by_parent.get(normalize_space(entity.get("id")))
@@ -154,6 +160,7 @@ def main():
         state_path = ROOT / "data" / tid / "state.json.gz"
         legacy = ROOT / "data" / tid / "state.json"
         state = read_json(state_path) if state_path.exists() else (read_json(legacy) if legacy.exists() else initial_state(tid))
+        snaps = sorted(state.get("snapshots", []), key=lambda s: s.get("observedAt", ""), reverse=True)
 
         # Older normalized states can contain comments whose numeric postId does
         # not equal the page post's pfbid. Repair public-facing relationships
@@ -161,11 +168,16 @@ def main():
         # archives benefit immediately without rewriting immutable raw evidence.
         raw_entities = list(state.get("entities", {}).values())
         entities, relationship_diagnostics = repair_parent_relationships(raw_entities)
+
+        # Rehydrate exact/bounded crawler date evidence from immutable raw
+        # snapshots. This makes labels such as "2 hours ago" sortable relative
+        # to the crawl observation time even when an older normalized state did
+        # not retain dateEvidence.
+        entities = enrich_publication_evidence(ROOT, snaps, entities)
         entities = _infer_post_upper_bounds(entities)
         entities = sorted(entities, key=_activity_key, reverse=True)
 
         events = sorted(state.get("events", []), key=lambda e: e.get("observedAt", ""), reverse=True)
-        snaps = sorted(state.get("snapshots", []), key=lambda s: s.get("observedAt", ""), reverse=True)
         authors = _author_index(entities)
         discussions = _discussion_counts(entities)
         comment_visibility = latest_comment_visibility(ROOT, snaps, entities)
