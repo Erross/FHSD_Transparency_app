@@ -204498,6 +204498,160 @@
     "post:pfbid025Yb2fKc6FHB38VaNwFJMhBKE9XT4J7GSYiQ8q7a4hTJGsNMeyLmyykYtqZyTuuE7l": 1,
     "post:pfbid02fck8WbXy6GWtueHJTp5RecUE6ZyFgFNrAtQhLGh6PNxA8BJgxWap7ksZUTg7y1Pul": 1
   },
+  "commentVisibility": {
+    "post:122109651537194923": {
+      "reported": 0,
+      "visible": 1,
+      "gap": 0,
+      "status": "INCOMPLETE",
+      "observedAt": "2026-09-01T15:20:51.349Z",
+      "interpretation": "Facebook's reported count does not exceed the comments visible to this crawl."
+    },
+    "post:122109903303194923": {
+      "reported": 0,
+      "visible": 1,
+      "gap": 0,
+      "status": "INCOMPLETE",
+      "observedAt": "2026-09-01T15:20:51.349Z",
+      "interpretation": "Facebook's reported count does not exceed the comments visible to this crawl."
+    },
+    "post:122111293143194923": {
+      "reported": 0,
+      "visible": 1,
+      "gap": 0,
+      "status": "INCOMPLETE",
+      "observedAt": "2026-09-01T15:20:51.349Z",
+      "interpretation": "Facebook's reported count does not exceed the comments visible to this crawl."
+    },
+    "post:122111469195194923": {
+      "reported": 0,
+      "visible": 1,
+      "gap": 0,
+      "status": "INCOMPLETE",
+      "observedAt": "2026-09-01T15:20:51.349Z",
+      "interpretation": "Facebook's reported count does not exceed the comments visible to this crawl."
+    },
+    "post:122111820051194923": {
+      "reported": 0,
+      "visible": 1,
+      "gap": 0,
+      "status": "INCOMPLETE",
+      "observedAt": "2026-09-01T15:20:51.349Z",
+      "interpretation": "Facebook's reported count does not exceed the comments visible to this crawl."
+    },
+    "post:122113874451194923": {
+      "reported": 0,
+      "visible": 1,
+      "gap": 0,
+      "status": "INCOMPLETE",
+      "observedAt": "2026-09-01T15:20:51.349Z",
+      "interpretation": "Facebook's reported count does not exceed the comments visible to this crawl."
+    },
+    "post:122114870325194923": {
+      "reported": 0,
+      "visible": 1,
+      "gap": 0,
+      "status": "INCOMPLETE",
+      "observedAt": "2026-09-01T15:20:51.349Z",
+      "interpretation": "Facebook's reported count does not exceed the comments visible to this crawl."
+    },
+    "post:122116162983194923": {
+      "reported": 0,
+      "visible": 1,
+      "gap": 0,
+      "status": "INCOMPLETE",
+      "observedAt": "2026-09-01T15:20:51.349Z",
+      "interpretation": "Facebook's reported count does not exceed the comments visible to this crawl."
+    },
+    "post:122117126463194923": {
+      "reported": 0,
+      "visible": 1,
+      "gap": 0,
+      "status": "INCOMPLETE",
+      "observedAt": "2026-09-01T15:20:51.349Z",
+      "interpretation": "Facebook's reported count does not exceed the comments visible to this crawl."
+    },
+    "post:122121024813194923": {
+      "reported": 0,
+      "visible": 1,
+      "gap": 0,
+      "status": "INCOMPLETE",
+      "observedAt": "2026-09-01T15:20:51.349Z",
+      "interpretation": "Facebook's reported count does not exceed the comments visible to this crawl."
+    },
+    "post:122121491205194923": {
+      "reported": 0,
+      "visible": 1,
+      "gap": 0,
+      "status": "INCOMPLETE",
+      "observedAt": "2026-09-01T15:20:51.349Z",
+      "interpretation": "Facebook's reported count does not exceed the comments visible to this crawl."
+    },
+    "post:122122154985194923": {
+      "reported": 0,
+      "visible": 1,
+      "gap": 0,
+      "status": "INCOMPLETE",
+      "observedAt": "2026-09-01T15:20:51.349Z",
+      "interpretation": "Facebook's reported count does not exceed the comments visible to this crawl."
+    },
+    "post:122122752987037395": {
+      "reported": 0,
+      "visible": 2,
+      "gap": 0,
+      "status": "INCOMPLETE",
+      "observedAt": "2026-09-01T15:20:51.349Z",
+      "interpretation": "Facebook's reported count does not exceed the comments visible to this crawl."
+    },
+    "post:122129433369037395": {
+      "reported": 0,
+      "visible": 1,
+      "gap": 0,
+      "status": "INCOMPLETE",
+      "observedAt": "2026-09-01T15:20:51.349Z",
+      "interpretation": "Facebook's reported count does not exceed the comments visible to this crawl."
+    },
+    "post:pfbid0281S9NQoJYwCgwnVmr4mQJgVdCwFCiQjyWBcUMhr8WEaqEUTupXYevhoDCyhCFhKsl": {
+      "reported": 0,
+      "visible": 2,
+      "gap": 0,
+      "status": "INCOMPLETE",
+      "observedAt": "2026-09-01T15:20:51.349Z",
+      "interpretation": "Facebook's reported count does not exceed the comments visible to this crawl."
+    },
+    "post:pfbid02DnP6Rza5s2rYvxv3KJNzzFTsUv6P1adoWFwBQHFrnguFhsruC5SaBaQPYrJMHUmMl": {
+      "reported": 0,
+      "visible": 1,
+      "gap": 0,
+      "status": "INCOMPLETE",
+      "observedAt": "2026-09-01T15:20:51.349Z",
+      "interpretation": "Facebook's reported count does not exceed the comments visible to this crawl."
+    },
+    "post:pfbid0CHEURVC6TMPHoxg54Kvt21cKxwCNevH7YpCwj2CfCVB2Mhj54E447wmAg4ZN7p8dl": {
+      "reported": 0,
+      "visible": 2,
+      "gap": 0,
+      "status": "INCOMPLETE",
+      "observedAt": "2026-09-01T15:20:51.349Z",
+      "interpretation": "Facebook's reported count does not exceed the comments visible to this crawl."
+    },
+    "post:pfbid0SKwW9PWp6KzfAgayGf2dYTUaS4EnChZTqpzfGmbgjn1ax4LwFZG96Ne2WR6QcF5yl": {
+      "reported": 0,
+      "visible": 2,
+      "gap": 0,
+      "status": "INCOMPLETE",
+      "observedAt": "2026-09-01T15:20:51.349Z",
+      "interpretation": "Facebook's reported count does not exceed the comments visible to this crawl."
+    },
+    "post:pfbid0ThfTbLUHoSqnWRqvK7dPMnB7HTyJKQXcsRXUxx6Cr2P7cbDKLEo4MU8nsUBzL9U2l": {
+      "reported": 0,
+      "visible": 1,
+      "gap": 0,
+      "status": "INCOMPLETE",
+      "observedAt": "2026-09-01T15:20:51.349Z",
+      "interpretation": "Facebook's reported count does not exceed the comments visible to this crawl."
+    }
+  },
   "relationshipDiagnostics": {
     "totalComments": 1927,
     "linkedComments": 1781,

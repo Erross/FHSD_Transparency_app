@@ -30,17 +30,17 @@
         "https://www.facebook.com/profile.php?id=61581121856469"
       ],
       "summary": {
-        "entities": 3258,
-        "posts": 437,
-        "comments": 2821,
-        "active": 3199,
+        "entities": 3395,
+        "posts": 441,
+        "comments": 2954,
+        "active": 3336,
         "missing": 59,
         "confirmedUnavailable": 0,
-        "editedEntities": 48,
-        "events": 2251,
-        "snapshots": 8
+        "editedEntities": 50,
+        "events": 2398,
+        "snapshots": 9
       },
-      "latestSnapshot": "2026-09-09T16:22:47.287Z"
+      "latestSnapshot": "2026-09-10T15:35:04.127Z"
     }
   ]
 }
