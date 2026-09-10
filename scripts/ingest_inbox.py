@@ -1,13 +1,16 @@
 """Ingest JSON files dropped into incoming/{complete,partial}/.
 
 Target routing is resolved from the export itself, with filename aliases as a
-fallback/cross-check. Files that cannot be safely routed are quarantined under
+fallback/cross-check. Previously unknown Facebook pages can be auto-configured
+when the export supplies a declared page name and exactly one stable page/profile
+ID. Files that still cannot be safely routed are quarantined under
 incoming/rejected instead of contaminating a target archive.
 """
 from __future__ import annotations
 
 import argparse
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -15,7 +18,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from .ingest import target_config, validate_export_target
-from .route_snapshot import load_target_configs, resolve_target
+from .route_snapshot import (
+    item_page_profile_ids,
+    load_target_configs,
+    resolve_target,
+    top_level_profile_ids,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -59,6 +67,79 @@ def quarantine(source: Path, reason: str) -> Path:
     return destination
 
 
+def _slug(value: str) -> str:
+    slug = re.sub(r"[^a-z0-9]+", "-", value.casefold()).strip("-")
+    return slug or "facebook-page"
+
+
+def _declared_page_name(payload: dict) -> str:
+    target = payload.get("target") if isinstance(payload.get("target"), dict) else {}
+    return str(payload.get("targetAuthor") or target.get("displayName") or "").strip()
+
+
+def _auto_create_target(payload: dict, source: Path, configs: list[dict]) -> dict | None:
+    """Create a conservative target config for a new Facebook page.
+
+    Auto-creation is intentionally strict: we require a declared page name and
+    exactly one observed Facebook profile/page ID. That lets a new crawler dump
+    create its own archive namespace without guessing from filename text alone.
+    """
+    name = _declared_page_name(payload)
+    if not name:
+        return None
+
+    strong_ids = top_level_profile_ids(payload)
+    legacy_ids = item_page_profile_ids(payload)
+    profile_ids = strong_ids or legacy_ids
+    if len(profile_ids) != 1:
+        return None
+    profile_id = next(iter(profile_ids))
+
+    # Do not manufacture a second target for an ID already owned by a config.
+    for config in configs:
+        urls = " ".join(str(url) for url in config.get("sourceUrls", []))
+        if profile_id and profile_id in urls:
+            return None
+
+    target_id = _slug(name)
+    target_dir = ROOT / "targets" / target_id
+    if target_dir.exists():
+        target_id = f"{target_id}-{profile_id[-6:]}"
+        target_dir = ROOT / "targets" / target_id
+        if target_dir.exists():
+            return None
+
+    filename_stem = source.stem
+    filename_prefix = filename_stem.split("_202", 1)[0].strip("_ ") or name.replace(" ", "_")
+    config = {
+        "schemaVersion": 1,
+        "id": target_id,
+        "displayName": name,
+        "description": f"Public archive of the {name} Facebook page and its visible discussion threads.",
+        "platform": "facebook",
+        "sourceUrls": [f"https://www.facebook.com/profile.php?id={profile_id}"],
+        "authorAliases": [name],
+        "filenameAliases": sorted({name, name.replace(" ", "_"), filename_prefix}),
+        "crawl": {
+            "comparisonMode": "full_snapshot",
+            "requiresCompleteSnapshotForMissing": True,
+            "missingRecheckThreshold": 2,
+            "confirmationRequiresDirectCheck": True,
+            "bulkMissingAbsoluteThreshold": 5,
+            "bulkMissingRatioThreshold": 0.1,
+            "bulkThreadMissingAbsoluteThreshold": 3,
+        },
+        "publicNotes": "The archive records what the collector observed. Absence from a later crawl is not attributed to a specific person without independent evidence.",
+    }
+    target_dir.mkdir(parents=True, exist_ok=False)
+    (target_dir / "target.json").write_text(json.dumps(config, indent=2) + "\n", encoding="utf-8")
+    print(
+        f"AUTO-CREATED target {target_id!r} for {name!r} "
+        f"(Facebook profile/page ID {profile_id})."
+    )
+    return config
+
+
 def prepare_inputs():
     configs = load_target_configs(ROOT)
     prepared = []
@@ -72,6 +153,12 @@ def prepare_inputs():
             continue
 
         route = resolve_target(payload, source.name, configs)
+        if not route.get("ok"):
+            created = _auto_create_target(payload, source, configs)
+            if created:
+                configs.append(created)
+                route = resolve_target(payload, source.name, configs)
+
         if not route.get("ok"):
             quarantine(source, route.get("reason", "Target routing failed."))
             rejected += 1
