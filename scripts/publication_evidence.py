@@ -1,8 +1,8 @@
 """Recover post chronology from preserved crawler exports.
 
-Facebook relative labels such as "2 hours ago" are useful date evidence.  We
-retain their bounded interval and use the displayed-age subtraction as a
-sortable estimate without claiming an exact publication timestamp.
+Facebook relative labels such as "2 hours ago" are useful date evidence. We
+retain a bounded interval and derive a sortable estimate from the crawl/capture
+time without claiming Facebook supplied an exact publication timestamp.
 """
 from __future__ import annotations
 
@@ -14,7 +14,10 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import parse_qs, urlparse
 
-_RELATIVE = re.compile(r"^\s*(\d+)\s*(?:hour|hours|hr|hrs|h|day|days|d|minute|minutes|min|mins|m)\s+ago\s*$", re.I)
+_RELATIVE_SEARCH = re.compile(
+    r"(?<!\w)(\d+)\s*(seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w)\s*(?:ago)?(?!\w)",
+    re.I,
+)
 
 
 def _clean(value: Any) -> str:
@@ -100,23 +103,55 @@ def _entity_keys(entity: dict[str, Any]) -> set[str]:
     return keys
 
 
-def _relative_estimate(label: str, reference: Any) -> str:
-    """Return reference time minus a Facebook displayed relative age."""
-    match = _RELATIVE.match(label or "")
-    ref = _parse_iso(reference)
-    if not match or not ref:
-        return ""
+def _relative_label(item: dict[str, Any], evidence: dict[str, Any]) -> str:
+    """Recover Facebook's displayed age even when timestampText was blanked.
+
+    Current crawler exports can preserve the visible label inside dateEvidence,
+    but some older/edge captures only retain it in syntheticKey, e.g.
+    `School Watchlist|2 hours ago|post text`. Search all safe observation fields.
+    """
+    direct = _clean(evidence.get("label") or item.get("timestampText"))
+    if direct and _RELATIVE_SEARCH.search(direct):
+        return _RELATIVE_SEARCH.search(direct).group(0).strip()
+    for field in ("syntheticKey", "rawObservedText", "rawArticleText"):
+        text = _clean(item.get(field))
+        match = _RELATIVE_SEARCH.search(text)
+        if match:
+            return match.group(0).strip()
+    return ""
+
+
+def _relative_delta(label: str) -> tuple[timedelta, timedelta] | None:
+    """Return displayed age and one-unit rounding width."""
+    match = _RELATIVE_SEARCH.search(label or "")
+    if not match:
+        return None
     amount = int(match.group(1))
-    unit = re.sub(r"[^a-z]", "", match.group(0).lower().split("ago")[0]).strip()
-    # Unit is easier/safer to infer from the original label than the normalized text.
-    lower_label = label.lower()
-    if "hour" in lower_label or re.search(r"\b\d+\s*h\s+ago", lower_label):
-        delta = timedelta(hours=amount)
-    elif "day" in lower_label or re.search(r"\b\d+\s*d\s+ago", lower_label):
-        delta = timedelta(days=amount)
+    unit = match.group(2).lower()
+    if unit.startswith("s"):
+        one = timedelta(seconds=1)
+    elif unit.startswith("m"):
+        one = timedelta(minutes=1)
+    elif unit.startswith("h"):
+        one = timedelta(hours=1)
+    elif unit.startswith("d"):
+        one = timedelta(days=1)
     else:
-        delta = timedelta(minutes=amount)
-    return (ref - delta).isoformat().replace("+00:00", "Z")
+        one = timedelta(weeks=1)
+    return one * amount, one
+
+
+def _relative_bounds(label: str, reference: Any) -> tuple[str, str, str]:
+    ref = _parse_iso(reference)
+    parsed = _relative_delta(label)
+    if not ref or not parsed:
+        return "", "", ""
+    age, rounding = parsed
+    upper_dt = ref - age
+    lower_dt = upper_dt - rounding
+    estimate_dt = upper_dt
+    to_iso = lambda dt: dt.isoformat().replace("+00:00", "Z")
+    return to_iso(estimate_dt), to_iso(lower_dt), to_iso(upper_dt)
 
 
 def evidence_from_item(item: dict[str, Any], observed_at: str) -> dict[str, Any] | None:
@@ -130,11 +165,28 @@ def evidence_from_item(item: dict[str, Any], observed_at: str) -> dict[str, Any]
         }
 
     evidence = item.get("dateEvidence") if isinstance(item.get("dateEvidence"), dict) else {}
-    label = _clean(evidence.get("label") or item.get("timestampText"))
+    label = _relative_label(item, evidence)
+
+    # The per-item capture time is the best reference for a displayed relative
+    # age. dateEvidence.referenceMs is equivalent when present. exportedAt is a
+    # fallback only.
+    reference = (
+        _iso_from_ms(evidence.get("referenceMs"))
+        or _clean(item.get("capturedAt"))
+        or _clean(item.get("firstSeenAt"))
+        or observed_at
+    )
+
     lower = _clean(item.get("publishedAtLowerBound")) or _iso_from_ms(evidence.get("lowerBoundMs"))
     upper = _clean(item.get("publishedAtUpperBound")) or _iso_from_ms(evidence.get("upperBoundMs"))
-    reference = _iso_from_ms(evidence.get("referenceMs")) or observed_at or _clean(item.get("capturedAt"))
-    estimate = _relative_estimate(label, reference) if label else ""
+    estimate = ""
+
+    if label:
+        derived_estimate, derived_lower, derived_upper = _relative_bounds(label, reference)
+        estimate = derived_estimate
+        lower = lower or derived_lower
+        upper = upper or derived_upper
+
     if not estimate:
         estimate = upper or lower
     if not estimate and not lower and not upper:
@@ -144,19 +196,14 @@ def evidence_from_item(item: dict[str, Any], observed_at: str) -> dict[str, Any]
         "publishedAtEstimated": estimate,
         "publishedAtLowerBound": lower,
         "publishedAtUpperBound": upper,
-        "publishedAtEstimateSource": _clean(evidence.get("source") or item.get("publishedAtSource")) or "crawler-date-evidence",
-        "publishedAtPrecision": _clean(evidence.get("precision") or item.get("publishedAtPrecision")) or "bounded",
+        "publishedAtEstimateSource": _clean(evidence.get("source") or item.get("publishedAtSource")) or "facebook-relative-label",
+        "publishedAtPrecision": _clean(evidence.get("precision") or item.get("publishedAtPrecision")) or ("relative" if label else "bounded"),
         "publicationEvidenceLabel": label,
         "publicationEvidenceObservedAt": reference or observed_at,
     }
 
 
 def _candidate_raw_files(root: Path, snapshots: list[dict[str, Any]]) -> list[str]:
-    """Use state references first, then scan the same raw archive directory.
-
-    The directory fallback repairs older state whose snapshot metadata is
-    incomplete while preserving newest-first behavior.
-    """
     files: list[str] = []
     raw_dirs: set[Path] = set()
     for snapshot in snapshots:
