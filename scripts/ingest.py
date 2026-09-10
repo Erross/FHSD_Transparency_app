@@ -87,7 +87,7 @@ def main():
     parser.add_argument(
         "--complete",
         action="store_true",
-        help="Declare a complete comparable snapshot; required for missing detection and rejected when target validation fails.",
+        help="Declare a complete comparable snapshot. Partial date-scoped crawls can still support restricted missing detection when crawler metadata proves the historical boundary was reached.",
     )
     args = parser.parse_args()
 
@@ -172,12 +172,18 @@ def main():
             "Coverage window: "
             f"{latest_snapshot['coverageStart']} through {latest_snapshot['coverageEnd']} | "
             f"eligible prior entities={latest_snapshot.get('coverageEligiblePriorEntities', 0)} | "
-            f"unknown-date prior entities={latest_snapshot.get('coverageUnknownDatePriorEntities', 0)}"
+            f"unknown-date prior posts={latest_snapshot.get('coverageUnknownDatePriorPosts', 0)} | "
+            f"deferred comments={latest_snapshot.get('coverageDeferredCommentsParentNotObserved', 0)}"
         )
     for warning in validation["warnings"]:
         print(f"WARNING [{warning['code']}]: {warning['message']}")
-    if not args.complete:
-        print("Missing-item detection was NOT run. This snapshot is stored as a partial observation.")
+    if latest_snapshot.get("missingDetectionApplied"):
+        if args.complete:
+            print("Missing-item detection ran inside the declared comparable coverage window.")
+        else:
+            print("Coverage-qualified missing detection ran for this partial snapshot: posts were limited to the proven date window and comments/replies were re-evaluated only on parent threads actually revisited by the crawl.")
+    elif not args.complete:
+        print("Missing-item detection was NOT run because this partial snapshot did not prove comparable traversal coverage. Positive observations were still stored.")
 
 
 if __name__ == "__main__":
