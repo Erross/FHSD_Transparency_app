@@ -1,6 +1,27 @@
 {
   "targets": [
     {
+      "id": "francis-howell-families",
+      "displayName": "Francis Howell Families",
+      "description": "Public archive of the Francis Howell Families Facebook page and its visible discussion threads.",
+      "platform": "facebook",
+      "sourceUrls": [
+        "https://www.facebook.com/profile.php?id=100072498875675"
+      ],
+      "summary": {
+        "entities": 1295,
+        "posts": 160,
+        "comments": 1135,
+        "active": 1295,
+        "missing": 0,
+        "confirmedUnavailable": 0,
+        "editedEntities": 0,
+        "events": 0,
+        "snapshots": 1
+      },
+      "latestSnapshot": "2026-09-10T14:12:21.423Z"
+    },
+    {
       "id": "greenwood-campaign",
       "displayName": "Greenwood for FHSD School Board",
       "description": "Public archive of the Greenwood for FHSD School Board Facebook campaign page and visible discussion threads.",

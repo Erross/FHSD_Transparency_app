@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "francis-howell-families",
+  "displayName": "Francis Howell Families",
+  "description": "Public archive of the Francis Howell Families Facebook page and its visible discussion threads.",
+  "platform": "facebook",
+  "sourceUrls": [
+    "https://www.facebook.com/profile.php?id=100072498875675"
+  ],
+  "authorAliases": [
+    "Francis Howell Families"
+  ],
+  "filenameAliases": [
+    "Francis Howell Families",
+    "Francis_Howell_Families"
+  ],
+  "crawl": {
+    "comparisonMode": "full_snapshot",
+    "requiresCompleteSnapshotForMissing": true,
+    "missingRecheckThreshold": 2,
+    "confirmationRequiresDirectCheck": true,
+    "bulkMissingAbsoluteThreshold": 5,
+    "bulkMissingRatioThreshold": 0.1,
+    "bulkThreadMissingAbsoluteThreshold": 3
+  },
+  "publicNotes": "The archive records what the collector observed. Absence from a later crawl is not attributed to a specific person without independent evidence."
+}
