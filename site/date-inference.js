@@ -1,4 +1,4 @@
-/* Infer a conservative post chronology from the earliest archived comment.
+/* Infer a conservative post chronology from crawler/archive evidence.
    Loaded after date-safety.js so exact publication timestamps remain preferred. */
 (function () {
   const ISO_DATE_ONLY = /^\d{4}-\d{2}-\d{2}$/;
@@ -25,6 +25,12 @@
     return null;
   }
 
+  function estimatedPublication(entity) {
+    const value = String(entity?.publishedAtEstimated || '').trim();
+    const parsed = strictIso(value);
+    return value && parsed ? { value, parsed } : null;
+  }
+
   function inferredPublication(entity) {
     const value = String(entity?.publishedAtUpperBound || '').trim();
     const parsed = strictIso(value);
@@ -34,6 +40,8 @@
   function publicationSortMs(entity) {
     const exact = exactPublication(entity);
     if (exact) return exact.parsed.getTime();
+    const estimated = estimatedPublication(entity);
+    if (estimated) return estimated.parsed.getTime();
     const inferred = inferredPublication(entity);
     return inferred ? inferred.parsed.getTime() : null;
   }
@@ -42,10 +50,17 @@
     const exact = exactPublication(entity);
     if (exact) return formatIso(exact.value, exact.parsed);
 
+    const estimated = estimatedPublication(entity);
+    if (estimated) {
+      const raw = String(entity?.publicationEvidenceLabel || '').trim();
+      const suffix = raw ? ` · Facebook showed “${raw}”` : ' · derived from Facebook relative time';
+      return `about ${formatIso(estimated.value, estimated.parsed)}${suffix}`;
+    }
+
     const inferred = inferredPublication(entity);
     if (inferred) {
       const source = String(entity?.publishedAtUpperBoundSource || '').trim();
-      const note = source === 'earliest-observed-comment'
+      const note = source === 'earliest-observed-comment' || source === 'earliest-archived-comment'
         ? 'inferred from earliest archived comment'
         : 'inferred from archive evidence';
       return `posted by ${formatIso(inferred.value, inferred.parsed)} · ${note}`;
@@ -82,6 +97,8 @@
   contentTime = function (entity) {
     const exact = exactPublication(entity);
     if (exact) return exact.value;
+    const estimated = estimatedPublication(entity);
+    if (estimated) return estimated.value;
     const inferred = inferredPublication(entity);
     if (inferred) return inferred.value;
     return entity?.timestampText || entity?.firstSeen || entity?.lastSeen || '';
@@ -126,7 +143,10 @@
   };
 
   provenance = function (entity) {
-    return `<div class="panel provenance"><p class="eyebrow">ARCHIVE RECORD</p><dl><dt>Archive ID</dt><dd>${esc(entity.id)}</dd><dt>Type</dt><dd>${esc(entity.itemType)}</dd><dt>First observed</dt><dd>${esc(time(entity.firstSeen))}</dd><dt>Last observed</dt><dd>${esc(time(entity.lastSeen))}</dd><dt>Publication date</dt><dd>${esc(publicationLabel(entity))}</dd><dt>Raw Facebook label</dt><dd>${esc(entity.timestampText || entity.timestampExact || 'unavailable')}</dd><dt>Identity confidence</dt><dd>${esc(entity.identityConfidence || entity.identityQuality || 'unknown')}</dd><dt>Capture completeness</dt><dd>${entity.bodyComplete === false || entity.contentCompleteness === 'truncated' ? 'incomplete / truncated' : 'complete as observed'}</dd><dt>Current archive status</dt><dd>${esc(statusLabel(entity.status))}</dd></dl>${externalLink(entity.permalink || entity.parentPostPermalink, 'Open current Facebook source ↗')}</div>`;
+    const bounds = entity.publishedAtLowerBound || entity.publishedAtUpperBound
+      ? `<dt>Publication evidence</dt><dd>${esc(publicationLabel(entity))}</dd>`
+      : '';
+    return `<div class="panel provenance"><p class="eyebrow">ARCHIVE RECORD</p><dl><dt>Archive ID</dt><dd>${esc(entity.id)}</dd><dt>Type</dt><dd>${esc(entity.itemType)}</dd><dt>First observed</dt><dd>${esc(time(entity.firstSeen))}</dd><dt>Last observed</dt><dd>${esc(time(entity.lastSeen))}</dd><dt>Publication date</dt><dd>${esc(publicationLabel(entity))}</dd>${bounds}<dt>Raw Facebook label</dt><dd>${esc(entity.publicationEvidenceLabel || entity.timestampText || entity.timestampExact || 'unavailable')}</dd><dt>Identity confidence</dt><dd>${esc(entity.identityConfidence || entity.identityQuality || 'unknown')}</dd><dt>Capture completeness</dt><dd>${entity.bodyComplete === false || entity.contentCompleteness === 'truncated' ? 'incomplete / truncated' : 'complete as observed'}</dd><dt>Current archive status</dt><dd>${esc(statusLabel(entity.status))}</dd></dl>${externalLink(entity.permalink || entity.parentPostPermalink, 'Open current Facebook source ↗')}</div>`;
   };
 
   if (typeof current !== 'undefined' && current) render();
