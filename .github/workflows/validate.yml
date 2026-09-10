@@ -19,7 +19,11 @@ jobs:
           test -s site/data/catalog.json
           test -s site/data/people.json
           node --check site/app.js
+          node --check site/comment-visibility.js
           node --check site/delta.js
           node --check site/threading.js
           node --check site/date-safety.js
+          node --check site/date-inference.js
+          node --check site/feed-order-fix.js
+          node --check site/activity-ui.js
           node tests/date_safety_test.js
