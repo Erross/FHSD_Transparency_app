@@ -39956,8 +39956,10 @@
       "postIdAliases": [
         "pfbid02DvgnkDcAVTtW9DvgsmFRdzGfAPfigLmqx2M2BUsTuNB5pZwqUKxuNEF353UJdD34l"
       ],
-      "publishedAtUpperBound": "2026-02-28T02:52:00.000Z",
-      "publishedAtUpperBoundSource": "earliest-archived-comment"
+      "publishedAtEstimated": "2026-02-28T02:52:59.999Z",
+      "publishedAtUpperBound": "2026-02-28T02:52:59.999Z",
+      "publishedAtEstimateSource": "earliest-observed-comment",
+      "publicationEvidenceObservedAt": "2026-09-10T14:12:21.423Z"
     },
     {
       "id": "comment:1598720314671899",
@@ -40365,8 +40367,10 @@
       "postIdAliases": [
         "pfbid0tRGctaZ2apzXpF1aEFMhTtHGEG2RLJF6zAaaK5Gzu9eyDP2J8Kwe98EZi7XHc9Xql"
       ],
-      "publishedAtUpperBound": "2026-02-24T16:50:00.000Z",
-      "publishedAtUpperBoundSource": "earliest-archived-comment"
+      "publishedAtEstimated": "2026-02-24T16:50:59.999Z",
+      "publishedAtUpperBound": "2026-02-24T16:50:59.999Z",
+      "publishedAtEstimateSource": "earliest-observed-comment",
+      "publicationEvidenceObservedAt": "2026-09-10T14:12:21.423Z"
     },
     {
       "id": "comment:1342632437671361",
@@ -72608,8 +72612,10 @@
       "postIdAliases": [
         "pfbid0oiToD5augDLYb6WsFD3R9kGRsFjgh2tDAyCWvF48cHY9xaz6eDnEmcpC2NvUXaU5l"
       ],
-      "publishedAtUpperBound": "2025-04-05T15:52:00.000Z",
-      "publishedAtUpperBoundSource": "earliest-archived-comment"
+      "publishedAtEstimated": "2025-04-05T15:52:59.999Z",
+      "publishedAtUpperBound": "2025-04-05T15:52:59.999Z",
+      "publishedAtEstimateSource": "earliest-observed-comment",
+      "publicationEvidenceObservedAt": "2026-09-10T14:12:21.423Z"
     },
     {
       "id": "comment:513958661596735",
@@ -85825,8 +85831,10 @@
       "postIdAliases": [
         "pfbid0WS8fGEGUwcVChn2GWzCfr3FmjXLGHqV6sRdyTm7mNWBy4GRpEDADvujAKLg8s7GNl"
       ],
-      "publishedAtUpperBound": "2025-03-24T19:15:00.000Z",
-      "publishedAtUpperBoundSource": "earliest-archived-comment"
+      "publishedAtEstimated": "2025-03-24T19:15:59.999Z",
+      "publishedAtUpperBound": "2025-03-24T19:15:59.999Z",
+      "publishedAtEstimateSource": "earliest-observed-comment",
+      "publicationEvidenceObservedAt": "2026-09-10T14:12:21.423Z"
     },
     {
       "id": "comment:522106800631417",
@@ -88156,8 +88164,10 @@
       "postIdAliases": [
         "pfbid02WR3FxypaE6zUzZZmXmnVpKUjCCZ1W4m57fNvQ5vTXbfbsyf9NDvvF3bsxZCqq3XFl"
       ],
-      "publishedAtUpperBound": "2025-03-17T12:32:00.000Z",
-      "publishedAtUpperBoundSource": "earliest-archived-comment"
+      "publishedAtEstimated": "2025-03-17T12:32:59.999Z",
+      "publishedAtUpperBound": "2025-03-17T12:32:59.999Z",
+      "publishedAtEstimateSource": "earliest-observed-comment",
+      "publicationEvidenceObservedAt": "2026-09-10T14:12:21.423Z"
     },
     {
       "id": "comment:1326841491701342",
@@ -88939,8 +88949,10 @@
       "postIdAliases": [
         "pfbid02TguMfWxuwojd96PMZdpYmAiP9funRQUsXdEup9suQk2juAnFo9g2LcxHPLzxnVUxl"
       ],
-      "publishedAtUpperBound": "2025-03-14T02:25:00.000Z",
-      "publishedAtUpperBoundSource": "earliest-archived-comment"
+      "publishedAtEstimated": "2025-03-14T02:25:59.999Z",
+      "publishedAtUpperBound": "2025-03-14T02:25:59.999Z",
+      "publishedAtEstimateSource": "earliest-observed-comment",
+      "publicationEvidenceObservedAt": "2026-09-10T14:12:21.423Z"
     },
     {
       "id": "comment:583292388100284",
@@ -90534,8 +90546,10 @@
       "postIdAliases": [
         "pfbid02nzdmZUGAX6rYHTutnYw3rMCbr3RSvhdq6MpznD1hR4Zmgnm3zZXSHgFK8xL1z95El"
       ],
-      "publishedAtUpperBound": "2025-03-08T13:05:00.000Z",
-      "publishedAtUpperBoundSource": "earliest-archived-comment"
+      "publishedAtEstimated": "2025-03-08T13:05:59.999Z",
+      "publishedAtUpperBound": "2025-03-08T13:05:59.999Z",
+      "publishedAtEstimateSource": "earliest-observed-comment",
+      "publicationEvidenceObservedAt": "2026-09-10T14:12:21.423Z"
     },
     {
       "id": "comment:1984249632420674",
@@ -90779,8 +90793,10 @@
       "postIdAliases": [
         "pfbid0S38JymKdMotTywePiAzD11vPNatJmUYypqAY7xAmmKjGGzupDwvjkE5jXswD8dGfl"
       ],
-      "publishedAtUpperBound": "2025-03-07T12:51:00.000Z",
-      "publishedAtUpperBoundSource": "earliest-archived-comment"
+      "publishedAtEstimated": "2025-03-07T12:51:59.999Z",
+      "publishedAtUpperBound": "2025-03-07T12:51:59.999Z",
+      "publishedAtEstimateSource": "earliest-observed-comment",
+      "publicationEvidenceObservedAt": "2026-09-10T14:12:21.423Z"
     },
     {
       "id": "comment:9655888887755210",
@@ -94219,8 +94235,10 @@
       "postIdAliases": [
         "pfbid02vSEUQQyVSDWb5EW9rkei6EgRzJWU2ioUnQ1nkZR4hqDmcqRhGez7uZRYTBwkhRT5l"
       ],
-      "publishedAtUpperBound": "2025-03-05T12:14:00.000Z",
-      "publishedAtUpperBoundSource": "earliest-archived-comment"
+      "publishedAtEstimated": "2025-03-05T12:14:59.999Z",
+      "publishedAtUpperBound": "2025-03-05T12:14:59.999Z",
+      "publishedAtEstimateSource": "earliest-observed-comment",
+      "publicationEvidenceObservedAt": "2026-09-10T14:12:21.423Z"
     },
     {
       "id": "comment:1028844842415536",
@@ -98014,8 +98032,10 @@
       "postIdAliases": [
         "637401268686497"
       ],
-      "publishedAtUpperBound": "2025-02-19T10:11:00.000Z",
-      "publishedAtUpperBoundSource": "earliest-archived-comment"
+      "publishedAtEstimated": "2025-02-19T10:11:59.999Z",
+      "publishedAtUpperBound": "2025-02-19T10:11:59.999Z",
+      "publishedAtEstimateSource": "earliest-observed-comment",
+      "publicationEvidenceObservedAt": "2026-09-10T14:12:21.423Z"
     },
     {
       "id": "comment:1021341220025501",
@@ -98983,8 +99003,10 @@
       "postIdAliases": [
         "634697615623529"
       ],
-      "publishedAtUpperBound": "2025-02-15T13:54:00.000Z",
-      "publishedAtUpperBoundSource": "earliest-archived-comment"
+      "publishedAtEstimated": "2025-02-15T13:54:59.999Z",
+      "publishedAtUpperBound": "2025-02-15T13:54:59.999Z",
+      "publishedAtEstimateSource": "earliest-observed-comment",
+      "publicationEvidenceObservedAt": "2026-09-10T14:12:21.423Z"
     },
     {
       "id": "comment:1390025372175422",
@@ -101574,8 +101596,10 @@
       "postIdAliases": [
         "pfbid02TqK4htSTbKZFditCfoupDpej6DJdfDn3KNP9wfZRKsViNJeTLPYZGxmjGwAntanvl"
       ],
-      "publishedAtUpperBound": "2025-02-09T13:28:00.000Z",
-      "publishedAtUpperBoundSource": "earliest-archived-comment"
+      "publishedAtEstimated": "2025-02-09T13:28:59.999Z",
+      "publishedAtUpperBound": "2025-02-09T13:28:59.999Z",
+      "publishedAtEstimateSource": "earliest-observed-comment",
+      "publicationEvidenceObservedAt": "2026-09-10T14:12:21.423Z"
     },
     {
       "id": "comment:988649319994417",
@@ -103431,6 +103455,84 @@
       ]
     },
     {
+      "id": "comment:2136570140092506",
+      "identityQuality": "strong",
+      "itemType": "comment",
+      "author": "Duane Huggins",
+      "text": "Sickening. If a five year old wanted to be a pirate, would you cut off his arm and put his eye out?",
+      "textHash": "0c21169e74eda28130a1ac5beb6d2e4d8a5951171778c9ac30c8a0e308ebced1",
+      "rawObservedText": "Sickening. If a five year old wanted to be a pirate, would you cut off his arm and put his eye out?",
+      "contentCompleteness": "full",
+      "timestampText": "1y",
+      "timestampExact": "Friday 24 January 2025 at 04:30",
+      "permalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid02q9nkFjBtRshT7TqAK6U5cwXfsLQvQePWgGfRy6K9CjK2khb2Wpjh17Giu7sFiNMal&id=100072498875675&comment_id=2136570140092506",
+      "parentPostPermalink": "https://www.facebook.com/photo/?fbid=619429650483659",
+      "parentId": "post:619429650483659",
+      "postId": "619429650483659",
+      "observedPostId": "619429650483659",
+      "commentId": "2136570140092506",
+      "parentCommentId": "",
+      "capturedAt": "2026-09-10T03:34:36.826Z",
+      "rawEntityKey": "comment:id:2136570140092506",
+      "rawId": "1c252d16634b47b2",
+      "authorDisplayName": "Duane Huggins",
+      "authorProfileUrl": "",
+      "authorProfileId": "",
+      "authorKey": "name:duane huggins",
+      "publishedAt": "2025-01-24T12:30:00.000Z",
+      "publishedDate": "2025-01-24",
+      "publishedAtPrecision": "minute",
+      "publishedAtSource": "visible-wrapper-label",
+      "identityMethod": "comment_id",
+      "identityConfidence": "high",
+      "bodyComplete": true,
+      "hadSeeMore": false,
+      "expansionAttempted": false,
+      "expansionAttempts": 0,
+      "expansionResult": "not_needed",
+      "facebookEdited": false,
+      "facebookEditedLabel": "",
+      "attachmentSummary": "",
+      "imageAlts": [],
+      "links": [
+        {
+          "href": "https://www.facebook.com/duane.huggins.5?comment_id=Y29tbWVudDo2MTk0MzA1NTA0ODM1NjlfMjEzNjU3MDE0MDA5MjUwNg%3D%3D",
+          "text": ""
+        }
+      ],
+      "media": [],
+      "isPinned": false,
+      "isFeatured": false,
+      "sourceLinkRecoveredFrom": "",
+      "replyCommentId": "",
+      "parentPostEntityKey": "post:id:619429650483659",
+      "groupName": "",
+      "groupUrl": "",
+      "parentRelationshipMethod": "parent_post_permalink",
+      "parentRelationshipConfidence": "high",
+      "firstSeen": "2026-09-10T14:12:21.423Z",
+      "lastSeen": "2026-09-10T14:12:21.423Z",
+      "status": "active",
+      "missingCount": 0,
+      "versions": [
+        {
+          "text": "Sickening. If a five year old wanted to be a pirate, would you cut off his arm and put his eye out?",
+          "textHash": "0c21169e74eda28130a1ac5beb6d2e4d8a5951171778c9ac30c8a0e308ebced1",
+          "rawObservedText": "Sickening. If a five year old wanted to be a pirate, would you cut off his arm and put his eye out?",
+          "contentCompleteness": "full",
+          "firstSeen": "2026-09-10T14:12:21.423Z",
+          "lastSeen": "2026-09-10T14:12:21.423Z",
+          "timestampText": "1y",
+          "timestampExact": "Friday 24 January 2025 at 04:30",
+          "permalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid02q9nkFjBtRshT7TqAK6U5cwXfsLQvQePWgGfRy6K9CjK2khb2Wpjh17Giu7sFiNMal&id=100072498875675&comment_id=2136570140092506"
+        }
+      ],
+      "observationCount": 1,
+      "postIdAliases": [
+        "619429650483659"
+      ]
+    },
+    {
       "id": "post:619429650483659",
       "identityQuality": "strong",
       "itemType": "post",
@@ -103516,86 +103618,10 @@
       "postIdAliases": [
         "619429650483659"
       ],
-      "publishedAtUpperBound": "2025-01-24T12:30:00.000Z",
-      "publishedAtUpperBoundSource": "earliest-archived-comment"
-    },
-    {
-      "id": "comment:2136570140092506",
-      "identityQuality": "strong",
-      "itemType": "comment",
-      "author": "Duane Huggins",
-      "text": "Sickening. If a five year old wanted to be a pirate, would you cut off his arm and put his eye out?",
-      "textHash": "0c21169e74eda28130a1ac5beb6d2e4d8a5951171778c9ac30c8a0e308ebced1",
-      "rawObservedText": "Sickening. If a five year old wanted to be a pirate, would you cut off his arm and put his eye out?",
-      "contentCompleteness": "full",
-      "timestampText": "1y",
-      "timestampExact": "Friday 24 January 2025 at 04:30",
-      "permalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid02q9nkFjBtRshT7TqAK6U5cwXfsLQvQePWgGfRy6K9CjK2khb2Wpjh17Giu7sFiNMal&id=100072498875675&comment_id=2136570140092506",
-      "parentPostPermalink": "https://www.facebook.com/photo/?fbid=619429650483659",
-      "parentId": "post:619429650483659",
-      "postId": "619429650483659",
-      "observedPostId": "619429650483659",
-      "commentId": "2136570140092506",
-      "parentCommentId": "",
-      "capturedAt": "2026-09-10T03:34:36.826Z",
-      "rawEntityKey": "comment:id:2136570140092506",
-      "rawId": "1c252d16634b47b2",
-      "authorDisplayName": "Duane Huggins",
-      "authorProfileUrl": "",
-      "authorProfileId": "",
-      "authorKey": "name:duane huggins",
-      "publishedAt": "2025-01-24T12:30:00.000Z",
-      "publishedDate": "2025-01-24",
-      "publishedAtPrecision": "minute",
-      "publishedAtSource": "visible-wrapper-label",
-      "identityMethod": "comment_id",
-      "identityConfidence": "high",
-      "bodyComplete": true,
-      "hadSeeMore": false,
-      "expansionAttempted": false,
-      "expansionAttempts": 0,
-      "expansionResult": "not_needed",
-      "facebookEdited": false,
-      "facebookEditedLabel": "",
-      "attachmentSummary": "",
-      "imageAlts": [],
-      "links": [
-        {
-          "href": "https://www.facebook.com/duane.huggins.5?comment_id=Y29tbWVudDo2MTk0MzA1NTA0ODM1NjlfMjEzNjU3MDE0MDA5MjUwNg%3D%3D",
-          "text": ""
-        }
-      ],
-      "media": [],
-      "isPinned": false,
-      "isFeatured": false,
-      "sourceLinkRecoveredFrom": "",
-      "replyCommentId": "",
-      "parentPostEntityKey": "post:id:619429650483659",
-      "groupName": "",
-      "groupUrl": "",
-      "parentRelationshipMethod": "parent_post_permalink",
-      "parentRelationshipConfidence": "high",
-      "firstSeen": "2026-09-10T14:12:21.423Z",
-      "lastSeen": "2026-09-10T14:12:21.423Z",
-      "status": "active",
-      "missingCount": 0,
-      "versions": [
-        {
-          "text": "Sickening. If a five year old wanted to be a pirate, would you cut off his arm and put his eye out?",
-          "textHash": "0c21169e74eda28130a1ac5beb6d2e4d8a5951171778c9ac30c8a0e308ebced1",
-          "rawObservedText": "Sickening. If a five year old wanted to be a pirate, would you cut off his arm and put his eye out?",
-          "contentCompleteness": "full",
-          "firstSeen": "2026-09-10T14:12:21.423Z",
-          "lastSeen": "2026-09-10T14:12:21.423Z",
-          "timestampText": "1y",
-          "timestampExact": "Friday 24 January 2025 at 04:30",
-          "permalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid02q9nkFjBtRshT7TqAK6U5cwXfsLQvQePWgGfRy6K9CjK2khb2Wpjh17Giu7sFiNMal&id=100072498875675&comment_id=2136570140092506"
-        }
-      ],
-      "observationCount": 1,
-      "postIdAliases": [
-        "619429650483659"
-      ]
+      "publishedAtEstimated": "2025-01-24T10:30:59.999Z",
+      "publishedAtUpperBound": "2025-01-24T10:30:59.999Z",
+      "publishedAtEstimateSource": "earliest-observed-comment",
+      "publicationEvidenceObservedAt": "2026-09-10T14:12:21.423Z"
     },
     {
       "id": "comment:1311417233217981",

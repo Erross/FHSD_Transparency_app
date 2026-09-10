@@ -43,6 +43,27 @@
       "latestSnapshot": "2026-09-01T15:20:51.349Z"
     },
     {
+      "id": "kevin-mcguire-for-francis-howell-school-board",
+      "displayName": "Kevin McGuire For Francis Howell School Board",
+      "description": "Public archive of the Kevin McGuire For Francis Howell School Board Facebook page and its visible discussion threads.",
+      "platform": "facebook",
+      "sourceUrls": [
+        "https://www.facebook.com/profile.php?id=61585372340374"
+      ],
+      "summary": {
+        "entities": 525,
+        "posts": 100,
+        "comments": 425,
+        "active": 525,
+        "missing": 0,
+        "confirmedUnavailable": 0,
+        "editedEntities": 0,
+        "events": 0,
+        "snapshots": 1
+      },
+      "latestSnapshot": "2026-09-10T20:48:02.201Z"
+    },
+    {
       "id": "school-watchlist",
       "displayName": "School Watchlist",
       "description": "Public archive of the FHSD School Watchlist Facebook page and its visible discussion threads.",
