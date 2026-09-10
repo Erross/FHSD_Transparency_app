@@ -5,6 +5,7 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
+from .comment_visibility import latest_comment_visibility
 from .core import dumps, initial_state, normalize_space, summary
 from .io_utils import read_json
 from .relationships import repair_parent_relationships
@@ -167,6 +168,7 @@ def main():
         snaps = sorted(state.get("snapshots", []), key=lambda s: s.get("observedAt", ""), reverse=True)
         authors = _author_index(entities)
         discussions = _discussion_counts(entities)
+        comment_visibility = latest_comment_visibility(ROOT, snaps, entities)
         public = {
             "target": cfg,
             "summary": summary(state),
@@ -175,6 +177,7 @@ def main():
             "snapshots": snaps,
             "authors": authors,
             "discussionCounts": discussions,
+            "commentVisibility": comment_visibility,
             "relationshipDiagnostics": relationship_diagnostics,
             "latestDelta": _latest_delta(events, snaps),
         }
