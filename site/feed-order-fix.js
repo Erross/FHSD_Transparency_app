@@ -1,4 +1,6 @@
-/* Final feed-order override: use publication evidence when available, otherwise first observation. */
+/* Final feed-order override: publication evidence wins; observation time never
+   masquerades as publication time. Truly undated posts sort after posts with
+   usable chronology, preserving observation order only within the undated set. */
 (function () {
   function parseMs(value) {
     if (!value) return 0;
@@ -6,21 +8,35 @@
     return Number.isNaN(d.getTime()) ? 0 : d.getTime();
   }
 
-  function feedChronologyMs(entity) {
+  function publicationChronologyMs(entity) {
     for (const value of [
       entity?.publishedAt,
       entity?.publishedDate,
       entity?.timestampExact,
       entity?.publishedAtEstimated,
-      entity?.publishedAtUpperBound,
-      entity?.firstSeen,
-      entity?.capturedAt,
-      entity?.lastSeen
+      entity?.publishedAtUpperBound
     ]) {
       const ms = parseMs(value);
       if (ms) return ms;
     }
+    return null;
+  }
+
+  function observationMs(entity) {
+    for (const value of [entity?.firstSeen, entity?.capturedAt, entity?.lastSeen]) {
+      const ms = parseMs(value);
+      if (ms) return ms;
+    }
     return 0;
+  }
+
+  function newestFirst(a, b) {
+    const left = publicationChronologyMs(a);
+    const right = publicationChronologyMs(b);
+    if (left !== null && right !== null && left !== right) return right - left;
+    if (left !== null && right === null) return -1;
+    if (left === null && right !== null) return 1;
+    return observationMs(b) - observationMs(a);
   }
 
   feedPosts = function (queryText = '') {
@@ -33,7 +49,7 @@
         return `${post.author} ${post.text} ${post.attachmentSummary || ''}`.toLowerCase().includes(query)
           || comments.some(comment => `${comment.author} ${comment.text}`.toLowerCase().includes(query));
       })
-      .sort((a, b) => feedChronologyMs(b) - feedChronologyMs(a));
+      .sort(newestFirst);
   };
 
   if (typeof current !== 'undefined' && current) render();
