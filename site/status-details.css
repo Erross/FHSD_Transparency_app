@@ -1,0 +1,235 @@
+/* Compact, on-demand comment status presentation. */
+.comment-card {
+  position: relative;
+}
+
+.comment-status-badge {
+  align-self: start;
+  justify-self: end;
+  margin-left: 12px;
+  padding: 5px 9px;
+  border: 0;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .02em;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.comment-status-badge:hover,
+.comment-status-badge:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.status-badge-icon {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: .85;
+}
+
+.comment-status-badge.status-new {
+  color: #087443;
+  background: #dff5e9;
+}
+
+.comment-status-badge.status-edited {
+  color: #9a5800;
+  background: #fff0d5;
+}
+
+.comment-status-badge.status-reappeared {
+  color: #6a3ec4;
+  background: #eee6ff;
+}
+
+.comment-status-badge.status-missing {
+  color: #b42318;
+  background: #fde7e7;
+}
+
+.comment-status-details {
+  grid-column: 2 / -1;
+  width: 100%;
+  margin-top: 10px;
+  padding: 14px 16px;
+  border: 1px solid #d9e1e8;
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+.comment-status-details[hidden] {
+  display: none !important;
+}
+
+.comment-status-details.status-new { border-left: 4px solid #2f9b67; }
+.comment-status-details.status-edited { border-left: 4px solid #d98a13; }
+.comment-status-details.status-reappeared { border-left: 4px solid #8258d8; }
+.comment-status-details.status-missing { border-left: 4px solid #cf3b34; }
+
+.status-detail-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 10px;
+}
+
+.status-detail-copy strong {
+  color: #172b3e;
+}
+
+.status-detail-copy span,
+.status-detail-note {
+  color: #596b7b;
+  font-size: 13px;
+}
+
+.status-timeline {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: grid;
+  gap: 8px;
+}
+
+.status-timeline-row {
+  display: grid;
+  grid-template-columns: 14px 1fr;
+  gap: 8px;
+  align-items: start;
+}
+
+.status-timeline-row .timeline-dot {
+  width: 9px;
+  height: 9px;
+  margin-top: 5px;
+  border-radius: 50%;
+  background: #8392a0;
+}
+
+.status-timeline-row.observed .timeline-dot { background: #2f9b67; }
+.status-timeline-row.missing .timeline-dot { background: #cf3b34; }
+.status-timeline-row.reappeared .timeline-dot { background: #8258d8; }
+
+.status-timeline-row > div {
+  display: grid;
+  grid-template-columns: minmax(150px, auto) 1fr;
+  column-gap: 10px;
+  row-gap: 2px;
+}
+
+.status-timeline-row strong {
+  font-size: 13px;
+}
+
+.status-timeline-row span,
+.status-timeline-row small {
+  color: #607180;
+  font-size: 12px;
+}
+
+.status-timeline-row small {
+  grid-column: 1 / -1;
+}
+
+.edit-history {
+  display: grid;
+  gap: 10px;
+}
+
+.edit-change {
+  border-top: 1px solid #e1e6eb;
+  padding-top: 10px;
+}
+
+.edit-change-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 7px;
+  font-size: 12px;
+  color: #607180;
+}
+
+.inline-diff {
+  line-height: 1.6;
+  color: #233746;
+}
+
+.inline-diff del,
+.diff-legend del {
+  text-decoration: line-through;
+  background: #fde2e1;
+  color: #9b2c26;
+  border-radius: 3px;
+  padding: 1px 2px;
+}
+
+.inline-diff ins,
+.diff-legend ins {
+  text-decoration: none;
+  background: #dff4e7;
+  color: #17633f;
+  border-radius: 3px;
+  padding: 1px 2px;
+}
+
+.diff-legend {
+  margin-top: 9px;
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  color: #607180;
+}
+
+.diff-fallback {
+  display: grid;
+  gap: 8px;
+}
+
+.diff-fallback > div {
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: #fff;
+}
+
+.diff-fallback > div > span {
+  display: block;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: #6f7f8c;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+/* The compact badge supersedes activity-ui's large repeated status strips. */
+.comment-state-strip {
+  display: none !important;
+}
+
+@media (max-width: 760px) {
+  .comment-status-badge {
+    grid-column: 2;
+    grid-row: auto;
+    justify-self: start;
+    margin: 7px 0 0;
+  }
+
+  .comment-status-details {
+    grid-column: 1 / -1;
+  }
+
+  .status-timeline-row > div {
+    grid-template-columns: 1fr;
+  }
+}
