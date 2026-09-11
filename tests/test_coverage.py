@@ -40,12 +40,17 @@ def post(post_id, text, exact="", relative="", captured="2026-08-25T17:31:58Z"):
 
 
 class CoverageTests(unittest.TestCase):
-    def apply(self, state, items, when, cutoff, complete=True):
+    def apply(self, state, items, when, cutoff, complete=True, reached_historical_start=None):
+        if reached_historical_start is None:
+            reached_historical_start = complete
         return apply_coverage_snapshot(
             state,
             [normalize_item(item, when) for item in items],
             observed_at=when,
-            snapshot_meta={"collectionLimit": {"mode": "date", "cutoffDate": cutoff}},
+            snapshot_meta={
+                "collectionLimit": {"mode": "date", "cutoffDate": cutoff},
+                "crawl": {"reachedHistoricalStart": reached_historical_start},
+            },
             complete=complete,
             target_config=CONFIG,
         )
@@ -124,7 +129,35 @@ class CoverageTests(unittest.TestCase):
         self.assertEqual("active", state["entities"]["comment:recent"]["status"])
         self.assertEqual(1, state["snapshots"][-1]["coverageDeferredCommentsParentNotObserved"])
 
-    def test_partial_snapshot_never_marks_missing_even_with_date_limit(self):
+    def test_partial_snapshot_with_proven_traversal_marks_missing_only_in_revisited_thread(self):
+        state = initial_state("school-watchlist")
+        state = self.apply(
+            state,
+            [
+                post("p1", "post", exact="24 August 2026"),
+                comment("c1", "inside", post_id="p1"),
+                post("p2", "other", exact="24 August 2026"),
+                comment("c2", "deferred", post_id="p2"),
+            ],
+            "2026-08-25T17:31:58Z",
+            "2024-01-25",
+        )
+        state = self.apply(
+            state,
+            [post("p1", "post", exact="24 August 2026")],
+            "2026-08-25T21:51:38Z",
+            "2026-06-01",
+            complete=False,
+            reached_historical_start=True,
+        )
+        self.assertEqual("missing_once", state["entities"]["comment:c1"]["status"])
+        self.assertEqual("active", state["entities"]["comment:c2"]["status"])
+        snapshot = state["snapshots"][-1]
+        self.assertFalse(snapshot["complete"])
+        self.assertEqual("date_scoped_partial", snapshot["coverageMode"])
+        self.assertTrue(snapshot["missingDetectionApplied"])
+
+    def test_partial_snapshot_without_proven_traversal_never_marks_missing(self):
         state = initial_state("school-watchlist")
         state = self.apply(
             state,
@@ -138,8 +171,10 @@ class CoverageTests(unittest.TestCase):
             "2026-08-25T21:51:38Z",
             "2026-06-01",
             complete=False,
+            reached_historical_start=False,
         )
         self.assertEqual("active", state["entities"]["comment:c1"]["status"])
+        self.assertFalse(state["snapshots"][-1].get("missingDetectionApplied", False))
 
 
 if __name__ == "__main__":

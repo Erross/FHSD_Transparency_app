@@ -3,8 +3,13 @@
 A date-limited Facebook crawl is only evidence about entities that the crawl
 should actually have visited. Posts are scoped by their content date. Comments
 and replies are scoped more strictly: their parent post must have been observed
-in the later complete crawl, avoiding false deletion cascades from old or
-unvisited threads.
+in the later crawl, avoiding false deletion cascades from old or unvisited
+threads.
+
+Partial snapshots may participate in negative inference only when the crawler
+itself proves it traversed through the declared historical boundary. Even then,
+negative inference remains restricted to the proven date window and to comments
+whose parent post/thread was actually revisited.
 """
 from __future__ import annotations
 
@@ -124,6 +129,21 @@ def declared_date_window(snapshot_meta: dict[str, Any], observed_at: str) -> tup
     return start, observed.date()
 
 
+def _traversal_qualified(snapshot_meta: dict[str, Any], complete: bool) -> bool:
+    """Whether a crawl proves it traversed the declared date window.
+
+    Explicit complete snapshots always qualify. A partial snapshot qualifies
+    only when crawler metadata says historical traversal reached the requested
+    start boundary. This covers runs where feed traversal succeeded but thread
+    enrichment was partial, without treating an interrupted traversal as proof
+    of absence.
+    """
+    if complete:
+        return True
+    crawl = snapshot_meta.get("crawl") if isinstance(snapshot_meta.get("crawl"), dict) else {}
+    return crawl.get("reachedHistoricalStart") is True
+
+
 def _event(kind: str, observed_at: str, entity_id: str, entity: dict[str, Any], **extra: Any) -> dict[str, Any]:
     event = {
         "type": kind,
@@ -149,7 +169,8 @@ def apply_coverage_snapshot(
 ) -> dict[str, Any]:
     """Apply a snapshot, restricting negative inference to comparable coverage."""
     window = declared_date_window(snapshot_meta, observed_at)
-    if not complete or window is None:
+    coverage_qualified = window is not None and _traversal_qualified(snapshot_meta, complete)
+    if not coverage_qualified:
         return apply_snapshot(
             state,
             records,
@@ -233,6 +254,7 @@ def apply_coverage_snapshot(
                     text=entity.get("text", ""),
                     coverageStart=start.isoformat(),
                     coverageEnd=end.isoformat(),
+                    coverageMode="date_scoped_complete" if complete else "date_scoped_partial",
                 )
             )
         if count == 1:
@@ -253,7 +275,8 @@ def apply_coverage_snapshot(
                 "entityIds": [entity["id"] for entity in newly_absent],
                 "coverageStart": start.isoformat(),
                 "coverageEnd": end.isoformat(),
-                "note": "Previously observed entities inside comparable crawl coverage were absent; causation is not attributed.",
+                "coverageMode": "date_scoped_complete" if complete else "date_scoped_partial",
+                "note": "Previously observed entities inside proven comparable crawl coverage were absent; causation is not attributed.",
             }
         )
 
@@ -276,14 +299,16 @@ def apply_coverage_snapshot(
                     "entityIds": [entity["id"] for entity in group],
                     "coverageStart": start.isoformat(),
                     "coverageEnd": end.isoformat(),
-                    "note": "A cluster of previously observed comments/replies was absent from a parent thread that was revisited in this complete crawl; causation is not attributed.",
+                    "coverageMode": "date_scoped_complete" if complete else "date_scoped_partial",
+                    "note": "A cluster of previously observed comments/replies was absent from a parent thread that was revisited inside proven crawl coverage; causation is not attributed.",
                 }
             )
 
     snapshot = out.setdefault("snapshots", [])[-1]
-    snapshot["complete"] = True
-    snapshot["coverageMode"] = "date_scoped_complete"
+    snapshot["complete"] = bool(complete)
+    snapshot["coverageMode"] = "date_scoped_complete" if complete else "date_scoped_partial"
     snapshot["missingDetectionApplied"] = True
+    snapshot["negativeInferenceScope"] = "proven_date_window_and_revisited_threads"
     snapshot["coverageStart"] = start.isoformat()
     snapshot["coverageEnd"] = end.isoformat()
     snapshot["coverageEligiblePriorEntities"] = len(eligible_ids)
