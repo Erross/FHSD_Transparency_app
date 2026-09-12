@@ -5,14 +5,14 @@
       "displayName": "School Watchlist",
       "profileUrl": "https://www.facebook.com/profile.php?id=61581121856469",
       "posts": 515,
-      "comments": 321,
+      "comments": 324,
       "targets": [
         "francis-howell-families",
         "greenwood-campaign",
         "kevin-mcguire-for-francis-howell-school-board",
         "school-watchlist"
       ],
-      "latestActivity": "2026-09-11T14:44:28.987Z"
+      "latestActivity": "2026-09-11T23:01:00.000Z"
     },
     {
       "key": "name:jane puszkar",
@@ -44,14 +44,14 @@
       "displayName": "Matt Stolle",
       "profileUrl": "",
       "posts": 0,
-      "comments": 89,
+      "comments": 91,
       "targets": [
         "francis-howell-families",
         "greenwood-campaign",
         "kevin-mcguire-for-francis-howell-school-board",
         "school-watchlist"
       ],
-      "latestActivity": "2026-09-10T20:16:00.000Z"
+      "latestActivity": "2026-09-11T18:46:00.000Z"
     },
     {
       "key": "name:kevin mcguire for francis howell school board",
@@ -142,6 +142,18 @@
       "latestActivity": "2026-07-10T00:15:00.000Z"
     },
     {
+      "key": "name:thompsonvicrol thompsonvicrol",
+      "displayName": "Thompsonvicrol Thompsonvicrol",
+      "profileUrl": "",
+      "posts": 0,
+      "comments": 31,
+      "targets": [
+        "greenwood-campaign",
+        "school-watchlist"
+      ],
+      "latestActivity": "2026-09-11T22:12:00.000Z"
+    },
+    {
       "key": "name:karen lynn",
       "displayName": "Karen Lynn",
       "profileUrl": "",
@@ -152,18 +164,6 @@
         "school-watchlist"
       ],
       "latestActivity": "2026-09-10T02:48:00.000Z"
-    },
-    {
-      "key": "name:thompsonvicrol thompsonvicrol",
-      "displayName": "Thompsonvicrol Thompsonvicrol",
-      "profileUrl": "",
-      "posts": 0,
-      "comments": 30,
-      "targets": [
-        "greenwood-campaign",
-        "school-watchlist"
-      ],
-      "latestActivity": "2026-08-27T12:35:00.000Z"
     },
     {
       "key": "name:bryce krawzik",
@@ -302,6 +302,30 @@
       "latestActivity": "2026-09-01T15:20:51.349Z"
     },
     {
+      "key": "name:cait antony",
+      "displayName": "Cait Antony",
+      "profileUrl": "",
+      "posts": 0,
+      "comments": 20,
+      "targets": [
+        "greenwood-campaign",
+        "school-watchlist"
+      ],
+      "latestActivity": "2026-09-11T23:10:00.000Z"
+    },
+    {
+      "key": "name:karin fitzgerald robinette",
+      "displayName": "Karin Fitzgerald Robinette",
+      "profileUrl": "",
+      "posts": 0,
+      "comments": 20,
+      "targets": [
+        "greenwood-campaign",
+        "school-watchlist"
+      ],
+      "latestActivity": "2026-09-11T18:31:00.000Z"
+    },
+    {
       "key": "name:robert stoebener",
       "displayName": "Robert Stoebener",
       "profileUrl": "",
@@ -336,6 +360,18 @@
         "school-watchlist"
       ],
       "latestActivity": "2026-03-16T14:26:00.000Z"
+    },
+    {
+      "key": "name:mike jones",
+      "displayName": "Mike Jones",
+      "profileUrl": "",
+      "posts": 0,
+      "comments": 19,
+      "targets": [
+        "greenwood-campaign",
+        "school-watchlist"
+      ],
+      "latestActivity": "2026-09-11T14:47:00.000Z"
     },
     {
       "key": "name:ewan ross",
@@ -409,18 +445,6 @@
         "school-watchlist"
       ],
       "latestActivity": "2026-07-07T01:46:00.000Z"
-    },
-    {
-      "key": "name:karin fitzgerald robinette",
-      "displayName": "Karin Fitzgerald Robinette",
-      "profileUrl": "",
-      "posts": 0,
-      "comments": 17,
-      "targets": [
-        "greenwood-campaign",
-        "school-watchlist"
-      ],
-      "latestActivity": "2026-09-11T14:32:00.000Z"
     },
     {
       "key": "name:vicki gill",
@@ -572,18 +596,6 @@
         "school-watchlist"
       ],
       "latestActivity": "2026-09-10T21:13:00.000Z"
-    },
-    {
-      "key": "name:cait antony",
-      "displayName": "Cait Antony",
-      "profileUrl": "",
-      "posts": 0,
-      "comments": 14,
-      "targets": [
-        "greenwood-campaign",
-        "school-watchlist"
-      ],
-      "latestActivity": "2026-09-09T17:35:00.000Z"
     },
     {
       "key": "name:joy hankey",
@@ -780,18 +792,6 @@
         "school-watchlist"
       ],
       "latestActivity": "2026-07-07T01:38:00.000Z"
-    },
-    {
-      "key": "name:mike jones",
-      "displayName": "Mike Jones",
-      "profileUrl": "",
-      "posts": 0,
-      "comments": 12,
-      "targets": [
-        "greenwood-campaign",
-        "school-watchlist"
-      ],
-      "latestActivity": "2026-09-10T23:47:00.000Z"
     },
     {
       "key": "name:marissa polzin",
@@ -1845,6 +1845,18 @@
       "latestActivity": "2026-03-06T15:25:00.000Z"
     },
     {
+      "key": "name:ryan wills",
+      "displayName": "Ryan Wills",
+      "profileUrl": "",
+      "posts": 0,
+      "comments": 6,
+      "targets": [
+        "francis-howell-families",
+        "school-watchlist"
+      ],
+      "latestActivity": "2026-09-11T14:12:00.000Z"
+    },
+    {
       "key": "name:rebecca hatton",
       "displayName": "Rebecca Hatton",
       "profileUrl": "",
@@ -2604,18 +2616,6 @@
       "latestActivity": "2025-04-12T06:24:00.000Z"
     },
     {
-      "key": "name:ryan wills",
-      "displayName": "Ryan Wills",
-      "profileUrl": "",
-      "posts": 0,
-      "comments": 5,
-      "targets": [
-        "francis-howell-families",
-        "school-watchlist"
-      ],
-      "latestActivity": "2026-09-11T14:12:00.000Z"
-    },
-    {
       "key": "name:james cibulka",
       "displayName": "James Cibulka",
       "profileUrl": "",
@@ -3090,6 +3090,17 @@
         "francis-howell-families"
       ],
       "latestActivity": "2025-02-14T20:06:00.000Z"
+    },
+    {
+      "key": "name:harry kolmer",
+      "displayName": "Harry Kolmer",
+      "profileUrl": "",
+      "posts": 0,
+      "comments": 4,
+      "targets": [
+        "school-watchlist"
+      ],
+      "latestActivity": "2026-09-11T16:48:00.000Z"
     },
     {
       "key": "name:christina macormic for wentzville school board",
@@ -5165,17 +5176,6 @@
       "latestActivity": "2026-09-09T16:53:00.000Z"
     },
     {
-      "key": "name:jessi walker-livingston",
-      "displayName": "Jessi Walker-Livingston",
-      "profileUrl": "",
-      "posts": 0,
-      "comments": 3,
-      "targets": [
-        "school-watchlist"
-      ],
-      "latestActivity": "2026-09-09T13:12:00.000Z"
-    },
-    {
       "key": "name:jayce ryan",
       "displayName": "Jayce Ryan",
       "profileUrl": "",
@@ -5185,7 +5185,18 @@
         "greenwood-campaign",
         "school-watchlist"
       ],
-      "latestActivity": "2026-09-09T12:11:00.000Z"
+      "latestActivity": "2026-09-09T14:11:00.000Z"
+    },
+    {
+      "key": "name:jessi walker-livingston",
+      "displayName": "Jessi Walker-Livingston",
+      "profileUrl": "",
+      "posts": 0,
+      "comments": 3,
+      "targets": [
+        "school-watchlist"
+      ],
+      "latestActivity": "2026-09-09T13:12:00.000Z"
     },
     {
       "key": "name:sara smith",
@@ -6153,15 +6164,26 @@
       "latestActivity": "2025-02-13T20:11:00.000Z"
     },
     {
-      "key": "name:harry kolmer",
-      "displayName": "Harry Kolmer",
+      "key": "name:kyle o'keefe",
+      "displayName": "Kyle O'Keefe",
       "profileUrl": "",
       "posts": 0,
       "comments": 2,
       "targets": [
         "school-watchlist"
       ],
-      "latestActivity": "2026-09-11T13:28:00.000Z"
+      "latestActivity": "2026-09-11T15:54:00.000Z"
+    },
+    {
+      "key": "name:corey burggrabe",
+      "displayName": "Corey Burggrabe",
+      "profileUrl": "",
+      "posts": 0,
+      "comments": 2,
+      "targets": [
+        "school-watchlist"
+      ],
+      "latestActivity": "2026-09-11T14:59:00.000Z"
     },
     {
       "key": "name:lanie kitchens beckering",
@@ -15102,6 +15124,28 @@
       "latestActivity": "2025-02-04T23:36:00.000Z"
     },
     {
+      "key": "name:april robins",
+      "displayName": "April Robins",
+      "profileUrl": "",
+      "posts": 0,
+      "comments": 1,
+      "targets": [
+        "school-watchlist"
+      ],
+      "latestActivity": "2026-09-11T22:47:00.000Z"
+    },
+    {
+      "key": "name:helen marie",
+      "displayName": "Helen Marie",
+      "profileUrl": "",
+      "posts": 0,
+      "comments": 1,
+      "targets": [
+        "school-watchlist"
+      ],
+      "latestActivity": "2026-09-11T19:53:00.000Z"
+    },
+    {
       "key": "name:stephanie kinnard",
       "displayName": "Stephanie Kinnard",
       "profileUrl": "",
@@ -15190,6 +15234,17 @@
       "latestActivity": "2026-09-11T01:28:00.000Z"
     },
     {
+      "key": "name:amalyn martin",
+      "displayName": "Amalyn Martin",
+      "profileUrl": "",
+      "posts": 0,
+      "comments": 1,
+      "targets": [
+        "school-watchlist"
+      ],
+      "latestActivity": "2026-09-11T01:09:00.000Z"
+    },
+    {
       "key": "name:greg evans",
       "displayName": "Greg Evans",
       "profileUrl": "",
@@ -15212,15 +15267,15 @@
       "latestActivity": "2026-09-11T00:16:00.000Z"
     },
     {
-      "key": "name:amalyn martin",
-      "displayName": "Amalyn Martin",
+      "key": "name:christine barbieri kortkamp",
+      "displayName": "Christine Barbieri Kortkamp",
       "profileUrl": "",
       "posts": 0,
       "comments": 1,
       "targets": [
         "school-watchlist"
       ],
-      "latestActivity": "2026-09-10T23:09:00.000Z"
+      "latestActivity": "2026-09-10T22:55:00.000Z"
     },
     {
       "key": "name:travis jenkins",
@@ -15278,17 +15333,6 @@
       "latestActivity": "2026-09-10T21:02:00.000Z"
     },
     {
-      "key": "name:christine barbieri kortkamp",
-      "displayName": "Christine Barbieri Kortkamp",
-      "profileUrl": "",
-      "posts": 0,
-      "comments": 1,
-      "targets": [
-        "school-watchlist"
-      ],
-      "latestActivity": "2026-09-10T20:55:00.000Z"
-    },
-    {
       "key": "name:andrew shannon",
       "displayName": "Andrew Shannon",
       "profileUrl": "",
@@ -15322,6 +15366,17 @@
       "latestActivity": "2026-09-10T12:25:00.000Z"
     },
     {
+      "key": "name:shane lewis",
+      "displayName": "Shane Lewis",
+      "profileUrl": "",
+      "posts": 0,
+      "comments": 1,
+      "targets": [
+        "school-watchlist"
+      ],
+      "latestActivity": "2026-09-10T03:15:00.000Z"
+    },
+    {
       "key": "name:erin griesenauer-halbert",
       "displayName": "Erin Griesenauer-Halbert",
       "profileUrl": "",
@@ -15331,17 +15386,6 @@
         "school-watchlist"
       ],
       "latestActivity": "2026-09-10T02:53:00.000Z"
-    },
-    {
-      "key": "name:shane lewis",
-      "displayName": "Shane Lewis",
-      "profileUrl": "",
-      "posts": 0,
-      "comments": 1,
-      "targets": [
-        "school-watchlist"
-      ],
-      "latestActivity": "2026-09-10T01:15:00.000Z"
     },
     {
       "key": "name:heather anne",
@@ -15355,6 +15399,17 @@
       "latestActivity": "2026-09-09T22:58:00.000Z"
     },
     {
+      "key": "name:julian felix",
+      "displayName": "Julian Felix",
+      "profileUrl": "",
+      "posts": 0,
+      "comments": 1,
+      "targets": [
+        "school-watchlist"
+      ],
+      "latestActivity": "2026-09-09T22:33:00.000Z"
+    },
+    {
       "key": "name:kay pea",
       "displayName": "Kay Pea",
       "profileUrl": "",
@@ -15364,17 +15419,6 @@
         "school-watchlist"
       ],
       "latestActivity": "2026-09-09T22:05:00.000Z"
-    },
-    {
-      "key": "name:julian felix",
-      "displayName": "Julian Felix",
-      "profileUrl": "",
-      "posts": 0,
-      "comments": 1,
-      "targets": [
-        "school-watchlist"
-      ],
-      "latestActivity": "2026-09-09T20:33:00.000Z"
     },
     {
       "key": "name:lynn robertson",
@@ -15628,17 +15672,6 @@
         "school-watchlist"
       ],
       "latestActivity": "2026-09-09T14:42:00.000Z"
-    },
-    {
-      "key": "name:kyle o'keefe",
-      "displayName": "Kyle O'Keefe",
-      "profileUrl": "",
-      "posts": 0,
-      "comments": 1,
-      "targets": [
-        "school-watchlist"
-      ],
-      "latestActivity": "2026-09-09T14:31:00.000Z"
     },
     {
       "key": "name:christopher ray",
@@ -21788,7 +21821,7 @@
         "greenwood-campaign",
         "school-watchlist"
       ],
-      "latestActivity": "2026-09-08T14:23:09.038000Z"
+      "latestActivity": "2026-09-08T23:23:36.705000Z"
     },
     {
       "key": "facebook:100072498875675",
