@@ -234,10 +234,31 @@ def apply_coverage_snapshot(
 
     for rid in sorted(absent_ids):
         entity = entities[rid]
+        next_count = int(entity.get("missingCount", 0)) + 1
+
+        # Preserve every qualifying check where a previously archived entity was
+        # not present. Status-transition events alone cannot reconstruct a full
+        # visibility timeline because missing_recheck remains the same on later
+        # consecutive misses.
+        events.append(
+            _event(
+                "not_present_observation",
+                observed_at,
+                rid,
+                entity,
+                lastSeen=entity.get("lastSeen", ""),
+                missingCount=next_count,
+                text=entity.get("text", ""),
+                coverageStart=start.isoformat(),
+                coverageEnd=end.isoformat(),
+                coverageMode="date_scoped_complete" if complete else "date_scoped_partial",
+            )
+        )
+
         if entity.get("status") == "confirmed_unavailable":
-            entity["missingCount"] = int(entity.get("missingCount", 0)) + 1
+            entity["missingCount"] = next_count
             continue
-        count = int(entity.get("missingCount", 0)) + 1
+        count = next_count
         before_status = entity.get("status", "active")
         after = "missing_once" if count == 1 else "missing_recheck"
         entity["missingCount"] = count

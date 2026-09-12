@@ -26,4 +26,5 @@ jobs:
           node --check site/date-inference.js
           node --check site/feed-order-fix.js
           node --check site/activity-ui.js
+          node --check site/status-details.js
           node tests/date_safety_test.js

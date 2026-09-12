@@ -368,10 +368,22 @@ def apply_snapshot(
         newly_absent: list[dict[str, Any]] = []
         for rid in sorted(prior_ids - seen_ids):
             existing = entities[rid]
+            next_count = int(existing.get("missingCount", 0)) + 1
+            events.append(
+                _event(
+                    "not_present_observation",
+                    observed_at,
+                    {**existing, "id": rid},
+                    lastSeen=existing.get("lastSeen", ""),
+                    missingCount=next_count,
+                    text=existing.get("text", ""),
+                    coverageMode="complete_snapshot",
+                )
+            )
             if existing.get("status") == "confirmed_unavailable":
-                existing["missingCount"] = int(existing.get("missingCount", 0)) + 1
+                existing["missingCount"] = next_count
                 continue
-            count = int(existing.get("missingCount", 0)) + 1
+            count = next_count
             existing["missingCount"] = count
             before = existing.get("status", "active")
             after = "missing_once" if count == 1 else "missing_recheck"
