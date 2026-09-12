@@ -30,17 +30,265 @@
     "publicNotes": "The archive records what the collector observed. Absence from a later crawl is not attributed to a specific person without independent evidence."
   },
   "summary": {
-    "entities": 3507,
-    "posts": 447,
-    "comments": 3060,
-    "active": 3385,
+    "entities": 3510,
+    "posts": 448,
+    "comments": 3062,
+    "active": 3388,
     "missing": 122,
     "confirmedUnavailable": 0,
-    "editedEntities": 71,
-    "events": 2748,
-    "snapshots": 12
+    "editedEntities": 73,
+    "events": 2753,
+    "snapshots": 13
   },
   "entities": [
+    {
+      "id": "post:122138701695037395",
+      "identityQuality": "strong",
+      "itemType": "post",
+      "author": "School Watchlist",
+      "text": "KINDNESS IS FREE — UNTIL YOU DISAGREE WITH THE THEATRE TEACHER MARRIED TO THE SCHOOL BOARD MEMBER",
+      "textHash": "cce661d2a68740eccf5be0db62b83b3df6266e6af3bf23f63ed3fdaeb69f25c6",
+      "rawObservedText": "KINDNESS IS FREE — UNTIL YOU DISAGREE WITH THE THEATRE TEACHER MARRIED TO THE SCHOOL BOARD MEMBER… See more",
+      "contentCompleteness": "truncated",
+      "timestampText": "",
+      "timestampExact": "",
+      "permalink": "https://www.facebook.com/photo/?fbid=122138701695037395",
+      "parentPostPermalink": "https://www.facebook.com/photo/?fbid=122138701695037395",
+      "parentId": "",
+      "postId": "122138701695037395",
+      "observedPostId": "122138701695037395",
+      "commentId": "",
+      "parentCommentId": "",
+      "capturedAt": "2026-09-12T18:46:29.875Z",
+      "rawEntityKey": "post:id:122138701695037395",
+      "rawId": "b12b136a268cc386",
+      "authorDisplayName": "School Watchlist",
+      "authorProfileUrl": "",
+      "authorProfileId": "",
+      "authorKey": "name:school watchlist",
+      "publishedAt": "",
+      "publishedDate": "",
+      "publishedAtPrecision": "unknown",
+      "publishedAtSource": "unknown",
+      "identityMethod": "facebook_id",
+      "identityConfidence": "high",
+      "bodyComplete": false,
+      "hadSeeMore": true,
+      "expansionAttempted": true,
+      "expansionAttempts": 1,
+      "expansionResult": "still_truncated",
+      "facebookEdited": false,
+      "facebookEditedLabel": "",
+      "attachmentSummary": "Photos from School Watchlist's post | okXUNyXmrucyR9tj05z5OwRDBzHxMl3SWB9odDwP3kDFoR | UusKb2WsH.com",
+      "imageAlts": [],
+      "links": [
+        {
+          "href": "https://www.facebook.com/profile.php?id=61581121856469",
+          "text": ""
+        },
+        {
+          "href": "https://www.facebook.com/profile.php",
+          "text": ""
+        },
+        {
+          "href": "https://www.facebook.com/photo/?fbid=122138701779037395",
+          "text": ""
+        },
+        {
+          "href": "https://www.facebook.com/photo/?fbid=122138701725037395",
+          "text": ""
+        }
+      ],
+      "media": [],
+      "isPinned": false,
+      "isFeatured": false,
+      "sourceLinkRecoveredFrom": "extractor",
+      "replyCommentId": "",
+      "parentPostEntityKey": "post:id:122138701695037395",
+      "groupName": "",
+      "groupUrl": "",
+      "firstSeen": "2026-09-12T18:48:03.053Z",
+      "lastSeen": "2026-09-12T18:48:03.053Z",
+      "status": "active",
+      "missingCount": 0,
+      "versions": [
+        {
+          "text": "KINDNESS IS FREE — UNTIL YOU DISAGREE WITH THE THEATRE TEACHER MARRIED TO THE SCHOOL BOARD MEMBER",
+          "textHash": "cce661d2a68740eccf5be0db62b83b3df6266e6af3bf23f63ed3fdaeb69f25c6",
+          "rawObservedText": "KINDNESS IS FREE — UNTIL YOU DISAGREE WITH THE THEATRE TEACHER MARRIED TO THE SCHOOL BOARD MEMBER… See more",
+          "contentCompleteness": "truncated",
+          "firstSeen": "2026-09-12T18:48:03.053Z",
+          "lastSeen": "2026-09-12T18:48:03.053Z",
+          "timestampText": "",
+          "timestampExact": "",
+          "permalink": "https://www.facebook.com/photo/?fbid=122138701695037395"
+        }
+      ],
+      "observationCount": 1,
+      "postIdAliases": [
+        "122138701695037395"
+      ]
+    },
+    {
+      "id": "comment:881190281598877",
+      "identityQuality": "strong",
+      "itemType": "comment",
+      "author": "School Watchlist",
+      "text": "R G Julie Burrwell sure, but name calling and bringing someone’s children into it is not. Especially when they’re a teacher a… See more",
+      "textHash": "14d83a8422ca2e1c3848caef81f281ebb2f543f9ce1c067998ea582920aae1c5",
+      "rawObservedText": "R G Julie Burrwell sure, but name calling and bringing someone’s children into it is not. Especially when they’re a teacher a… See more",
+      "contentCompleteness": "full",
+      "timestampText": "Saturday 12 September 2026 at 09:03",
+      "timestampExact": "Saturday 12 September 2026 at 09:03",
+      "permalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid02xLs6vf5bEYPRgD97YfpJwKpqkJLzD8GKbfuh6qUoxL8T9TQU6gr1SD5RHRkQduvgl&id=61581121856469&comment_id=1571666114093575&reply_comment_id=881190281598877",
+      "parentPostPermalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid02xLs6vf5bEYPRgD97YfpJwKpqkJLzD8GKbfuh6qUoxL8T9TQU6gr1SD5RHRkQduvgl&id=61581121856469",
+      "parentId": "post:pfbid02xLs6vf5bEYPRgD97YfpJwKpqkJLzD8GKbfuh6qUoxL8T9TQU6gr1SD5RHRkQduvgl",
+      "postId": "pfbid02xLs6vf5bEYPRgD97YfpJwKpqkJLzD8GKbfuh6qUoxL8T9TQU6gr1SD5RHRkQduvgl",
+      "observedPostId": "pfbid02xLs6vf5bEYPRgD97YfpJwKpqkJLzD8GKbfuh6qUoxL8T9TQU6gr1SD5RHRkQduvgl",
+      "commentId": "881190281598877",
+      "parentCommentId": "1571666114093575",
+      "capturedAt": "2026-09-12T18:46:23.829Z",
+      "rawEntityKey": "comment:id:881190281598877",
+      "rawId": "e2b0104f14b8a8db",
+      "authorDisplayName": "School Watchlist",
+      "authorProfileUrl": "",
+      "authorProfileId": "",
+      "authorKey": "name:school watchlist",
+      "publishedAt": "2026-09-12T14:03:00.000Z",
+      "publishedDate": "2026-09-12",
+      "publishedAtPrecision": "minute",
+      "publishedAtSource": "visible-wrapper-label",
+      "identityMethod": "comment_id",
+      "identityConfidence": "high",
+      "bodyComplete": false,
+      "hadSeeMore": true,
+      "expansionAttempted": true,
+      "expansionAttempts": 1,
+      "expansionResult": "still_truncated",
+      "facebookEdited": false,
+      "facebookEditedLabel": "",
+      "attachmentSummary": "",
+      "imageAlts": [],
+      "links": [
+        {
+          "href": "https://www.facebook.com/profile.php?id=61581121856469&comment_id=Y29tbWVudDoxMjIxMzg3MDE4MjcwMzczOTVfODgxMTkwMjgxNTk4ODc3",
+          "text": ""
+        },
+        {
+          "href": "https://www.facebook.com/profile.php?id=61578089753206",
+          "text": "R G Julie Burr"
+        }
+      ],
+      "media": [],
+      "isPinned": false,
+      "isFeatured": false,
+      "sourceLinkRecoveredFrom": "",
+      "replyCommentId": "881190281598877",
+      "parentPostEntityKey": "post:id:pfbid02xLs6vf5bEYPRgD97YfpJwKpqkJLzD8GKbfuh6qUoxL8T9TQU6gr1SD5RHRkQduvgl",
+      "groupName": "",
+      "groupUrl": "",
+      "parentRelationshipMethod": "unresolved",
+      "parentRelationshipConfidence": "unknown",
+      "firstSeen": "2026-09-12T18:48:03.053Z",
+      "lastSeen": "2026-09-12T18:48:03.053Z",
+      "status": "active",
+      "missingCount": 0,
+      "versions": [
+        {
+          "text": "R G Julie Burrwell sure, but name calling and bringing someone’s children into it is not. Especially when they’re a teacher a… See more",
+          "textHash": "14d83a8422ca2e1c3848caef81f281ebb2f543f9ce1c067998ea582920aae1c5",
+          "rawObservedText": "R G Julie Burrwell sure, but name calling and bringing someone’s children into it is not. Especially when they’re a teacher a… See more",
+          "contentCompleteness": "full",
+          "firstSeen": "2026-09-12T18:48:03.053Z",
+          "lastSeen": "2026-09-12T18:48:03.053Z",
+          "timestampText": "Saturday 12 September 2026 at 09:03",
+          "timestampExact": "Saturday 12 September 2026 at 09:03",
+          "permalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid02xLs6vf5bEYPRgD97YfpJwKpqkJLzD8GKbfuh6qUoxL8T9TQU6gr1SD5RHRkQduvgl&id=61581121856469&comment_id=1571666114093575&reply_comment_id=881190281598877"
+        }
+      ],
+      "observationCount": 1,
+      "postIdAliases": [
+        "pfbid02xLs6vf5bEYPRgD97YfpJwKpqkJLzD8GKbfuh6qUoxL8T9TQU6gr1SD5RHRkQduvgl"
+      ]
+    },
+    {
+      "id": "comment:1571666114093575",
+      "identityQuality": "strong",
+      "itemType": "comment",
+      "author": "R G Julie Burr",
+      "text": "Or she’s setting a standard you don’t share. We can agree to disagree, right?",
+      "textHash": "dcdcc959d18bfb8d53ed2e9c79ab52df434d79687127df7a469e23d63043f8be",
+      "rawObservedText": "Or she’s setting a standard you don’t share. We can agree to disagree, right?",
+      "contentCompleteness": "full",
+      "timestampText": "Saturday 12 September 2026 at 07:39",
+      "timestampExact": "Saturday 12 September 2026 at 07:39",
+      "permalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid02xLs6vf5bEYPRgD97YfpJwKpqkJLzD8GKbfuh6qUoxL8T9TQU6gr1SD5RHRkQduvgl&id=61581121856469&comment_id=1571666114093575",
+      "parentPostPermalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid02xLs6vf5bEYPRgD97YfpJwKpqkJLzD8GKbfuh6qUoxL8T9TQU6gr1SD5RHRkQduvgl&id=61581121856469",
+      "parentId": "post:pfbid02xLs6vf5bEYPRgD97YfpJwKpqkJLzD8GKbfuh6qUoxL8T9TQU6gr1SD5RHRkQduvgl",
+      "postId": "pfbid02xLs6vf5bEYPRgD97YfpJwKpqkJLzD8GKbfuh6qUoxL8T9TQU6gr1SD5RHRkQduvgl",
+      "observedPostId": "pfbid02xLs6vf5bEYPRgD97YfpJwKpqkJLzD8GKbfuh6qUoxL8T9TQU6gr1SD5RHRkQduvgl",
+      "commentId": "1571666114093575",
+      "parentCommentId": "",
+      "capturedAt": "2026-09-12T18:46:23.825Z",
+      "rawEntityKey": "comment:id:1571666114093575",
+      "rawId": "64c166883e2a726c",
+      "authorDisplayName": "R G Julie Burr",
+      "authorProfileUrl": "",
+      "authorProfileId": "",
+      "authorKey": "name:r g julie burr",
+      "publishedAt": "2026-09-12T12:39:00.000Z",
+      "publishedDate": "2026-09-12",
+      "publishedAtPrecision": "minute",
+      "publishedAtSource": "visible-wrapper-label",
+      "identityMethod": "comment_id",
+      "identityConfidence": "high",
+      "bodyComplete": true,
+      "hadSeeMore": false,
+      "expansionAttempted": false,
+      "expansionAttempts": 0,
+      "expansionResult": "not_needed",
+      "facebookEdited": false,
+      "facebookEditedLabel": "",
+      "attachmentSummary": "",
+      "imageAlts": [],
+      "links": [
+        {
+          "href": "https://www.facebook.com/profile.php?id=61578089753206&comment_id=Y29tbWVudDoxMjIxMzg3MDE4MjcwMzczOTVfMTU3MTY2NjExNDA5MzU3NQ%3D%3D",
+          "text": ""
+        }
+      ],
+      "media": [],
+      "isPinned": false,
+      "isFeatured": false,
+      "sourceLinkRecoveredFrom": "",
+      "replyCommentId": "",
+      "parentPostEntityKey": "post:id:pfbid02xLs6vf5bEYPRgD97YfpJwKpqkJLzD8GKbfuh6qUoxL8T9TQU6gr1SD5RHRkQduvgl",
+      "groupName": "",
+      "groupUrl": "",
+      "parentRelationshipMethod": "unresolved",
+      "parentRelationshipConfidence": "unknown",
+      "firstSeen": "2026-09-12T18:48:03.053Z",
+      "lastSeen": "2026-09-12T18:48:03.053Z",
+      "status": "active",
+      "missingCount": 0,
+      "versions": [
+        {
+          "text": "Or she’s setting a standard you don’t share. We can agree to disagree, right?",
+          "textHash": "dcdcc959d18bfb8d53ed2e9c79ab52df434d79687127df7a469e23d63043f8be",
+          "rawObservedText": "Or she’s setting a standard you don’t share. We can agree to disagree, right?",
+          "contentCompleteness": "full",
+          "firstSeen": "2026-09-12T18:48:03.053Z",
+          "lastSeen": "2026-09-12T18:48:03.053Z",
+          "timestampText": "Saturday 12 September 2026 at 07:39",
+          "timestampExact": "Saturday 12 September 2026 at 07:39",
+          "permalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid02xLs6vf5bEYPRgD97YfpJwKpqkJLzD8GKbfuh6qUoxL8T9TQU6gr1SD5RHRkQduvgl&id=61581121856469&comment_id=1571666114093575"
+        }
+      ],
+      "observationCount": 1,
+      "postIdAliases": [
+        "pfbid02xLs6vf5bEYPRgD97YfpJwKpqkJLzD8GKbfuh6qUoxL8T9TQU6gr1SD5RHRkQduvgl"
+      ]
+    },
     {
       "id": "post:source:d9dc567e3d37bb34f0e63a82",
       "identityQuality": "weak",
@@ -1003,20 +1251,20 @@
       "identityQuality": "strong",
       "itemType": "comment",
       "author": "School Watchlist",
-      "text": "Cait Antony because the devil is real and he comes to LIE KILL and DESTROY Repentance through Jesus Christ is the only way to the TRUTH and eternal life",
-      "textHash": "82360d733e4f3ff15453142aa9dca24a19cbbe6dc239968e6ffcf022a07ec890",
-      "rawObservedText": "Cait Antony because the devil is real and he comes to LIE KILL and DESTROY Repentance through Jesus Christ is the only way to the TRUTH and eternal life",
+      "text": "Cait Antony because the devil is real and he comes to LIE KILL and DESTROY … See more",
+      "textHash": "641efcbc4bde26a1363baac00191f859740f6257be6ebb42be13c3e8af5e7c41",
+      "rawObservedText": "Cait Antony because the devil is real and he comes to LIE KILL and DESTROY … See more",
       "contentCompleteness": "full",
       "timestampText": "Friday 11 September 2026 at 18:01",
       "timestampExact": "Friday 11 September 2026 at 18:01",
-      "permalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid02CuPQBshquT9RRsZYWJZgcwnhUzVzuwkpypwacDC8LUS5Dkbz6P6wwox89qTus9hMl&id=61581121856469&comment_id=3607890936041269&reply_comment_id=849254854941294",
-      "parentPostPermalink": "https://www.facebook.com/photo/?fbid=122138724993037395",
+      "permalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid09MkDGi5V4LSsqmGN8eTRccNK7wZoDGb4purJg4jhhBvcE81DHTGv7HhV5RA8ciTVl&id=61581121856469&comment_id=3607890936041269&reply_comment_id=849254854941294",
+      "parentPostPermalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid09MkDGi5V4LSsqmGN8eTRccNK7wZoDGb4purJg4jhhBvcE81DHTGv7HhV5RA8ciTVl&id=61581121856469",
       "parentId": "post:122138724993037395",
       "postId": "122138724993037395",
-      "observedPostId": "122138724993037395",
+      "observedPostId": "pfbid09MkDGi5V4LSsqmGN8eTRccNK7wZoDGb4purJg4jhhBvcE81DHTGv7HhV5RA8ciTVl",
       "commentId": "849254854941294",
       "parentCommentId": "3607890936041269",
-      "capturedAt": "2026-09-12T01:44:43.013Z",
+      "capturedAt": "2026-09-12T18:46:38.006Z",
       "rawEntityKey": "comment:id:849254854941294",
       "rawId": "221ae54f26286e4b",
       "authorDisplayName": "School Watchlist",
@@ -1029,11 +1277,11 @@
       "publishedAtSource": "visible-wrapper-label",
       "identityMethod": "comment_id",
       "identityConfidence": "high",
-      "bodyComplete": true,
-      "hadSeeMore": false,
-      "expansionAttempted": false,
-      "expansionAttempts": 0,
-      "expansionResult": "not_needed",
+      "bodyComplete": false,
+      "hadSeeMore": true,
+      "expansionAttempted": true,
+      "expansionAttempts": 1,
+      "expansionResult": "still_truncated",
       "facebookEdited": false,
       "facebookEditedLabel": "",
       "attachmentSummary": "",
@@ -1053,13 +1301,13 @@
       "isFeatured": false,
       "sourceLinkRecoveredFrom": "",
       "replyCommentId": "849254854941294",
-      "parentPostEntityKey": "post:id:122138724993037395",
+      "parentPostEntityKey": "post:id:pfbid09MkDGi5V4LSsqmGN8eTRccNK7wZoDGb4purJg4jhhBvcE81DHTGv7HhV5RA8ciTVl",
       "groupName": "",
       "groupUrl": "",
-      "parentRelationshipMethod": "parent_post_permalink",
-      "parentRelationshipConfidence": "high",
+      "parentRelationshipMethod": "existing_parent_id",
+      "parentRelationshipConfidence": "medium",
       "firstSeen": "2026-09-12T00:02:12.560Z",
-      "lastSeen": "2026-09-12T02:07:11.549Z",
+      "lastSeen": "2026-09-12T18:48:03.053Z",
       "status": "active",
       "missingCount": 0,
       "versions": [
@@ -1073,14 +1321,27 @@
           "timestampText": "Friday 11 September 2026 at 18:01",
           "timestampExact": "Friday 11 September 2026 at 18:01",
           "permalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid02CuPQBshquT9RRsZYWJZgcwnhUzVzuwkpypwacDC8LUS5Dkbz6P6wwox89qTus9hMl&id=61581121856469&comment_id=3607890936041269&reply_comment_id=849254854941294"
+        },
+        {
+          "text": "Cait Antony because the devil is real and he comes to LIE KILL and DESTROY … See more",
+          "textHash": "641efcbc4bde26a1363baac00191f859740f6257be6ebb42be13c3e8af5e7c41",
+          "rawObservedText": "Cait Antony because the devil is real and he comes to LIE KILL and DESTROY … See more",
+          "contentCompleteness": "full",
+          "firstSeen": "2026-09-12T18:48:03.053Z",
+          "lastSeen": "2026-09-12T18:48:03.053Z",
+          "timestampText": "Friday 11 September 2026 at 18:01",
+          "timestampExact": "Friday 11 September 2026 at 18:01",
+          "permalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid09MkDGi5V4LSsqmGN8eTRccNK7wZoDGb4purJg4jhhBvcE81DHTGv7HhV5RA8ciTVl&id=61581121856469&comment_id=3607890936041269&reply_comment_id=849254854941294"
         }
       ],
-      "observationCount": 2,
+      "observationCount": 3,
       "postIdAliases": [
-        "122138724993037395"
+        "122138724993037395",
+        "pfbid09MkDGi5V4LSsqmGN8eTRccNK7wZoDGb4purJg4jhhBvcE81DHTGv7HhV5RA8ciTVl"
       ],
       "parentPostPermalinkAliases": [
-        "https://www.facebook.com/photo/?fbid=122138724993037395"
+        "https://www.facebook.com/photo/?fbid=122138724993037395",
+        "https://www.facebook.com/permalink.php?story_fbid=pfbid09MkDGi5V4LSsqmGN8eTRccNK7wZoDGb4purJg4jhhBvcE81DHTGv7HhV5RA8ciTVl&id=61581121856469"
       ]
     },
     {
@@ -1349,14 +1610,14 @@
       "contentCompleteness": "full",
       "timestampText": "Friday 11 September 2026 at 17:12",
       "timestampExact": "Friday 11 September 2026 at 17:12",
-      "permalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid02ou4EBDpBpExqgHypb8NcNjGaPrmAxs3CNdZS5ip65KM4RuRpf6KHjSsYJ4sEMdy9l&id=61581121856469&comment_id=1736515227538465",
-      "parentPostPermalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid02ou4EBDpBpExqgHypb8NcNjGaPrmAxs3CNdZS5ip65KM4RuRpf6KHjSsYJ4sEMdy9l&id=61581121856469",
+      "permalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid0kMR3G4BpyACpHeuVKctT65RDypFJtvEnHG51pqw34kZU77oPGvTTkBDYc9KQtX4Ll&id=61581121856469&comment_id=1736515227538465",
+      "parentPostPermalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid0kMR3G4BpyACpHeuVKctT65RDypFJtvEnHG51pqw34kZU77oPGvTTkBDYc9KQtX4Ll&id=61581121856469",
       "parentId": "post:pfbid02ou4EBDpBpExqgHypb8NcNjGaPrmAxs3CNdZS5ip65KM4RuRpf6KHjSsYJ4sEMdy9l",
       "postId": "pfbid02ou4EBDpBpExqgHypb8NcNjGaPrmAxs3CNdZS5ip65KM4RuRpf6KHjSsYJ4sEMdy9l",
-      "observedPostId": "pfbid02ou4EBDpBpExqgHypb8NcNjGaPrmAxs3CNdZS5ip65KM4RuRpf6KHjSsYJ4sEMdy9l",
+      "observedPostId": "pfbid0kMR3G4BpyACpHeuVKctT65RDypFJtvEnHG51pqw34kZU77oPGvTTkBDYc9KQtX4Ll",
       "commentId": "1736515227538465",
       "parentCommentId": "",
-      "capturedAt": "2026-09-12T01:13:20.906Z",
+      "capturedAt": "2026-09-12T18:46:53.405Z",
       "rawEntityKey": "comment:id:1736515227538465",
       "rawId": "0bd4d297d3e9f51b",
       "authorDisplayName": "Thompsonvicrol Thompsonvicrol",
@@ -1389,13 +1650,13 @@
       "isFeatured": false,
       "sourceLinkRecoveredFrom": "",
       "replyCommentId": "",
-      "parentPostEntityKey": "post:id:pfbid02ou4EBDpBpExqgHypb8NcNjGaPrmAxs3CNdZS5ip65KM4RuRpf6KHjSsYJ4sEMdy9l",
+      "parentPostEntityKey": "post:id:pfbid0kMR3G4BpyACpHeuVKctT65RDypFJtvEnHG51pqw34kZU77oPGvTTkBDYc9KQtX4Ll",
       "groupName": "",
       "groupUrl": "",
       "parentRelationshipMethod": "unresolved",
       "parentRelationshipConfidence": "unknown",
       "firstSeen": "2026-09-12T00:02:12.560Z",
-      "lastSeen": "2026-09-12T02:07:11.549Z",
+      "lastSeen": "2026-09-12T18:48:03.053Z",
       "status": "active",
       "missingCount": 0,
       "versions": [
@@ -1405,18 +1666,20 @@
           "rawObservedText": "That evil dangerous man with his super evil....respectful conversations and diversity of thought. How dare he invite people to… See more",
           "contentCompleteness": "full",
           "firstSeen": "2026-09-12T00:02:12.560Z",
-          "lastSeen": "2026-09-12T02:07:11.549Z",
+          "lastSeen": "2026-09-12T18:48:03.053Z",
           "timestampText": "Friday 11 September 2026 at 17:12",
           "timestampExact": "Friday 11 September 2026 at 17:12",
           "permalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid02ou4EBDpBpExqgHypb8NcNjGaPrmAxs3CNdZS5ip65KM4RuRpf6KHjSsYJ4sEMdy9l&id=61581121856469&comment_id=1736515227538465"
         }
       ],
-      "observationCount": 2,
+      "observationCount": 3,
       "postIdAliases": [
-        "pfbid02ou4EBDpBpExqgHypb8NcNjGaPrmAxs3CNdZS5ip65KM4RuRpf6KHjSsYJ4sEMdy9l"
+        "pfbid02ou4EBDpBpExqgHypb8NcNjGaPrmAxs3CNdZS5ip65KM4RuRpf6KHjSsYJ4sEMdy9l",
+        "pfbid0kMR3G4BpyACpHeuVKctT65RDypFJtvEnHG51pqw34kZU77oPGvTTkBDYc9KQtX4Ll"
       ],
       "parentPostPermalinkAliases": [
-        "https://www.facebook.com/permalink.php?story_fbid=pfbid02ou4EBDpBpExqgHypb8NcNjGaPrmAxs3CNdZS5ip65KM4RuRpf6KHjSsYJ4sEMdy9l&id=61581121856469"
+        "https://www.facebook.com/permalink.php?story_fbid=pfbid02ou4EBDpBpExqgHypb8NcNjGaPrmAxs3CNdZS5ip65KM4RuRpf6KHjSsYJ4sEMdy9l&id=61581121856469",
+        "https://www.facebook.com/permalink.php?story_fbid=pfbid0kMR3G4BpyACpHeuVKctT65RDypFJtvEnHG51pqw34kZU77oPGvTTkBDYc9KQtX4Ll&id=61581121856469"
       ]
     },
     {
@@ -1591,20 +1854,20 @@
       "identityQuality": "strong",
       "itemType": "comment",
       "author": "Helen Marie",
-      "text": "Dear Father Please Help The Children In This Crazy World. I Believe Our Father Above Make Our Gender The Way He Wanted Us To Be. Us Humans Sure Have Messed Everything Thing Up On This Planet. Dear Father Please Reach Down And Help Us . We Sure Need You Now. In Jesus Name I Pray",
-      "textHash": "7fd79d58fbc0de3ce79043a7329354d6051b0652b0b78a55dda09de77627e782",
-      "rawObservedText": "Dear Father Please Help The Children In This Crazy World. I Believe Our Father Above Make Our Gender The Way He Wanted Us To Be. Us Humans Sure Have Messed Everything Thing Up On This Planet. Dear Father Please Reach Down And Help Us . We Sure Need You Now. In Jesus Name I Pray",
+      "text": "Dear Father Please Help The Children In This Crazy World. I Believe Our Father Above Make Our Gender The Way He Wanted Us To B… See more",
+      "textHash": "dfb4fa05ca6426cff21f36aaaee592808008122feadf3302e00090c26a4d8165",
+      "rawObservedText": "Dear Father Please Help The Children In This Crazy World. I Believe Our Father Above Make Our Gender The Way He Wanted Us To B… See more",
       "contentCompleteness": "full",
       "timestampText": "Friday 11 September 2026 at 14:53",
       "timestampExact": "Friday 11 September 2026 at 14:53",
-      "permalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid02CuPQBshquT9RRsZYWJZgcwnhUzVzuwkpypwacDC8LUS5Dkbz6P6wwox89qTus9hMl&id=61581121856469&comment_id=3607890936041269",
-      "parentPostPermalink": "https://www.facebook.com/photo/?fbid=122138724993037395",
+      "permalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid09MkDGi5V4LSsqmGN8eTRccNK7wZoDGb4purJg4jhhBvcE81DHTGv7HhV5RA8ciTVl&id=61581121856469&comment_id=3607890936041269",
+      "parentPostPermalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid09MkDGi5V4LSsqmGN8eTRccNK7wZoDGb4purJg4jhhBvcE81DHTGv7HhV5RA8ciTVl&id=61581121856469",
       "parentId": "post:122138724993037395",
       "postId": "122138724993037395",
-      "observedPostId": "122138724993037395",
+      "observedPostId": "pfbid09MkDGi5V4LSsqmGN8eTRccNK7wZoDGb4purJg4jhhBvcE81DHTGv7HhV5RA8ciTVl",
       "commentId": "3607890936041269",
       "parentCommentId": "",
-      "capturedAt": "2026-09-12T01:44:35.305Z",
+      "capturedAt": "2026-09-12T18:46:38.000Z",
       "rawEntityKey": "comment:id:3607890936041269",
       "rawId": "c1652fb28a8dd576",
       "authorDisplayName": "Helen Marie",
@@ -1617,40 +1880,33 @@
       "publishedAtSource": "visible-wrapper-label",
       "identityMethod": "comment_id",
       "identityConfidence": "high",
-      "bodyComplete": true,
-      "hadSeeMore": false,
-      "expansionAttempted": false,
-      "expansionAttempts": 0,
-      "expansionResult": "not_needed",
+      "bodyComplete": false,
+      "hadSeeMore": true,
+      "expansionAttempted": true,
+      "expansionAttempts": 1,
+      "expansionResult": "still_truncated",
       "facebookEdited": false,
       "facebookEditedLabel": "",
       "attachmentSummary": "",
-      "imageAlts": [
-        "🙏"
-      ],
+      "imageAlts": [],
       "links": [
         {
           "href": "https://www.facebook.com/helen.mcmullen.50?comment_id=Y29tbWVudDoxMjIxMzg3MDI1OTUwMzczOTVfMzYwNzg5MDkzNjA0MTI2OQ%3D%3D",
           "text": ""
         }
       ],
-      "media": [
-        {
-          "altText": "🙏",
-          "type": "image"
-        }
-      ],
+      "media": [],
       "isPinned": false,
       "isFeatured": false,
       "sourceLinkRecoveredFrom": "",
       "replyCommentId": "",
-      "parentPostEntityKey": "post:id:122138724993037395",
+      "parentPostEntityKey": "post:id:pfbid09MkDGi5V4LSsqmGN8eTRccNK7wZoDGb4purJg4jhhBvcE81DHTGv7HhV5RA8ciTVl",
       "groupName": "",
       "groupUrl": "",
-      "parentRelationshipMethod": "parent_post_permalink",
-      "parentRelationshipConfidence": "high",
+      "parentRelationshipMethod": "existing_parent_id",
+      "parentRelationshipConfidence": "medium",
       "firstSeen": "2026-09-12T00:02:12.560Z",
-      "lastSeen": "2026-09-12T02:07:11.549Z",
+      "lastSeen": "2026-09-12T18:48:03.053Z",
       "status": "active",
       "missingCount": 0,
       "versions": [
@@ -1664,14 +1920,27 @@
           "timestampText": "Friday 11 September 2026 at 14:53",
           "timestampExact": "Friday 11 September 2026 at 14:53",
           "permalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid02CuPQBshquT9RRsZYWJZgcwnhUzVzuwkpypwacDC8LUS5Dkbz6P6wwox89qTus9hMl&id=61581121856469&comment_id=3607890936041269"
+        },
+        {
+          "text": "Dear Father Please Help The Children In This Crazy World. I Believe Our Father Above Make Our Gender The Way He Wanted Us To B… See more",
+          "textHash": "dfb4fa05ca6426cff21f36aaaee592808008122feadf3302e00090c26a4d8165",
+          "rawObservedText": "Dear Father Please Help The Children In This Crazy World. I Believe Our Father Above Make Our Gender The Way He Wanted Us To B… See more",
+          "contentCompleteness": "full",
+          "firstSeen": "2026-09-12T18:48:03.053Z",
+          "lastSeen": "2026-09-12T18:48:03.053Z",
+          "timestampText": "Friday 11 September 2026 at 14:53",
+          "timestampExact": "Friday 11 September 2026 at 14:53",
+          "permalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid09MkDGi5V4LSsqmGN8eTRccNK7wZoDGb4purJg4jhhBvcE81DHTGv7HhV5RA8ciTVl&id=61581121856469&comment_id=3607890936041269"
         }
       ],
-      "observationCount": 2,
+      "observationCount": 3,
       "postIdAliases": [
-        "122138724993037395"
+        "122138724993037395",
+        "pfbid09MkDGi5V4LSsqmGN8eTRccNK7wZoDGb4purJg4jhhBvcE81DHTGv7HhV5RA8ciTVl"
       ],
       "parentPostPermalinkAliases": [
-        "https://www.facebook.com/photo/?fbid=122138724993037395"
+        "https://www.facebook.com/photo/?fbid=122138724993037395",
+        "https://www.facebook.com/permalink.php?story_fbid=pfbid09MkDGi5V4LSsqmGN8eTRccNK7wZoDGb4purJg4jhhBvcE81DHTGv7HhV5RA8ciTVl&id=61581121856469"
       ]
     },
     {
@@ -2955,7 +3224,7 @@
       "observedPostId": "1528754535946341",
       "commentId": "",
       "parentCommentId": "",
-      "capturedAt": "2026-09-12T01:13:10.832Z",
+      "capturedAt": "2026-09-12T18:46:37.736Z",
       "rawEntityKey": "post:id:1528754535946341",
       "rawId": "f59a98ce71d5736a",
       "authorDisplayName": "School Watchlist",
@@ -2965,7 +3234,7 @@
       "publishedAt": "",
       "publishedDate": "",
       "publishedAtPrecision": "hour-range",
-      "publishedAtSource": "relative-wrapper-label",
+      "publishedAtSource": "unknown",
       "identityMethod": "facebook_id",
       "identityConfidence": "high",
       "bodyComplete": false,
@@ -2975,7 +3244,7 @@
       "expansionResult": "still_truncated",
       "facebookEdited": false,
       "facebookEditedLabel": "",
-      "attachmentSummary": "ShowMe | BREAKING NEWS: From 9/11 unity to open support for Jihad. Where did it begin? After 9/11, Americans came together. Patriotism swept across the nation as ordinary Americans became heroes and first responders rushed toward danger to save others. Today, our children are being taught that America is the problem, not a beacon of hope. This is what happens when government schools are allowed to indoctrinate children. Our children, families, and freedom are at stake. Parents must take back authority over their children’s education. Read the full release: https://bit.ly/4xko7fE #USPIE #GovernmentSchools #ParentalRights #TakeBackEducation #EducationFreedom #911 #NeverForget | vASfebHip.com",
+      "attachmentSummary": "ShowMe | BREAKING NEWS: From 9/11 unity to open support for Jihad. Where did it begin? After 9/11, Americans came together. Patriotism swept across the nation as ordinary Americans became heroes and first responders rushed toward danger to save others. Today, our children are being taught that America is the problem, not a beacon of hope. This is what happens when government schools are allowed to indoctrinate children. Our children, families, and freedom are at stake. Parents must take back authority over their children’s education. Read the full release: https://bit.ly/4xko7fE #USPIE #GovernmentSchools #ParentalRights #TakeBackEducation #EducationFreedom #911 #NeverForget | F8gDj9eh.com",
       "imageAlts": [
         "May be an image of text that says \"0 USPIE USPI የወ ENISOPLNE BREAKING NEWS From 9/11 Unity to Open Support for Jihad. Where did it Begin?\"",
         "🚨",
@@ -2997,16 +3266,16 @@
       ],
       "media": [
         {
-          "altText": "May be an image of text that says \"0 USPIE USPI የወ ENISOPLNE BREAKING NEWS From 9/11 Unity to Open Support for Jihad. Where did it Begin?\"",
-          "type": "image"
+          "type": "image",
+          "altText": "May be an image of text that says \"0 USPIE USPI የወ ENISOPLNE BREAKING NEWS From 9/11 Unity to Open Support for Jihad. Where did it Begin?\""
         },
         {
-          "altText": "🚨",
-          "type": "image"
+          "type": "image",
+          "altText": "🚨"
         },
         {
-          "altText": "📖",
-          "type": "image"
+          "type": "image",
+          "altText": "📖"
         }
       ],
       "isPinned": false,
@@ -3023,7 +3292,7 @@
       "publicationEvidenceLabel": "10 hours ago",
       "publicationEvidenceObservedAt": "2026-09-12T01:13:02.184000Z",
       "firstSeen": "2026-09-11T14:44:28.987Z",
-      "lastSeen": "2026-09-12T02:07:11.549Z",
+      "lastSeen": "2026-09-12T18:48:03.053Z",
       "status": "active",
       "missingCount": 0,
       "versions": [
@@ -3033,13 +3302,13 @@
           "rawObservedText": "BREAKING NEWS: From 9/11 unity to open support for Jihad. Where did it begin? After 9/11, Americans came together. Patriotism swept across the nation as ordinary Americans became heroes and first responders rushed toward danger to save others. Today, our children are being taught that America is the problem, not a beacon of hope. This is what happens when government schools are allowed to indoctrinate children. Our children, families, and freedom are at stake. Parents must take back authority over their children’s education. Read the full release: https://bit.ly/4xko7fE #USPIE #GovernmentSchools #ParentalRights #TakeBackEducation #EducationFreedom #911 #NeverForget See less",
           "contentCompleteness": "full",
           "firstSeen": "2026-09-11T14:44:28.987Z",
-          "lastSeen": "2026-09-12T02:07:11.549Z",
+          "lastSeen": "2026-09-12T18:48:03.053Z",
           "timestampText": "6 minutes ago",
           "timestampExact": "",
           "permalink": "https://www.facebook.com/photo/?fbid=1528754535946341"
         }
       ],
-      "observationCount": 3,
+      "observationCount": 4,
       "postIdAliases": [
         "1528754535946341"
       ],
@@ -4975,7 +5244,7 @@
       "author": "School Watchlist",
       "text": "A 9-YEAR-OLD BOY IN MAKEUP AND SPARKLES — AND A “ARE YOU TRANSGENDER?” TALK — IS ON A MIDDLE SCHOOL SHELF Wright City Middle School Parents, this is not a rumor. This is in the online catalog. And confirmed local copies. Why is a story that centers a 9-year-old’s gender confusion in a middle school library? Parents decide what their children are ready for. Schools should not get to sneak these kinds of books in. This is a middle-grade novel walking a child through gender-identity questioning and teaching readers that the right response is affirmation, not guidance back to biological reality. Where: Wright City Middle School Librarian: Jani Wilkens Email: jani.wilkens@wrightcity.k12.mo.us Principal: John (Joe) Harrington Email: john.harrington@wrightcity.k12.mo.us",
       "textHash": "3dbd327e93f22eda42dd9f14a7c570945769735faaa74d4a0095e742d82706df",
-      "rawObservedText": "A 9-YEAR-OLD BOY IN MAKEUP AND SPARKLES — AND A “ARE YOU TRANSGENDER?” TALK — IS ON A MIDDLE SCHOOL SHELF Wright City Middle School Parents, this is not a rumor. This is in the online catalog. And confirmed local copies. Why is a story that centers a 9-year-old’s gender confusion in a middle school library? Parents decide what their children are ready for. Schools should not get to sneak these kinds of books in. This is a middle-grade novel walking a child through gender-identity questioning and teaching readers that the right response is affirmation, not guidance back to biological reality. Where: Wright City Middle School Librarian: Jani Wilkens Email: jani.wilkens@wrightcity.k12.mo.us Principal: John (Joe) Harrington Email: john.harrington@wrightcity.k12.mo.us",
+      "rawObservedText": "A 9-YEAR-OLD BOY IN MAKEUP AND SPARKLES — AND A “ARE YOU TRANSGENDER?” TALK — IS ON A MIDDLE SCHOOL SHELF… See more",
       "contentCompleteness": "full",
       "timestampText": "",
       "timestampExact": "",
@@ -4986,7 +5255,7 @@
       "observedPostId": "122138724993037395",
       "commentId": "",
       "parentCommentId": "",
-      "capturedAt": "2026-09-12T01:45:39.092Z",
+      "capturedAt": "2026-09-12T18:46:45.416Z",
       "rawEntityKey": "post:id:122138724993037395",
       "rawId": "28d1e1a60f2b596a",
       "authorDisplayName": "School Watchlist",
@@ -4995,18 +5264,18 @@
       "authorKey": "name:school watchlist",
       "publishedAt": "2026-09-11T12:50:00.000Z",
       "publishedDate": "",
-      "publishedAtPrecision": "second",
-      "publishedAtSource": "facebook-story-creation_time",
+      "publishedAtPrecision": "unknown",
+      "publishedAtSource": "unknown",
       "identityMethod": "facebook_id",
       "identityConfidence": "high",
-      "bodyComplete": true,
+      "bodyComplete": false,
       "hadSeeMore": true,
       "expansionAttempted": true,
       "expansionAttempts": 1,
-      "expansionResult": "expanded",
+      "expansionResult": "still_truncated",
       "facebookEdited": false,
       "facebookEditedLabel": "",
-      "attachmentSummary": "Photos from School Watchlist's post | I9eZIHMzOXQtjebStPWHbtvmzdd4yZUY1zWpxp328AAg0fnXy | 3uL6Rka3.com",
+      "attachmentSummary": "Photos from School Watchlist's post | Yw9APhjgjnKjArbszrYIguxklWTjIcv5s5ZFrfapfpOPOtLC | RejpT.com",
       "imageAlts": [],
       "links": [
         {
@@ -5024,10 +5293,6 @@
         {
           "href": "https://www.facebook.com/photo/?fbid=122138725671037395",
           "text": ""
-        },
-        {
-          "href": "https://www.facebook.com/photo/?fbid=122138724993037395",
-          "text": ""
         }
       ],
       "media": [],
@@ -5039,7 +5304,7 @@
       "groupName": "",
       "groupUrl": "",
       "firstSeen": "2026-09-11T14:44:28.987Z",
-      "lastSeen": "2026-09-12T02:07:11.549Z",
+      "lastSeen": "2026-09-12T18:48:03.053Z",
       "status": "active",
       "missingCount": 0,
       "versions": [
@@ -5049,13 +5314,13 @@
           "rawObservedText": "A 9-YEAR-OLD BOY IN MAKEUP AND SPARKLES — AND A “ARE YOU TRANSGENDER?” TALK — IS ON A MIDDLE SCHOOL SHELF Wright City Middle School Parents, this is not a rumor. This is in the online catalog. And confirmed local copies. Why is a story that centers a 9-year-old’s gender confusion in a middle school library? Parents decide what their children are ready for. Schools should not get to sneak these kinds of books in. This is a middle-grade novel walking a child through gender-identity questioning and teaching readers that the right response is affirmation, not guidance back to biological reality. Where: Wright City Middle School Librarian: Jani Wilkens Email: jani.wilkens@wrightcity.k12.mo.us Principal: John (Joe) Harrington Email: john.harrington@wrightcity.k12.mo.us",
           "contentCompleteness": "full",
           "firstSeen": "2026-09-11T14:44:28.987Z",
-          "lastSeen": "2026-09-12T02:07:11.549Z",
+          "lastSeen": "2026-09-12T18:48:03.053Z",
           "timestampText": "",
           "timestampExact": "",
           "permalink": "https://www.facebook.com/photo/?fbid=122138724993037395"
         }
       ],
-      "observationCount": 3,
+      "observationCount": 4,
       "postIdAliases": [
         "122138724993037395"
       ],
@@ -6466,7 +6731,7 @@
       "observedPostId": "1518270780325436",
       "commentId": "",
       "parentCommentId": "",
-      "capturedAt": "2026-09-12T01:13:36.742Z",
+      "capturedAt": "2026-09-12T18:46:53.186Z",
       "rawEntityKey": "post:id:1518270780325436",
       "rawId": "a3c2890c1d3971f0",
       "authorDisplayName": "School Watchlist",
@@ -6476,7 +6741,7 @@
       "publishedAt": "",
       "publishedDate": "",
       "publishedAtPrecision": "day-range",
-      "publishedAtSource": "relative-wrapper-label",
+      "publishedAtSource": "unknown",
       "identityMethod": "facebook_id",
       "identityConfidence": "high",
       "bodyComplete": false,
@@ -6486,7 +6751,7 @@
       "expansionResult": "still_truncated",
       "facebookEdited": false,
       "facebookEditedLabel": "",
-      "attachmentSummary": "ShowMe | September 10, 2025, changed America’s history forever. One year ago, our founder, our leader, and our friend, Charlie Kirk, was assassinated while doing what he had devoted his life to: standing before young Americans and challenging them to think, speak, and have the courage to stand for what they believe. There are no words that can adequately describe what this past year has been like. We have had to learn how to carry on without the person at the center of everything we do. We have celebrated milestones Charlie should have been here to celebrate, stood on stages where his voice should have been heard, and watched his children grow without their father there to see it. For those who knew and loved Charlie, September 10 will never simply be an anniversary. It is the day our lives changed forever. Today, our hearts are especially with Erika, Charlie’s children, the Kirk family, and the countless people who loved him. We will never forget the unimaginable loss they continue to carry. But we also remember Charlie for how he lived. Charlie’s faith was at the center of who he was. His faith in Christ was his armor, which no assassin could overcome. He believed in life everlasting, and that unshakable faith gave him a courage impossible to miss. He wanted others to know the hope and truth he had in Jesus. Charlie died a martyr for Christ. Charlie believed America was worth fighting for, that young people could change the course of a nation, and that speech would only remain free if exercised. He was fearless in the pursuit of truth, no matter the cost. Turning Point shares those beliefs and will never abandon them. Charlie never gave up, and neither will we. Today, we remember an incredible patriot, a husband, a father, and a man whose faith gave him the courage to spend his life serving a purpose bigger than himself. We miss him. We grieve him. And we will never forget him. One year later, Turning Point remains committed to carrying forward the work Charlie began. For Charlie. Always. | tK1JZ5B.com",
+      "attachmentSummary": "ShowMe | September 10, 2025, changed America’s history forever. One year ago, our founder, our leader, and our friend, Charlie Kirk, was assassinated while doing what he had devoted his life to: standing before young Americans and challenging them to think, speak, and have the courage to stand for what they believe. There are no words that can adequately describe what this past year has been like. We have had to learn how to carry on without the person at the center of everything we do. We have celebrated milestones Charlie should have been here to celebrate, stood on stages where his voice should have been heard, and watched his children grow without their father there to see it. For those who knew and loved Charlie, September 10 will never simply be an anniversary. It is the day our lives changed forever. Today, our hearts are especially with Erika, Charlie’s children, the Kirk family, and the countless people who loved him. We will never forget the unimaginable loss they continue to carry. But we also remember Charlie for how he lived. Charlie’s faith was at the center of who he was. His faith in Christ was his armor, which no assassin could overcome. He believed in life everlasting, and that unshakable faith gave him a courage impossible to miss. He wanted others to know the hope and truth he had in Jesus. Charlie died a martyr for Christ. Charlie believed America was worth fighting for, that young people could change the course of a nation, and that speech would only remain free if exercised. He was fearless in the pursuit of truth, no matter the cost. Turning Point shares those beliefs and will never abandon them. Charlie never gave up, and neither will we. Today, we remember an incredible patriot, a husband, a father, and a man whose faith gave him the courage to spend his life serving a purpose bigger than himself. We miss him. We grieve him. And we will never forget him. One year later, Turning Point remains committed to carrying forward the work Charlie began. For Charlie. Always. | kdozmboG3.com",
       "imageAlts": [
         "May be a black-and-white image of one or more people, crowd and text that says \"UnN JM FREEOM 0 M @turningpointusa\""
       ],
@@ -6506,8 +6771,8 @@
       ],
       "media": [
         {
-          "altText": "May be a black-and-white image of one or more people, crowd and text that says \"UnN JM FREEOM 0 M @turningpointusa\"",
-          "type": "image"
+          "type": "image",
+          "altText": "May be a black-and-white image of one or more people, crowd and text that says \"UnN JM FREEOM 0 M @turningpointusa\""
         }
       ],
       "isPinned": false,
@@ -6518,7 +6783,7 @@
       "groupName": "",
       "groupUrl": "",
       "firstSeen": "2026-09-10T15:35:04.127Z",
-      "lastSeen": "2026-09-12T02:07:11.549Z",
+      "lastSeen": "2026-09-12T18:48:03.053Z",
       "status": "active",
       "missingCount": 0,
       "versions": [
@@ -6528,13 +6793,13 @@
           "rawObservedText": "Today, we remember an incredible patriot, a husband, a father, and a man whose faith gave him the courage to spend his life serving a purpose bigger than himself. … See more",
           "contentCompleteness": "truncated",
           "firstSeen": "2026-09-10T15:35:04.127Z",
-          "lastSeen": "2026-09-12T02:07:11.549Z",
+          "lastSeen": "2026-09-12T18:48:03.053Z",
           "timestampText": "",
           "timestampExact": "",
           "permalink": "https://www.facebook.com/photo/?fbid=1518270780325436"
         }
       ],
-      "observationCount": 4,
+      "observationCount": 5,
       "postIdAliases": [
         "1518270780325436"
       ],
@@ -8629,7 +8894,7 @@
       "observedPostId": "122137431927037395",
       "commentId": "",
       "parentCommentId": "",
-      "capturedAt": "2026-09-12T01:13:20.618Z",
+      "capturedAt": "2026-09-12T18:46:53.148Z",
       "rawEntityKey": "post:id:122137431927037395",
       "rawId": "94d1262989538d95",
       "authorDisplayName": "School Watchlist",
@@ -8639,7 +8904,7 @@
       "publishedAt": "",
       "publishedDate": "",
       "publishedAtPrecision": "upper-bound",
-      "publishedAtSource": "earliest-observed-comment",
+      "publishedAtSource": "unknown",
       "identityMethod": "facebook_id",
       "identityConfidence": "high",
       "bodyComplete": false,
@@ -8649,7 +8914,7 @@
       "expansionResult": "still_truncated",
       "facebookEdited": false,
       "facebookEditedLabel": "",
-      "attachmentSummary": "ShowMe | OVER STAFFED ADMIN $1.5 MILLION (estimated) in admin salaries for one school Fair question for FHSD taxpayers: Francis Howell North high school has 9 high-salary administrative positions: 1. Principal 2. Associate Principal 3. Assistant Principal 4. Assistant Principal 5. Assistant Principal 6. Activities Director 7. Dean (a Dean?! Really?) 8. Additional administrative role 9. Additional administrative role Plus 8 counselors. Those non-teaching positions cost most likely well over $1.5 MILLION in salaries before benefits. The student-teacher ratio is still 19:1. Is this the best use of the money? Would some of those dollars produce more value as additional teachers, smaller classes, or keeping the tax levy lower? This structure is expensive enough that the priority question is fair. What do you think? | f2JRDVUYA.com",
+      "attachmentSummary": "ShowMe | OVER STAFFED ADMIN $1.5 MILLION (estimated) in admin salaries for one school Fair question for FHSD taxpayers: Francis Howell North high school has 9 high-salary administrative positions: 1. Principal 2. Associate Principal 3. Assistant Principal 4. Assistant Principal 5. Assistant Principal 6. Activities Director 7. Dean (a Dean?! Really?) 8. Additional administrative role 9. Additional administrative role Plus 8 counselors. Those non-teaching positions cost most likely well over $1.5 MILLION in salaries before benefits. The student-teacher ratio is still 19:1. Is this the best use of the money? Would some of those dollars produce more value as additional teachers, smaller classes, or keeping the tax levy lower? This structure is expensive enough that the priority question is fair. What do you think? | 34ERSi.com",
       "imageAlts": [
         "💲",
         "May be a graphic of text that says \"OVER STAFFED ADMIN $$$ $1.5 MILLION in salaries -just for ONE school\""
@@ -8666,12 +8931,12 @@
       ],
       "media": [
         {
-          "altText": "💲",
-          "type": "image"
+          "type": "image",
+          "altText": "💲"
         },
         {
-          "altText": "May be a graphic of text that says \"OVER STAFFED ADMIN $$$ $1.5 MILLION in salaries -just for ONE school\"",
-          "type": "image"
+          "type": "image",
+          "altText": "May be a graphic of text that says \"OVER STAFFED ADMIN $$$ $1.5 MILLION in salaries -just for ONE school\""
         }
       ],
       "isPinned": false,
@@ -8688,7 +8953,7 @@
       "publicationEvidenceLabel": "19 hours ago",
       "publicationEvidenceObservedAt": "2026-09-12T01:13:20.618Z",
       "firstSeen": "2026-09-11T14:44:28.987Z",
-      "lastSeen": "2026-09-12T02:07:11.549Z",
+      "lastSeen": "2026-09-12T18:48:03.053Z",
       "status": "active",
       "missingCount": 0,
       "versions": [
@@ -8698,13 +8963,13 @@
           "rawObservedText": "OVER STAFFED ADMIN $1.5 MILLION (estimated) in admin salaries for one school F… See more",
           "contentCompleteness": "truncated",
           "firstSeen": "2026-09-11T14:44:28.987Z",
-          "lastSeen": "2026-09-12T02:07:11.549Z",
+          "lastSeen": "2026-09-12T18:48:03.053Z",
           "timestampText": "",
           "timestampExact": "",
           "permalink": "https://www.facebook.com/photo/?fbid=122137431927037395"
         }
       ],
-      "observationCount": 3,
+      "observationCount": 4,
       "postIdAliases": [
         "122137431927037395"
       ],
@@ -11703,7 +11968,7 @@
       "author": "School Watchlist",
       "text": "BOOKS WITH SEXUAL CONTENT RETAINED Francis Howell parents, a formal challenge was filed. The book in question was: Me, Earl and the Dying Girl by Jesse Andrews This book contains: • Extensive, frequent profanity throughout (including multiple uses of the f-word and other strong language) • Crude and explicit sexual discussions and jokes • Extended, vulgar dialogue about oral sex • Chapters titled “Phone Sex” • Objectifying and crude comments about girls’ bodies • References to masturbation and other sexual topics treated as punchlines • Misogynistic and degrading humor from the teenage male narrators The complaint centered on the language and content. The committee acknowledged the profanity but decided that, taken as a whole, the book supports “academic learning” and is “not pervasively vulgar or objectively offensive.” EM”PATHETIC” REVIEW They “felt” the crude language is similar to what students might hear in daily life. The Review Committee’s decision: Retain without Restrictions – Currently High School Review Committee members included: Jon Schultz (Principal), Diane Thompson (tutor), Zachary Howard (Tennis Coach), Kim Coil, Amy Gryder (Board Member), Susan Schneider, Karin Robinette, Brittany Kreifels IMPORTANT FOR PARENTS: If you do NOT want your child to have access to this type of content at school, you must contact your school's media specialist (librarian) or your child's principal. Written notification is required. Without it, your child will have full access to any book the school deems appropriate, even material such as this. I've said this before, and I'll say it again: we no longer live in an age where adults are protecting children from sexual content. We are living in an age where adults are offering minor children books with age-inappropriate sexual content under the guise of education. #ProtectFHSDKids #ParentsRights #RaisingTheStandard #DontMessWithOurKids",
       "textHash": "ca7e8d0440459ed64c441cf13cca410331e8b56e2e82e0c44c7d1394caf1d6e3",
-      "rawObservedText": "BOOKS WITH SEXUAL CONTENT RETAINED Francis Howell parents, a formal challenge was filed. The book in question was: Me, Earl and the Dying Girl by Jesse Andrews This book contains: • Extensive, frequent profanity throughout (including multiple uses of the f-word and other strong language) • Crude and explicit sexual discussions and jokes • Extended, vulgar dialogue about oral sex • Chapters titled “Phone Sex” • Objectifying and crude comments about girls’ bodies • References to masturbation and other sexual topics treated as punchlines • Misogynistic and degrading humor from the teenage male narrators The complaint centered on the language and content. The committee acknowledged the profanity but decided that, taken as a whole, the book supports “academic learning” and is “not pervasively vulgar or objectively offensive.” EM”PATHETIC” REVIEW They “felt” the crude language is similar to what students might hear in daily life. The Review Committee’s decision: Retain without Restrictions – Currently High School Review Committee members included: Jon Schultz (Principal), Diane Thompson (tutor), Zachary Howard (Tennis Coach), Kim Coil, Amy Gryder (Board Member), Susan Schneider, Karin Robinette, Brittany Kreifels IMPORTANT FOR PARENTS: If you do NOT want your child to have access to this type of content at school, you must contact your school's media specialist (librarian) or your child's principal. Written notification is required. Without it, your child will have full access to any book the school deems appropriate, even material such as this. I've said this before, and I'll say it again: we no longer live in an age where adults are protecting children from sexual content. We are living in an age where adults are offering minor children books with age-inappropriate sexual content under the guise of education. #ProtectFHSDKids #ParentsRights #RaisingTheStandard #DontMessWithOurKids",
+      "rawObservedText": "BOOKS WITH SEXUAL CONTENT RETAINED … See more",
       "contentCompleteness": "full",
       "timestampText": "",
       "timestampExact": "",
@@ -11714,7 +11979,7 @@
       "observedPostId": "122136998709037395",
       "commentId": "",
       "parentCommentId": "",
-      "capturedAt": "2026-09-12T01:20:51.804Z",
+      "capturedAt": "2026-09-12T18:46:53.228Z",
       "rawEntityKey": "post:id:122136998709037395",
       "rawId": "7dec5832dc8979c6",
       "authorDisplayName": "School Watchlist",
@@ -11724,17 +11989,17 @@
       "publishedAt": "",
       "publishedDate": "",
       "publishedAtPrecision": "day-range",
-      "publishedAtSource": "relative-wrapper-label",
+      "publishedAtSource": "unknown",
       "identityMethod": "facebook_id",
       "identityConfidence": "high",
-      "bodyComplete": true,
+      "bodyComplete": false,
       "hadSeeMore": true,
       "expansionAttempted": true,
       "expansionAttempts": 1,
-      "expansionResult": "expanded",
+      "expansionResult": "still_truncated",
       "facebookEdited": false,
       "facebookEditedLabel": "",
-      "attachmentSummary": "ShowMe | BOOKS WITH SEXUAL CONTENT RETAINED Francis Howell parents, a formal challenge was filed. The book in question was: Me, Earl and the Dying Girl by Jesse Andrews This book contains: • Extensive, frequent profanity throughout (including multiple uses of the f-word and other strong language) • Crude and explicit sexual discussions and jokes • Extended, vulgar dialogue about oral sex • Chapters titled “Phone Sex” • Objectifying and crude comments about girls’ bodies • References to masturbation and other sexual topics treated as punchlines • Misogynistic and degrading humor from the teenage male narrators The complaint centered on the language and content. The committee acknowledged the profanity but decided that, taken as a whole, the book supports “academic learning” and is “not pervasively vulgar or objectively offensive.” EM”PATHETIC” REVIEW They “felt” the crude language is similar to what students might hear in daily life. The Review Committee’s decision: Retain without Restrictions – Currently High School Review Committee members included: Jon Schultz (Principal), Diane Thompson (tutor), Zachary Howard (Tennis Coach), Kim Coil, Amy Gryder (Board Member), Susan Schneider, Karin Robinette, Brittany Kreifels IMPORTANT FOR PARENTS: If you do NOT want your child to have access to this type of content at school, you must contact your school's media specialist (librarian) or your child's principal. Written notification is required. Without it, your child will have full access to any book the school deems appropriate, even material such as this. I've said this before, and I'll say it again: we no longer live in an age where adults are protecting children from sexual content. We are living in an age where adults are offering minor children books with age-inappropriate sexual content under the guise of education. #ProtectFHSDKids #ParentsRights #RaisingTheStandard #DontMessWithOurKids | mGdnhO.com",
+      "attachmentSummary": "ShowMe | BOOKS WITH SEXUAL CONTENT RETAINED Francis Howell parents, a formal challenge was filed. The book in question was: Me, Earl and the Dying Girl by Jesse Andrews This book contains: • Extensive, frequent profanity throughout (including multiple uses of the f-word and other strong language) • Crude and explicit sexual discussions and jokes • Extended, vulgar dialogue about oral sex • Chapters titled “Phone Sex” • Objectifying and crude comments about girls’ bodies • References to masturbation and other sexual topics treated as punchlines • Misogynistic and degrading humor from the teenage male narrators The complaint centered on the language and content. The committee acknowledged the profanity but decided that, taken as a whole, the book supports “academic learning” and is “not pervasively vulgar or objectively offensive.” EM”PATHETIC” REVIEW They “felt” the crude language is similar to what students might hear in daily life. The Review Committee’s decision: Retain without Restrictions – Currently High School Review Committee members included: Jon Schultz (Principal), Diane Thompson (tutor), Zachary Howard (Tennis Coach), Kim Coil, Amy Gryder (Board Member), Susan Schneider, Karin Robinette, Brittany Kreifels IMPORTANT FOR PARENTS: If you do NOT want your child to have access to this type of content at school, you must contact your school's media specialist (librarian) or your child's principal. Written notification is required. Without it, your child will have full access to any book the school deems appropriate, even material such as this. I've said this before, and I'll say it again: we no longer live in an age where adults are protecting children from sexual content. We are living in an age where adults are offering minor children books with age-inappropriate sexual content under the guise of education. #ProtectFHSDKids #ParentsRights #RaisingTheStandard #DontMessWithOurKids | JM88DthcJW.com",
       "imageAlts": [
         "May be an image of text",
         "📕",
@@ -11750,48 +12015,28 @@
         {
           "href": "https://www.facebook.com/profile.php",
           "text": ""
-        },
-        {
-          "href": "https://www.facebook.com/hashtag/protectfhsdkids",
-          "text": "#ProtectFHSDKids"
-        },
-        {
-          "href": "https://www.facebook.com/hashtag/parentsrights",
-          "text": "#ParentsRights"
-        },
-        {
-          "href": "https://www.facebook.com/hashtag/raisingthestandard",
-          "text": "#RaisingTheStandard"
-        },
-        {
-          "href": "https://www.facebook.com/hashtag/dontmesswithourkids",
-          "text": "#DontMessWithOurKids"
-        },
-        {
-          "href": "https://www.facebook.com/photo/?fbid=122136998709037395",
-          "text": "May be an image of text"
         }
       ],
       "media": [
         {
-          "altText": "May be an image of text",
-          "type": "image"
+          "type": "image",
+          "altText": "May be an image of text"
         },
         {
-          "altText": "📕",
-          "type": "image"
+          "type": "image",
+          "altText": "📕"
         },
         {
-          "altText": "👉🏻",
-          "type": "image"
+          "type": "image",
+          "altText": "👉🏻"
         },
         {
-          "altText": "🚨",
-          "type": "image"
+          "type": "image",
+          "altText": "🚨"
         },
         {
-          "altText": "✏️",
-          "type": "image"
+          "type": "image",
+          "altText": "✏️"
         }
       ],
       "isPinned": false,
@@ -11802,7 +12047,7 @@
       "groupName": "",
       "groupUrl": "",
       "firstSeen": "2026-09-10T15:35:04.127Z",
-      "lastSeen": "2026-09-12T02:07:11.549Z",
+      "lastSeen": "2026-09-12T18:48:03.053Z",
       "status": "active",
       "missingCount": 0,
       "versions": [
@@ -11812,13 +12057,13 @@
           "rawObservedText": "BOOKS WITH SEXUAL CONTENT RETAINED Francis Howell parents, a formal challenge was filed. The book in question was: Me, Earl and the Dying Girl by Jesse Andrews This book contains: • Extensive, frequent profanity throughout (including multiple uses of the f-word and other strong language) • Crude and explicit sexual discussions and jokes • Extended, vulgar dialogue about oral sex • Chapters titled “Phone Sex” • Objectifying and crude comments about girls’ bodies • References to masturbation and other sexual topics treated as punchlines • Misogynistic and degrading humor from the teenage male narrators The complaint centered on the language and content. The committee acknowledged the profanity but decided that, taken as a whole, the book supports “academic learning” and is “not pervasively vulgar or objectively offensive.” EM”PATHETIC” REVIEW They “felt” the crude language is similar to what students might hear in daily life. The Review Committee’s decision: Retain without Restrictions – Currently High School Review Committee members included: Jon Schultz (Principal), Diane Thompson (tutor), Zachary Howard (Tennis Coach), Kim Coil, Amy Gryder (Board Member), Susan Schneider, Karin Robinette, Brittany Kreifels IMPORTANT FOR PARENTS: If you do NOT want your child to have access to this type of content at school, you must contact your school's media specialist (librarian) or your child's principal. Written notification is required. Without it, your child will have full access to any book the school deems appropriate, even material such as this. I've said this before, and I'll say it again: we no longer live in an age where adults are protecting children from sexual content. We are living in an age where adults are offering minor children books with age-inappropriate sexual content under the guise of education. #ProtectFHSDKids #ParentsRights #RaisingTheStandard #DontMessWithOurKids",
           "contentCompleteness": "full",
           "firstSeen": "2026-09-10T15:35:04.127Z",
-          "lastSeen": "2026-09-12T02:07:11.549Z",
+          "lastSeen": "2026-09-12T18:48:03.053Z",
           "timestampText": "",
           "timestampExact": "",
           "permalink": "https://www.facebook.com/photo/?fbid=122136998709037395"
         }
       ],
-      "observationCount": 4,
+      "observationCount": 5,
       "postIdAliases": [
         "122136998709037395"
       ],
@@ -82918,96 +83163,6 @@
       "observationCount": 1,
       "postIdAliases": [
         "122130522885037395"
-      ]
-    },
-    {
-      "id": "post:122141279259128115",
-      "identityQuality": "strong",
-      "itemType": "post",
-      "author": "School Watchlist",
-      "text": "Protect our children. YES on 3 this November!",
-      "textHash": "afa0bcbadd3359755b438d4cc752340b5c5f7831b60bc5c00309d35c5c0cbf99",
-      "rawObservedText": "Protect our children. YES on 3 this November!",
-      "contentCompleteness": "full",
-      "timestampText": "28 May",
-      "timestampExact": "",
-      "permalink": "https://www.facebook.com/photo/?fbid=122141279259128115&set=a.122125156605128115",
-      "parentPostPermalink": "https://www.facebook.com/photo/?fbid=122141279259128115&set=a.122125156605128115",
-      "parentId": "",
-      "postId": "122141279259128115",
-      "observedPostId": "122141279259128115",
-      "commentId": "",
-      "parentCommentId": "",
-      "capturedAt": "2026-08-25T13:50:02.937Z",
-      "rawEntityKey": "post:122141279259128115",
-      "rawId": "9b35edfa",
-      "authorDisplayName": "School Watchlist",
-      "authorProfileUrl": "",
-      "authorProfileId": "",
-      "authorKey": "name:school watchlist",
-      "publishedAt": "",
-      "publishedDate": "",
-      "publishedAtPrecision": "unknown",
-      "publishedAtSource": "unknown",
-      "identityMethod": "facebook_id",
-      "identityConfidence": "high",
-      "bodyComplete": true,
-      "hadSeeMore": false,
-      "expansionAttempted": null,
-      "expansionAttempts": null,
-      "expansionResult": "not_needed",
-      "facebookEdited": null,
-      "facebookEditedLabel": "",
-      "attachmentSummary": "ShowMe | Protect our children. YES on 3 this November! | YLtVBJPZA.com",
-      "imageAlts": [
-        "May be an image of text that says \"YES ON 3 BAN TRANSGENDER SURGERIES FOR MINORS YES ON 3 BAN TRANSGENDER SURGERIES FOR MINORS YESON3 3 YES ON BAN TRANSGENDER SURGERIES FOR MINORS\""
-      ],
-      "links": [
-        {
-          "href": "https://www.facebook.com/profile.php?id=61581121856469",
-          "text": ""
-        },
-        {
-          "href": "https://www.facebook.com/profile.php",
-          "text": ""
-        },
-        {
-          "href": "https://www.facebook.com/stories/122101518021128115/UzpfSVNDOjE0MTEzNDkzNDEwOTM2ODk=/",
-          "text": ""
-        },
-        {
-          "href": "https://www.facebook.com/HerHealthHerFuture",
-          "text": "Her Health Her Future"
-        }
-      ],
-      "media": [],
-      "isPinned": false,
-      "isFeatured": false,
-      "sourceLinkRecoveredFrom": "direct",
-      "replyCommentId": "",
-      "parentPostEntityKey": "",
-      "groupName": "",
-      "groupUrl": "",
-      "firstSeen": "2026-08-25T14:17:42.384Z",
-      "lastSeen": "2026-08-25T14:17:42.384Z",
-      "status": "active",
-      "missingCount": 0,
-      "versions": [
-        {
-          "text": "Protect our children. YES on 3 this November!",
-          "textHash": "afa0bcbadd3359755b438d4cc752340b5c5f7831b60bc5c00309d35c5c0cbf99",
-          "rawObservedText": "Protect our children. YES on 3 this November!",
-          "contentCompleteness": "full",
-          "firstSeen": "2026-08-25T14:17:42.384Z",
-          "lastSeen": "2026-08-25T14:17:42.384Z",
-          "timestampText": "28 May",
-          "timestampExact": "",
-          "permalink": "https://www.facebook.com/photo/?fbid=122141279259128115&set=a.122125156605128115"
-        }
-      ],
-      "observationCount": 1,
-      "postIdAliases": [
-        "122141279259128115"
       ]
     },
     {
@@ -224464,6 +224619,97 @@
       ]
     },
     {
+      "id": "post:122141279259128115",
+      "identityQuality": "strong",
+      "itemType": "post",
+      "author": "School Watchlist",
+      "text": "Protect our children. YES on 3 this November!",
+      "textHash": "afa0bcbadd3359755b438d4cc752340b5c5f7831b60bc5c00309d35c5c0cbf99",
+      "rawObservedText": "Protect our children. YES on 3 this November!",
+      "contentCompleteness": "full",
+      "timestampText": "28 May",
+      "timestampExact": "",
+      "permalink": "https://www.facebook.com/photo/?fbid=122141279259128115&set=a.122125156605128115",
+      "parentPostPermalink": "https://www.facebook.com/photo/?fbid=122141279259128115&set=a.122125156605128115",
+      "parentId": "",
+      "postId": "122141279259128115",
+      "observedPostId": "122141279259128115",
+      "commentId": "",
+      "parentCommentId": "",
+      "capturedAt": "2026-08-25T13:50:02.937Z",
+      "rawEntityKey": "post:122141279259128115",
+      "rawId": "9b35edfa",
+      "authorDisplayName": "School Watchlist",
+      "authorProfileUrl": "",
+      "authorProfileId": "",
+      "authorKey": "name:school watchlist",
+      "publishedAt": "2026-05-28T05:00:00.000Z",
+      "publishedDate": "",
+      "publishedAtPrecision": "day",
+      "publishedAtSource": "inferred-relative",
+      "identityMethod": "facebook_id",
+      "identityConfidence": "high",
+      "bodyComplete": true,
+      "hadSeeMore": false,
+      "expansionAttempted": null,
+      "expansionAttempts": null,
+      "expansionResult": "not_needed",
+      "facebookEdited": null,
+      "facebookEditedLabel": "",
+      "attachmentSummary": "ShowMe | Protect our children. YES on 3 this November! | YLtVBJPZA.com",
+      "imageAlts": [
+        "May be an image of text that says \"YES ON 3 BAN TRANSGENDER SURGERIES FOR MINORS YES ON 3 BAN TRANSGENDER SURGERIES FOR MINORS YESON3 3 YES ON BAN TRANSGENDER SURGERIES FOR MINORS\""
+      ],
+      "links": [
+        {
+          "href": "https://www.facebook.com/profile.php?id=61581121856469",
+          "text": ""
+        },
+        {
+          "href": "https://www.facebook.com/profile.php",
+          "text": ""
+        },
+        {
+          "href": "https://www.facebook.com/stories/122101518021128115/UzpfSVNDOjE0MTEzNDkzNDEwOTM2ODk=/",
+          "text": ""
+        },
+        {
+          "href": "https://www.facebook.com/HerHealthHerFuture",
+          "text": "Her Health Her Future"
+        }
+      ],
+      "media": [],
+      "isPinned": false,
+      "isFeatured": false,
+      "sourceLinkRecoveredFrom": "direct",
+      "replyCommentId": "",
+      "parentPostEntityKey": "",
+      "groupName": "",
+      "groupUrl": "",
+      "firstSeen": "2026-08-25T14:17:42.384Z",
+      "lastSeen": "2026-08-25T14:17:42.384Z",
+      "status": "active",
+      "missingCount": 0,
+      "versions": [
+        {
+          "text": "Protect our children. YES on 3 this November!",
+          "textHash": "afa0bcbadd3359755b438d4cc752340b5c5f7831b60bc5c00309d35c5c0cbf99",
+          "rawObservedText": "Protect our children. YES on 3 this November!",
+          "contentCompleteness": "full",
+          "firstSeen": "2026-08-25T14:17:42.384Z",
+          "lastSeen": "2026-08-25T14:17:42.384Z",
+          "timestampText": "28 May",
+          "timestampExact": "",
+          "permalink": "https://www.facebook.com/photo/?fbid=122141279259128115&set=a.122125156605128115"
+        }
+      ],
+      "observationCount": 1,
+      "postIdAliases": [
+        "122141279259128115"
+      ],
+      "publicationEvidenceObservedAt": "2026-08-31T20:22:23.633Z"
+    },
+    {
       "id": "post:122130387537037395",
       "identityQuality": "strong",
       "itemType": "post",
@@ -304986,6 +305232,93 @@
       "parentRelationshipConfidence": "medium"
     },
     {
+      "id": "post:122095355643037395",
+      "identityQuality": "strong",
+      "itemType": "post",
+      "author": "School Watchlist",
+      "text": "Warning Non-binary pronouns being taught in Spanish class (FHSD North HS) Non-binary pronouns are absolutely tied to gender identity — that’s not even up for debate. Non-binary pronouns (they/them, ze/zir, xe/xem, etc.) are directly connected to gender identity. Gender identity is how a person understands and experiences their own gender (male, female, both, neither, or somewhere in between). Pronouns are a way language reflects and respects that identity in everyday communication. So when you are teaching students non-binary pronouns, you are, in fact, teaching about gender identity. That is precisely what our policy prohibits. Send concerns to Superintendent mark.delaney@fhsdschools.org and Helene.Herauf@ed.gov to update the open Dept of Education Complaint OCR 07251345",
+      "textHash": "1b75d787b491160111359eb1370d1f31cdec831d09a275b1685331f434e044d5",
+      "rawObservedText": "Warning Non-binary pronouns being taught in Spanish class (FHSD North HS) Non-binary pronouns are absolutely tied to gender identity — that’s not even up for debate. Non-binary pronouns (they/them, ze/zir, xe/xem, etc.) are directly connected to gender identity. Gender identity is how a person understands and experiences their own gender (male, female, both, neither, or somewhere in between). Pronouns are a way language reflects and respects that identity in everyday communication. So when you are teaching students non-binary pronouns, you are, in fact, teaching about gender identity. That is precisely what our policy prohibits. Send concerns to Superintendent mark.delaney@fhsdschools.org and Helene.Herauf@ed.gov to update the open Dept of Education Complaint OCR 07251345 See less",
+      "contentCompleteness": "full",
+      "timestampText": "18 September 2025",
+      "timestampExact": "18 September 2025",
+      "permalink": "https://www.facebook.com/photo/?fbid=122095355643037395&set=pcb.122095355727037395",
+      "parentPostPermalink": "https://www.facebook.com/photo/?fbid=122095355643037395&set=pcb.122095355727037395",
+      "parentId": "",
+      "postId": "122095355643037395",
+      "observedPostId": "122095355643037395",
+      "commentId": "",
+      "parentCommentId": "",
+      "capturedAt": "2026-08-25T14:17:05.595Z",
+      "rawEntityKey": "post:122095355643037395",
+      "rawId": "863f5017",
+      "authorDisplayName": "School Watchlist",
+      "authorProfileUrl": "",
+      "authorProfileId": "",
+      "authorKey": "name:school watchlist",
+      "publishedAt": "2025-09-18T05:00:00.000Z",
+      "publishedDate": "2025-09-18",
+      "publishedAtPrecision": "day",
+      "publishedAtSource": "aria-label",
+      "identityMethod": "facebook_id",
+      "identityConfidence": "high",
+      "bodyComplete": true,
+      "hadSeeMore": false,
+      "expansionAttempted": null,
+      "expansionAttempts": null,
+      "expansionResult": "not_needed",
+      "facebookEdited": null,
+      "facebookEditedLabel": "",
+      "attachmentSummary": "Photos from School Watchlist's post | Tap8AUKSEFpYhMhBfZlrfm2OxFf0m | vJ66Pp.com",
+      "imageAlts": [
+        "‼️"
+      ],
+      "links": [
+        {
+          "href": "https://www.facebook.com/profile.php?id=61581121856469",
+          "text": ""
+        },
+        {
+          "href": "https://www.facebook.com/profile.php",
+          "text": ""
+        },
+        {
+          "href": "https://www.facebook.com/photo/?fbid=122095355655037395&set=pcb.122095355727037395",
+          "text": ""
+        }
+      ],
+      "media": [],
+      "isPinned": false,
+      "isFeatured": false,
+      "sourceLinkRecoveredFrom": "direct",
+      "replyCommentId": "",
+      "parentPostEntityKey": "",
+      "groupName": "",
+      "groupUrl": "",
+      "firstSeen": "2026-08-25T14:17:42.384Z",
+      "lastSeen": "2026-08-25T14:17:42.384Z",
+      "status": "missing_recheck",
+      "missingCount": 2,
+      "versions": [
+        {
+          "text": "Warning Non-binary pronouns being taught in Spanish class (FHSD North HS) Non-binary pronouns are absolutely tied to gender identity — that’s not even up for debate. Non-binary pronouns (they/them, ze/zir, xe/xem, etc.) are directly connected to gender identity. Gender identity is how a person understands and experiences their own gender (male, female, both, neither, or somewhere in between). Pronouns are a way language reflects and respects that identity in everyday communication. So when you are teaching students non-binary pronouns, you are, in fact, teaching about gender identity. That is precisely what our policy prohibits. Send concerns to Superintendent mark.delaney@fhsdschools.org and Helene.Herauf@ed.gov to update the open Dept of Education Complaint OCR 07251345",
+          "textHash": "1b75d787b491160111359eb1370d1f31cdec831d09a275b1685331f434e044d5",
+          "rawObservedText": "Warning Non-binary pronouns being taught in Spanish class (FHSD North HS) Non-binary pronouns are absolutely tied to gender identity — that’s not even up for debate. Non-binary pronouns (they/them, ze/zir, xe/xem, etc.) are directly connected to gender identity. Gender identity is how a person understands and experiences their own gender (male, female, both, neither, or somewhere in between). Pronouns are a way language reflects and respects that identity in everyday communication. So when you are teaching students non-binary pronouns, you are, in fact, teaching about gender identity. That is precisely what our policy prohibits. Send concerns to Superintendent mark.delaney@fhsdschools.org and Helene.Herauf@ed.gov to update the open Dept of Education Complaint OCR 07251345 See less",
+          "contentCompleteness": "full",
+          "firstSeen": "2026-08-25T14:17:42.384Z",
+          "lastSeen": "2026-08-25T14:17:42.384Z",
+          "timestampText": "18 September 2025",
+          "timestampExact": "18 September 2025",
+          "permalink": "https://www.facebook.com/photo/?fbid=122095355643037395&set=pcb.122095355727037395"
+        }
+      ],
+      "observationCount": 1,
+      "postIdAliases": [
+        "122095355643037395"
+      ],
+      "publicationEvidenceObservedAt": "2026-08-29T15:48:29.457Z"
+    },
+    {
       "id": "post:122095351767037395",
       "identityQuality": "strong",
       "itemType": "post",
@@ -305588,92 +305921,6 @@
       ]
     },
     {
-      "id": "post:122095355643037395",
-      "identityQuality": "strong",
-      "itemType": "post",
-      "author": "School Watchlist",
-      "text": "Warning Non-binary pronouns being taught in Spanish class (FHSD North HS) Non-binary pronouns are absolutely tied to gender identity — that’s not even up for debate. Non-binary pronouns (they/them, ze/zir, xe/xem, etc.) are directly connected to gender identity. Gender identity is how a person understands and experiences their own gender (male, female, both, neither, or somewhere in between). Pronouns are a way language reflects and respects that identity in everyday communication. So when you are teaching students non-binary pronouns, you are, in fact, teaching about gender identity. That is precisely what our policy prohibits. Send concerns to Superintendent mark.delaney@fhsdschools.org and Helene.Herauf@ed.gov to update the open Dept of Education Complaint OCR 07251345",
-      "textHash": "1b75d787b491160111359eb1370d1f31cdec831d09a275b1685331f434e044d5",
-      "rawObservedText": "Warning Non-binary pronouns being taught in Spanish class (FHSD North HS) Non-binary pronouns are absolutely tied to gender identity — that’s not even up for debate. Non-binary pronouns (they/them, ze/zir, xe/xem, etc.) are directly connected to gender identity. Gender identity is how a person understands and experiences their own gender (male, female, both, neither, or somewhere in between). Pronouns are a way language reflects and respects that identity in everyday communication. So when you are teaching students non-binary pronouns, you are, in fact, teaching about gender identity. That is precisely what our policy prohibits. Send concerns to Superintendent mark.delaney@fhsdschools.org and Helene.Herauf@ed.gov to update the open Dept of Education Complaint OCR 07251345 See less",
-      "contentCompleteness": "full",
-      "timestampText": "18 September 2025",
-      "timestampExact": "18 September 2025",
-      "permalink": "https://www.facebook.com/photo/?fbid=122095355643037395&set=pcb.122095355727037395",
-      "parentPostPermalink": "https://www.facebook.com/photo/?fbid=122095355643037395&set=pcb.122095355727037395",
-      "parentId": "",
-      "postId": "122095355643037395",
-      "observedPostId": "122095355643037395",
-      "commentId": "",
-      "parentCommentId": "",
-      "capturedAt": "2026-08-25T14:17:05.595Z",
-      "rawEntityKey": "post:122095355643037395",
-      "rawId": "863f5017",
-      "authorDisplayName": "School Watchlist",
-      "authorProfileUrl": "",
-      "authorProfileId": "",
-      "authorKey": "name:school watchlist",
-      "publishedAt": "",
-      "publishedDate": "2025-09-18",
-      "publishedAtPrecision": "day",
-      "publishedAtSource": "exact",
-      "identityMethod": "facebook_id",
-      "identityConfidence": "high",
-      "bodyComplete": true,
-      "hadSeeMore": false,
-      "expansionAttempted": null,
-      "expansionAttempts": null,
-      "expansionResult": "not_needed",
-      "facebookEdited": null,
-      "facebookEditedLabel": "",
-      "attachmentSummary": "Photos from School Watchlist's post | Tap8AUKSEFpYhMhBfZlrfm2OxFf0m | vJ66Pp.com",
-      "imageAlts": [
-        "‼️"
-      ],
-      "links": [
-        {
-          "href": "https://www.facebook.com/profile.php?id=61581121856469",
-          "text": ""
-        },
-        {
-          "href": "https://www.facebook.com/profile.php",
-          "text": ""
-        },
-        {
-          "href": "https://www.facebook.com/photo/?fbid=122095355655037395&set=pcb.122095355727037395",
-          "text": ""
-        }
-      ],
-      "media": [],
-      "isPinned": false,
-      "isFeatured": false,
-      "sourceLinkRecoveredFrom": "direct",
-      "replyCommentId": "",
-      "parentPostEntityKey": "",
-      "groupName": "",
-      "groupUrl": "",
-      "firstSeen": "2026-08-25T14:17:42.384Z",
-      "lastSeen": "2026-08-25T14:17:42.384Z",
-      "status": "missing_recheck",
-      "missingCount": 2,
-      "versions": [
-        {
-          "text": "Warning Non-binary pronouns being taught in Spanish class (FHSD North HS) Non-binary pronouns are absolutely tied to gender identity — that’s not even up for debate. Non-binary pronouns (they/them, ze/zir, xe/xem, etc.) are directly connected to gender identity. Gender identity is how a person understands and experiences their own gender (male, female, both, neither, or somewhere in between). Pronouns are a way language reflects and respects that identity in everyday communication. So when you are teaching students non-binary pronouns, you are, in fact, teaching about gender identity. That is precisely what our policy prohibits. Send concerns to Superintendent mark.delaney@fhsdschools.org and Helene.Herauf@ed.gov to update the open Dept of Education Complaint OCR 07251345",
-          "textHash": "1b75d787b491160111359eb1370d1f31cdec831d09a275b1685331f434e044d5",
-          "rawObservedText": "Warning Non-binary pronouns being taught in Spanish class (FHSD North HS) Non-binary pronouns are absolutely tied to gender identity — that’s not even up for debate. Non-binary pronouns (they/them, ze/zir, xe/xem, etc.) are directly connected to gender identity. Gender identity is how a person understands and experiences their own gender (male, female, both, neither, or somewhere in between). Pronouns are a way language reflects and respects that identity in everyday communication. So when you are teaching students non-binary pronouns, you are, in fact, teaching about gender identity. That is precisely what our policy prohibits. Send concerns to Superintendent mark.delaney@fhsdschools.org and Helene.Herauf@ed.gov to update the open Dept of Education Complaint OCR 07251345 See less",
-          "contentCompleteness": "full",
-          "firstSeen": "2026-08-25T14:17:42.384Z",
-          "lastSeen": "2026-08-25T14:17:42.384Z",
-          "timestampText": "18 September 2025",
-          "timestampExact": "18 September 2025",
-          "permalink": "https://www.facebook.com/photo/?fbid=122095355643037395&set=pcb.122095355727037395"
-        }
-      ],
-      "observationCount": 1,
-      "postIdAliases": [
-        "122095355643037395"
-      ]
-    },
-    {
       "id": "post:source:66689bf81b16a6e1df49cea7",
       "identityQuality": "weak",
       "itemType": "post",
@@ -305913,6 +306160,58 @@
     }
   ],
   "events": [
+    {
+      "type": "new",
+      "observedAt": "2026-09-12T18:48:03.053Z",
+      "entityId": "post:122138701695037395",
+      "itemType": "post",
+      "author": "School Watchlist",
+      "parentId": "",
+      "permalink": "https://www.facebook.com/photo/?fbid=122138701695037395",
+      "text": "KINDNESS IS FREE — UNTIL YOU DISAGREE WITH THE THEATRE TEACHER MARRIED TO THE SCHOOL BOARD MEMBER"
+    },
+    {
+      "type": "new",
+      "observedAt": "2026-09-12T18:48:03.053Z",
+      "entityId": "comment:1571666114093575",
+      "itemType": "comment",
+      "author": "R G Julie Burr",
+      "parentId": "post:pfbid02xLs6vf5bEYPRgD97YfpJwKpqkJLzD8GKbfuh6qUoxL8T9TQU6gr1SD5RHRkQduvgl",
+      "permalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid02xLs6vf5bEYPRgD97YfpJwKpqkJLzD8GKbfuh6qUoxL8T9TQU6gr1SD5RHRkQduvgl&id=61581121856469&comment_id=1571666114093575",
+      "text": "Or she’s setting a standard you don’t share. We can agree to disagree, right?"
+    },
+    {
+      "type": "edited",
+      "observedAt": "2026-09-12T18:48:03.053Z",
+      "entityId": "comment:3607890936041269",
+      "itemType": "comment",
+      "author": "Helen Marie",
+      "parentId": "post:122138724993037395",
+      "permalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid09MkDGi5V4LSsqmGN8eTRccNK7wZoDGb4purJg4jhhBvcE81DHTGv7HhV5RA8ciTVl&id=61581121856469&comment_id=3607890936041269",
+      "beforeText": "Dear Father Please Help The Children In This Crazy World. I Believe Our Father Above Make Our Gender The Way He Wanted Us To Be. Us Humans Sure Have Messed Everything Thing Up On This Planet. Dear Father Please Reach Down And Help Us . We Sure Need You Now. In Jesus Name I Pray",
+      "afterText": "Dear Father Please Help The Children In This Crazy World. I Believe Our Father Above Make Our Gender The Way He Wanted Us To B… See more"
+    },
+    {
+      "type": "edited",
+      "observedAt": "2026-09-12T18:48:03.053Z",
+      "entityId": "comment:849254854941294",
+      "itemType": "comment",
+      "author": "School Watchlist",
+      "parentId": "post:122138724993037395",
+      "permalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid09MkDGi5V4LSsqmGN8eTRccNK7wZoDGb4purJg4jhhBvcE81DHTGv7HhV5RA8ciTVl&id=61581121856469&comment_id=3607890936041269&reply_comment_id=849254854941294",
+      "beforeText": "Cait Antony because the devil is real and he comes to LIE KILL and DESTROY Repentance through Jesus Christ is the only way to the TRUTH and eternal life",
+      "afterText": "Cait Antony because the devil is real and he comes to LIE KILL and DESTROY … See more"
+    },
+    {
+      "type": "new",
+      "observedAt": "2026-09-12T18:48:03.053Z",
+      "entityId": "comment:881190281598877",
+      "itemType": "comment",
+      "author": "School Watchlist",
+      "parentId": "post:pfbid02xLs6vf5bEYPRgD97YfpJwKpqkJLzD8GKbfuh6qUoxL8T9TQU6gr1SD5RHRkQduvgl",
+      "permalink": "https://www.facebook.com/permalink.php?story_fbid=pfbid02xLs6vf5bEYPRgD97YfpJwKpqkJLzD8GKbfuh6qUoxL8T9TQU6gr1SD5RHRkQduvgl&id=61581121856469&comment_id=1571666114093575&reply_comment_id=881190281598877",
+      "text": "R G Julie Burrwell sure, but name calling and bringing someone’s children into it is not. Especially when they’re a teacher a… See more"
+    },
     {
       "type": "reappeared",
       "observedAt": "2026-09-12T02:07:11.549Z",
@@ -335024,6 +335323,117 @@
   ],
   "snapshots": [
     {
+      "sourceFile": "archive/school-watchlist/raw/2026-09-12T18-48-03.053Z-1ee82476b4e8.json.gz",
+      "rawSha256": "1ee82476b4e8f31a0cd2d5f31d440b61d24c5e45f43642419612c9fc37b97052",
+      "exportSchemaVersion": 10,
+      "exportedAt": "2026-09-12T18:48:03.053Z",
+      "targetAuthor": "School Watchlist",
+      "crawlScope": "page",
+      "declaredItemCount": 11,
+      "collectionLimit": {
+        "mode": "date",
+        "cutoffDate": "2026-08-22"
+      },
+      "crawl": {
+        "crawlerVersion": "1.15.32",
+        "schemaVersion": 10,
+        "startedAt": "2026-09-12T18:46:18.516Z",
+        "finishedAt": "2026-09-12T18:46:56.482Z",
+        "durationSeconds": 38,
+        "completionReason": "unknown",
+        "reachedHistoricalStart": false,
+        "requestedMode": "date",
+        "requestedCutoffDate": "2026-08-22",
+        "requestedRangeStart": null,
+        "requestedRangeEnd": null,
+        "requestedMaxPosts": null,
+        "routeRecoveryAttempts": 0,
+        "routeRecoveryFailures": 0,
+        "errors": [],
+        "warnings": [
+          "Stopped before confirming the cutoff: wrapper chronology made no historical progress for 6 consecutive frontier passes. Saved content is partial.",
+          "Some rendered records had no reliable publication time; publishedAt remains null for those records."
+        ],
+        "requestedScope": "page",
+        "crawlMode": "new",
+        "reasonText": "Stopped before confirming the cutoff: wrapper chronology made no historical progress for 6 consecutive frontier passes. Saved content is partial.",
+        "facebookUiLocale": "en",
+        "crawlPhaseV11100": "historical_traversal",
+        "postTraversalStatus": "partial",
+        "threadEnrichmentStatus": "not_started",
+        "historicalWatermark": "",
+        "historicalWatermarkMs": 0,
+        "phase1CandidateCount": 4,
+        "boundaryConfirmed": false,
+        "dateScopeV1159": {
+          "postsExcludedPreCutoffNative": 0,
+          "postsExcludedPreCutoffUpperBound": 0,
+          "commentsExcludedWithParent": 0,
+          "unknownDatePostsRetained": 6,
+          "ambiguousParentCommentsSuppressed": 0,
+          "unresolvedPreCutoffCommentsSuppressed": 0,
+          "aliasResolvedParents": 0,
+          "commentBoundsPromotedForScope": 0,
+          "threadsSuppressedPreCutoff": 0,
+          "retriesSuppressed": 0,
+          "exclusions": [],
+          "validationV11510": {
+            "exportedExactCommentsBeforeCutoff": 0,
+            "unresolvedCommentParents": 5,
+            "ambiguousCommentParents": 0,
+            "aliasResolvedParents": 0
+          }
+        },
+        "threadProvenanceV11515": {
+          "foreignSourceCommentsSuppressed": 0,
+          "wrappersAffected": 0,
+          "examples": []
+        },
+        "postsObserved": 6,
+        "commentsObserved": 5,
+        "repliesObserved": 2,
+        "threadsServiced": 0,
+        "threadsComplete": 0,
+        "threadsProbablyComplete": 0,
+        "threadsVisibilityCeiling": 0,
+        "threadsIncomplete": 0,
+        "threadsNeedsRetry": 0,
+        "truncatedPostsRemaining": 6,
+        "threadsDeferred": 5
+      },
+      "crawlerVersion": "1.15.32",
+      "reachedHistoricalStart": false,
+      "completionReason": "unknown",
+      "coverageMode": "partial",
+      "targetValidation": {
+        "declaredTargetAuthor": "School Watchlist",
+        "declaredTargetMatches": true,
+        "configuredProfileIds": [
+          "61581121856469"
+        ],
+        "observedProfileIds": [
+          "61581121856469"
+        ],
+        "sourceProfileMatches": true,
+        "completeEligible": true,
+        "warnings": []
+      },
+      "relationshipDiagnostics": {
+        "totalComments": 5,
+        "linkedComments": 0,
+        "repairedComments": 0,
+        "orphanComments": 5
+      },
+      "observedAt": "2026-09-12T18:48:03.053Z",
+      "complete": false,
+      "baseline": false,
+      "inputItemCount": 11,
+      "uniqueEntityCount": 11,
+      "duplicateEntityCount": 0,
+      "missingDetectionApplied": false,
+      "postAliasCount": 2
+    },
+    {
       "sourceFile": "archive/school-watchlist/raw/2026-09-12T02-07-11.549Z-1295925f2777.json.gz",
       "rawSha256": "1295925f2777ae00cc532b5a969d9776d35d2fdb7295810ef550560bafb735e3",
       "exportSchemaVersion": 10,
@@ -336444,10 +336854,12 @@
       "displayName": "School Watchlist",
       "profileUrl": "https://www.facebook.com/profile.php?id=61581121856469",
       "profileId": "61581121856469",
-      "posts": 349,
-      "comments": 181,
-      "latestActivity": "2026-09-12T02:07:11.549Z",
+      "posts": 350,
+      "comments": 182,
+      "latestActivity": "2026-09-12T18:48:03.053Z",
       "entityIds": [
+        "post:122138701695037395",
+        "comment:881190281598877",
         "post:source:d9dc567e3d37bb34f0e63a82",
         "post:source:50f9092c0b8d92c932a183b2",
         "post:source:71263c5a43eeb81e259c81c0",
@@ -336568,7 +336980,6 @@
         "post:source:ec664c714d1a5e92939953d1",
         "post:source:b32d4c42ba528de0737e71ef",
         "post:122130522885037395",
-        "post:122141279259128115",
         "post:source:1a74c3c19dd829adca3c7ebc",
         "post:source:fc3cee576a6f8e046f805b7a",
         "post:source:b486ac775ff03a0ca47a7446",
@@ -336748,6 +337159,7 @@
         "post:source:279fbd7c5bf94588296242de",
         "post:122130522963037395",
         "comment:956213807200633",
+        "post:122141279259128115",
         "post:122130387537037395",
         "post:1013824377836743",
         "post:122129693775037395",
@@ -336967,6 +337379,7 @@
         "post:1228439519308565",
         "post:source:d5f5f827eb4e1ec26d7d4b1d",
         "post:source:8836a9b36c8c6968ac0b936a",
+        "post:122095355643037395",
         "post:122095351767037395",
         "post:source:359b9f5b45051c265d5dacb3",
         "post:source:9057ceaa10cb2a840df922f6",
@@ -336974,7 +337387,6 @@
         "post:source:ce822c0199745a25ac606a84",
         "post:source:8b941785c61755668267ff48",
         "post:122095355727037395",
-        "post:122095355643037395",
         "post:source:66689bf81b16a6e1df49cea7",
         "post:source:98cef4ad1876c63a2335c1ba",
         "post:source:976af5503ceccb0be46e37e4"
@@ -338683,6 +339095,22 @@
       ]
     },
     {
+      "key": "name:r g julie burr",
+      "displayName": "R G Julie Burr",
+      "profileUrl": "",
+      "profileId": "",
+      "posts": 0,
+      "comments": 5,
+      "latestActivity": "2026-09-12T12:39:00.000Z",
+      "entityIds": [
+        "comment:1571666114093575",
+        "comment:1635027721625352",
+        "comment:1591107125825890",
+        "comment:2207615346480557",
+        "comment:1900385224668363"
+      ]
+    },
+    {
       "key": "name:ryan wills",
       "displayName": "Ryan Wills",
       "profileUrl": "",
@@ -339048,21 +339476,6 @@
         "comment:1523210572099952",
         "comment:1570000330674456",
         "comment:1907076070240849"
-      ]
-    },
-    {
-      "key": "name:r g julie burr",
-      "displayName": "R G Julie Burr",
-      "profileUrl": "",
-      "profileId": "",
-      "posts": 0,
-      "comments": 4,
-      "latestActivity": "2026-09-11T05:31:00.000Z",
-      "entityIds": [
-        "comment:1635027721625352",
-        "comment:1591107125825890",
-        "comment:2207615346480557",
-        "comment:1900385224668363"
       ]
     },
     {
@@ -356173,6 +356586,7 @@
     }
   ],
   "discussionCounts": {
+    "post:pfbid02xLs6vf5bEYPRgD97YfpJwKpqkJLzD8GKbfuh6qUoxL8T9TQU6gr1SD5RHRkQduvgl": 2,
     "post:122138844255037395": 187,
     "post:122138855625037395": 91,
     "post:122136998709037395": 23,
@@ -356348,244 +356762,63 @@
     "post:122096813175037395": 1
   },
   "commentVisibility": {
-    "post:10244125996103449": {
-      "reported": 3,
-      "visible": 28,
-      "gap": 0,
-      "status": "INCOMPLETE",
-      "observedAt": "2026-09-12T02:07:11.549Z",
-      "interpretation": "Facebook's reported count does not exceed the comments visible to this crawl."
-    },
-    "post:122136495879037395": {
-      "reported": 6,
-      "visible": 0,
-      "gap": 6,
-      "status": "INCOMPLETE",
-      "observedAt": "2026-09-12T02:07:11.549Z",
-      "interpretation": "Facebook reports more comments than were visible to this crawl. Deletion, hiding, moderation, privacy settings, or other visibility limits may explain the difference; the archive does not infer a cause."
-    },
     "post:122136998709037395": {
       "reported": 33,
-      "visible": 22,
-      "gap": 11,
-      "status": "VISIBILITY_CEILING",
-      "observedAt": "2026-09-12T02:07:11.549Z",
-      "interpretation": "Facebook reports more comments than were visible to this crawl. Deletion, hiding, moderation, privacy settings, or other visibility limits may explain the difference; the archive does not infer a cause."
-    },
-    "post:122137137117037395": {
-      "reported": 27,
-      "visible": 11,
-      "gap": 16,
-      "status": "VISIBILITY_CEILING",
-      "observedAt": "2026-09-12T02:07:11.549Z",
-      "interpretation": "Facebook reports more comments than were visible to this crawl. Deletion, hiding, moderation, privacy settings, or other visibility limits may explain the difference; the archive does not infer a cause."
-    },
-    "post:122137156125037395": {
-      "reported": 81,
-      "visible": 70,
-      "gap": 11,
-      "status": "INCOMPLETE",
-      "observedAt": "2026-09-12T02:07:11.549Z",
-      "interpretation": "Facebook reports more comments than were visible to this crawl. Deletion, hiding, moderation, privacy settings, or other visibility limits may explain the difference; the archive does not infer a cause."
-    },
-    "post:122137280493037395": {
-      "reported": 1,
       "visible": 0,
-      "gap": 1,
+      "gap": 33,
       "status": "INCOMPLETE",
-      "observedAt": "2026-09-12T02:07:11.549Z",
+      "observedAt": "2026-09-12T18:48:03.053Z",
       "interpretation": "Facebook reports more comments than were visible to this crawl. Deletion, hiding, moderation, privacy settings, or other visibility limits may explain the difference; the archive does not infer a cause."
     },
     "post:122137431927037395": {
-      "reported": 42,
-      "visible": 42,
+      "reported": 73,
+      "visible": 0,
+      "gap": 73,
+      "status": "INCOMPLETE",
+      "observedAt": "2026-09-12T18:48:03.053Z",
+      "interpretation": "Facebook reports more comments than were visible to this crawl. Deletion, hiding, moderation, privacy settings, or other visibility limits may explain the difference; the archive does not infer a cause."
+    },
+    "post:122138701695037395": {
+      "reported": 2,
+      "visible": 2,
       "gap": 0,
       "status": "INCOMPLETE",
-      "observedAt": "2026-09-12T02:07:11.549Z",
+      "observedAt": "2026-09-12T18:48:03.053Z",
       "interpretation": "Facebook's reported count does not exceed the comments visible to this crawl."
-    },
-    "post:122137575591037395": {
-      "reported": 77,
-      "visible": 52,
-      "gap": 25,
-      "status": "INCOMPLETE",
-      "observedAt": "2026-09-12T02:07:11.549Z",
-      "interpretation": "Facebook reports more comments than were visible to this crawl. Deletion, hiding, moderation, privacy settings, or other visibility limits may explain the difference; the archive does not infer a cause."
-    },
-    "post:122137758603037395": {
-      "reported": 5,
-      "visible": 5,
-      "gap": 0,
-      "status": "INCOMPLETE",
-      "observedAt": "2026-09-12T02:07:11.549Z",
-      "interpretation": "Facebook's reported count does not exceed the comments visible to this crawl."
-    },
-    "post:122138264571037395": {
-      "reported": 127,
-      "visible": 104,
-      "gap": 23,
-      "status": "INCOMPLETE",
-      "observedAt": "2026-09-12T02:07:11.549Z",
-      "interpretation": "Facebook reports more comments than were visible to this crawl. Deletion, hiding, moderation, privacy settings, or other visibility limits may explain the difference; the archive does not infer a cause."
-    },
-    "post:122138391225037395": {
-      "reported": 131,
-      "visible": 91,
-      "gap": 40,
-      "status": "INCOMPLETE",
-      "observedAt": "2026-09-12T02:07:11.549Z",
-      "interpretation": "Facebook reports more comments than were visible to this crawl. Deletion, hiding, moderation, privacy settings, or other visibility limits may explain the difference; the archive does not infer a cause."
-    },
-    "post:122138419065037395": {
-      "reported": 27,
-      "visible": 25,
-      "gap": 2,
-      "status": "VISIBILITY_CEILING",
-      "observedAt": "2026-09-12T02:07:11.549Z",
-      "interpretation": "Facebook reports more comments than were visible to this crawl. Deletion, hiding, moderation, privacy settings, or other visibility limits may explain the difference; the archive does not infer a cause."
-    },
-    "post:122138546469037395": {
-      "reported": 3,
-      "visible": 3,
-      "gap": 0,
-      "status": "INCOMPLETE",
-      "observedAt": "2026-09-12T02:07:11.549Z",
-      "interpretation": "Facebook's reported count does not exceed the comments visible to this crawl."
-    },
-    "post:122138658219037395": {
-      "reported": 205,
-      "visible": 57,
-      "gap": 148,
-      "status": "VISIBILITY_CEILING",
-      "observedAt": "2026-09-12T02:07:11.549Z",
-      "interpretation": "Facebook reports more comments than were visible to this crawl. Deletion, hiding, moderation, privacy settings, or other visibility limits may explain the difference; the archive does not infer a cause."
     },
     "post:122138724993037395": {
       "reported": 36,
-      "visible": 22,
-      "gap": 14,
-      "status": "VISIBILITY_CEILING",
-      "observedAt": "2026-09-12T02:07:11.549Z",
-      "interpretation": "Facebook reports more comments than were visible to this crawl. Deletion, hiding, moderation, privacy settings, or other visibility limits may explain the difference; the archive does not infer a cause."
-    },
-    "post:122138844255037395": {
-      "reported": 269,
-      "visible": 180,
-      "gap": 89,
+      "visible": 2,
+      "gap": 34,
       "status": "INCOMPLETE",
-      "observedAt": "2026-09-12T02:07:11.549Z",
-      "interpretation": "Facebook reports more comments than were visible to this crawl. Deletion, hiding, moderation, privacy settings, or other visibility limits may explain the difference; the archive does not infer a cause."
-    },
-    "post:122138855625037395": {
-      "reported": 112,
-      "visible": 81,
-      "gap": 31,
-      "status": "INCOMPLETE",
-      "observedAt": "2026-09-12T02:07:11.549Z",
+      "observedAt": "2026-09-12T18:48:03.053Z",
       "interpretation": "Facebook reports more comments than were visible to this crawl. Deletion, hiding, moderation, privacy settings, or other visibility limits may explain the difference; the archive does not infer a cause."
     },
     "post:1518270780325436": {
-      "reported": 7352,
-      "visible": 7,
-      "gap": 7345,
-      "status": "INCOMPLETE",
-      "observedAt": "2026-09-12T02:07:11.549Z",
-      "interpretation": "Facebook reports more comments than were visible to this crawl. Deletion, hiding, moderation, privacy settings, or other visibility limits may explain the difference; the archive does not infer a cause."
-    },
-    "post:1632804704880233": {
-      "reported": 4867,
-      "visible": 7,
-      "gap": 4860,
-      "status": "INCOMPLETE",
-      "observedAt": "2026-09-12T02:07:11.549Z",
-      "interpretation": "Facebook reports more comments than were visible to this crawl. Deletion, hiding, moderation, privacy settings, or other visibility limits may explain the difference; the archive does not infer a cause."
-    },
-    "post:1664539961686813": {
-      "reported": 247,
-      "visible": 7,
-      "gap": 240,
-      "status": "INCOMPLETE",
-      "observedAt": "2026-09-12T02:07:11.549Z",
-      "interpretation": "Facebook reports more comments than were visible to this crawl. Deletion, hiding, moderation, privacy settings, or other visibility limits may explain the difference; the archive does not infer a cause."
-    },
-    "post:pfbid0DMNwtrxAcM5HbpRhLbXfj44KLK6y8MNF2jkJU4DjCvYGSiskR6mrsjBuXGKthxyol": {
-      "reported": 14,
-      "visible": 11,
-      "gap": 3,
-      "status": "VISIBILITY_CEILING",
-      "observedAt": "2026-09-12T02:07:11.549Z",
-      "interpretation": "Facebook reports more comments than were visible to this crawl. Deletion, hiding, moderation, privacy settings, or other visibility limits may explain the difference; the archive does not infer a cause."
-    },
-    "post:pfbid0RSWMCHRyE3UkCxUTgiyMhZPo8uUdJJYAGugmTXAN7tiyMVEDfRHj4e8HEa6pzZ9Rl": {
-      "reported": 33,
-      "visible": 25,
-      "gap": 8,
-      "status": "VISIBILITY_CEILING",
-      "observedAt": "2026-09-12T02:07:11.549Z",
-      "interpretation": "Facebook reports more comments than were visible to this crawl. Deletion, hiding, moderation, privacy settings, or other visibility limits may explain the difference; the archive does not infer a cause."
-    },
-    "post:pfbid0u4ctNf2rFFVYqqMiRP48km9rpqvtBfBpy8NrNXFnrxvTPivtaHD4T1kxnVsMsrqql": {
-      "reported": 1,
+      "reported": 8,
       "visible": 1,
-      "gap": 0,
+      "gap": 7,
       "status": "INCOMPLETE",
-      "observedAt": "2026-09-12T02:07:11.549Z",
-      "interpretation": "Facebook's reported count does not exceed the comments visible to this crawl."
-    },
-    "post:pfbid02ztwe8bWU7Ttc2ECsMZ7HBRzZMxgRAniaovt51K6zDfhwxdfFossyeceY78TueGBgl": {
-      "reported": 24,
-      "visible": 10,
-      "gap": 14,
-      "status": "VISIBILITY_CEILING",
-      "observedAt": "2026-09-12T02:07:11.549Z",
-      "interpretation": "Facebook reports more comments than were visible to this crawl. Deletion, hiding, moderation, privacy settings, or other visibility limits may explain the difference; the archive does not infer a cause."
-    },
-    "post:122137448127037395": {
-      "reported": 1,
-      "visible": 1,
-      "gap": 0,
-      "status": "INCOMPLETE",
-      "observedAt": "2026-09-12T02:07:11.549Z",
-      "interpretation": "Facebook's reported count does not exceed the comments visible to this crawl."
-    },
-    "post:122137432689037395": {
-      "reported": 37,
-      "visible": 24,
-      "gap": 13,
-      "status": "VISIBILITY_CEILING",
-      "observedAt": "2026-09-12T02:07:11.549Z",
-      "interpretation": "Facebook reports more comments than were visible to this crawl. Deletion, hiding, moderation, privacy settings, or other visibility limits may explain the difference; the archive does not infer a cause."
-    },
-    "post:pfbid025ikP3kqEpX69iqB3Wr7RVewPCb2oeYYoGqrvtUxymRt4UcRodmMtn1xXhBMVbE1Hl": {
-      "reported": 13,
-      "visible": 2,
-      "gap": 11,
-      "status": "VISIBILITY_CEILING",
-      "observedAt": "2026-09-12T02:07:11.549Z",
+      "observedAt": "2026-09-12T18:48:03.053Z",
       "interpretation": "Facebook reports more comments than were visible to this crawl. Deletion, hiding, moderation, privacy settings, or other visibility limits may explain the difference; the archive does not infer a cause."
     }
   },
   "relationshipDiagnostics": {
-    "totalComments": 3060,
+    "totalComments": 3062,
     "linkedComments": 2817,
     "repairedComments": 5,
-    "orphanComments": 243
+    "orphanComments": 245
   },
   "latestDelta": {
-    "observedAt": "2026-09-12T02:07:11.549Z",
-    "previousObservedAt": "2026-09-12T00:02:12.560Z",
+    "observedAt": "2026-09-12T18:48:03.053Z",
+    "previousObservedAt": "2026-09-12T02:07:11.549Z",
     "counts": {
-      "reappeared": 15,
-      "new": 14,
-      "edited": 13,
-      "not_present_observation": 66,
-      "missing_once": 34,
-      "missing_recheck": 13,
-      "bulk_missing_thread": 4
+      "new": 3,
+      "edited": 2
     },
-    "eventCount": 159,
+    "eventCount": 5,
     "complete": false,
-    "coverageStart": "2026-08-21",
-    "coverageEnd": "2026-09-12"
+    "coverageStart": "",
+    "coverageEnd": ""
   }
 }

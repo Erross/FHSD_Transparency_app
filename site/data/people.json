@@ -4,15 +4,15 @@
       "key": "name:school watchlist",
       "displayName": "School Watchlist",
       "profileUrl": "https://www.facebook.com/profile.php?id=61581121856469",
-      "posts": 518,
-      "comments": 324,
+      "posts": 519,
+      "comments": 325,
       "targets": [
         "francis-howell-families",
         "greenwood-campaign",
         "kevin-mcguire-for-francis-howell-school-board",
         "school-watchlist"
       ],
-      "latestActivity": "2026-09-12T02:07:11.549Z"
+      "latestActivity": "2026-09-12T18:48:03.053Z"
     },
     {
       "key": "name:jane puszkar",
@@ -1008,6 +1008,19 @@
       "latestActivity": "2026-04-16T20:01:00.000Z"
     },
     {
+      "key": "name:r g julie burr",
+      "displayName": "R G Julie Burr",
+      "profileUrl": "",
+      "posts": 0,
+      "comments": 10,
+      "targets": [
+        "francis-howell-families",
+        "kevin-mcguire-for-francis-howell-school-board",
+        "school-watchlist"
+      ],
+      "latestActivity": "2026-09-12T12:39:00.000Z"
+    },
+    {
       "key": "name:ben schmitz",
       "displayName": "Ben Schmitz",
       "profileUrl": "",
@@ -1185,19 +1198,6 @@
         "francis-howell-families"
       ],
       "latestActivity": "2026-04-08T21:30:00.000Z"
-    },
-    {
-      "key": "name:r g julie burr",
-      "displayName": "R G Julie Burr",
-      "profileUrl": "",
-      "posts": 0,
-      "comments": 9,
-      "targets": [
-        "francis-howell-families",
-        "kevin-mcguire-for-francis-howell-school-board",
-        "school-watchlist"
-      ],
-      "latestActivity": "2026-09-11T05:31:00.000Z"
     },
     {
       "key": "name:christi crowley davis",
