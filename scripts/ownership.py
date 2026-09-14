@@ -2,9 +2,10 @@
 
 Routing identifies the export's declared target. This module handles the narrower
 problem where a cumulative/shared-content crawl accidentally leaves records from
-another *configured* Facebook page in the same items array. We only suppress
-records when item-level route/owner evidence strongly resolves to another target;
-a commenter merely having another page's name does not make their comment foreign.
+another *configured* Facebook page in the same items array. We suppress posts
+when route/owner evidence or an exact configured page-author match identifies
+another target. A commenter merely having another page's name does not make that
+comment foreign.
 """
 from __future__ import annotations
 
@@ -63,6 +64,14 @@ def _config_identities(config: dict[str, Any]) -> tuple[set[str], set[str]]:
     return profile_ids, slugs
 
 
+def _config_author_aliases(config: dict[str, Any]) -> set[str]:
+    return {
+        _norm(value)
+        for value in config.get("authorAliases", []) + [config.get("displayName", "")]
+        if _norm(value)
+    }
+
+
 def _item_route_identities(item: dict[str, Any]) -> tuple[set[str], set[str]]:
     profile_ids: set[str] = set()
     slugs: set[str] = set()
@@ -97,6 +106,27 @@ def _matched_target_ids(item: dict[str, Any], configs: list[dict[str, Any]]) -> 
     return matches
 
 
+def _post_author_target_ids(item: dict[str, Any], configs: list[dict[str, Any]]) -> set[str]:
+    """Resolve an exact post author to configured page targets.
+
+    This evidence is used only for top-level posts. It is deliberately not used
+    for comments/replies because a page account can legitimately comment on
+    another page without owning that discussion thread.
+    """
+    if str(item.get("itemType") or "").casefold() != "post":
+        return set()
+    author = _norm(item.get("authorDisplayName") or item.get("author"))
+    if not author:
+        return set()
+    matches = {
+        str(config.get("id") or "")
+        for config in configs
+        if author in _config_author_aliases(config)
+    }
+    matches.discard("")
+    return matches
+
+
 def split_obvious_foreign_target_items(
     items: list[Any],
     current_config: dict[str, Any],
@@ -104,41 +134,44 @@ def split_obvious_foreign_target_items(
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], dict[str, Any]]:
     """Split records strongly owned by another configured page from a target export.
 
-    The rule is intentionally conservative. A top-level post is foreign only when
-    its route/owner resolves to another configured target and does not also resolve
-    to the current target. Comments/replies are foreign when their route resolves
-    that way or when they are explicitly bound to a post already classified as
-    foreign. Shared-source metadata alone never causes suppression.
+    A top-level post is foreign when either route/owner evidence or its exact
+    configured page-author identity resolves uniquely to another target and no
+    evidence resolves it to the current target. Comments/replies are foreign only
+    when their route resolves that way or when they are explicitly bound to a post
+    already classified as foreign. Shared-source metadata alone never causes
+    suppression.
     """
     configs = configs or load_target_configs()
     current_id = str(current_config.get("id") or "")
-    current_aliases = {
-        _norm(value)
-        for value in current_config.get("authorAliases", []) + [current_config.get("displayName", "")]
-        if _norm(value)
-    }
+    current_aliases = _config_author_aliases(current_config)
 
-    foreign_object_ids: set[int] = set()
     foreign_parent_ids: set[str] = set()
     foreign_parent_keys: set[str] = set()
     foreign_parent_urls: set[str] = set()
     foreign_target_by_object: dict[int, str] = {}
 
     # First pass: identify top-level posts that clearly belong to a different
-    # configured page. Requiring route/owner evidence avoids misclassifying a
-    # legitimate shared post simply because its sharedAuthor is foreign.
+    # configured page. Exact configured page-author identity is strong evidence
+    # for posts, even when Facebook emits a generic photo/permalink route.
     for raw in items:
-        if not isinstance(raw, dict) or str(raw.get("itemType") or "") != "post":
+        if not isinstance(raw, dict) or str(raw.get("itemType") or "").casefold() != "post":
             continue
-        matches = _matched_target_ids(raw, configs)
+        route_matches = _matched_target_ids(raw, configs)
+        author_matches = _post_author_target_ids(raw, configs)
+        matches = route_matches | author_matches
         foreign_matches = sorted(match for match in matches if match != current_id)
-        if current_id in matches or len(foreign_matches) != 1:
-            continue
         author = _norm(raw.get("authorDisplayName") or raw.get("author"))
+
+        if current_id in route_matches:
+            # A record explicitly routed on the current page is a current-page
+            # wrapper even when it shares content authored elsewhere.
+            continue
         if author and author in current_aliases:
             continue
+        if len(foreign_matches) != 1:
+            continue
+
         target_id = foreign_matches[0]
-        foreign_object_ids.add(id(raw))
         foreign_target_by_object[id(raw)] = target_id
         for field in ("postId", "wrapperPostId", "parentPostId"):
             value = str(raw.get(field) or "").strip()
@@ -163,7 +196,7 @@ def split_obvious_foreign_target_items(
         target_id = foreign_target_by_object.get(id(raw), "")
         is_foreign = bool(target_id)
 
-        if not is_foreign and str(raw.get("itemType") or "") != "post":
+        if not is_foreign and str(raw.get("itemType") or "").casefold() != "post":
             matches = _matched_target_ids(raw, configs)
             foreign_matches = sorted(match for match in matches if match != current_id)
             if current_id not in matches and len(foreign_matches) == 1:
@@ -184,7 +217,11 @@ def split_obvious_foreign_target_items(
                     str(raw.get("wrapperPermalink") or "").strip(),
                     str(raw.get("pageUrl") or "").strip(),
                 }
-                if (parent_ids - {""}) & foreign_parent_ids or (parent_keys - {""}) & foreign_parent_keys or (parent_urls - {""}) & foreign_parent_urls:
+                if (
+                    (parent_ids - {""}) & foreign_parent_ids
+                    or (parent_keys - {""}) & foreign_parent_keys
+                    or (parent_urls - {""}) & foreign_parent_urls
+                ):
                     target_id = foreign_matches[0] if len(foreign_matches) == 1 else "foreign-parent"
                     is_foreign = True
 
