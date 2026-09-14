@@ -49,6 +49,49 @@ class RelationshipRepairTests(unittest.TestCase):
         self.assertEqual(1, diagnostics["repairedComments"])
         self.assertEqual(0, diagnostics["orphanComments"])
 
+    def test_path_style_comment_permalink_repairs_numeric_parent_to_pfbid_post(self):
+        post_pfbid = "pfbid02a8QNbaiYKwy4L5CFQ6GpQ5ai1pbNhrgmktH9g4CLw4ngdGDaHY4ANvtXMiXuaSAhl"
+        numeric_post_id = "122385176852002257"
+        comment_id = "2156335431982067"
+        entities = [
+            {
+                "id": f"post:{post_pfbid}",
+                "itemType": "post",
+                "postId": post_pfbid,
+                "permalink": (
+                    "https://www.facebook.com/StevenBlairForFrancisHowellSchoolBoard/"
+                    f"posts/{post_pfbid}"
+                ),
+                "author": "Steven Blair For Francis Howell School Board",
+            },
+            {
+                "id": f"comment:{comment_id}",
+                "itemType": "comment",
+                "commentId": comment_id,
+                "postId": numeric_post_id,
+                "observedPostId": numeric_post_id,
+                "parentId": f"post:{numeric_post_id}",
+                "parentPostPermalink": f"https://www.facebook.com/photo/?fbid={numeric_post_id}",
+                "permalink": (
+                    "https://www.facebook.com/StevenBlairForFrancisHowellSchoolBoard/"
+                    f"posts/{post_pfbid}?comment_id=958245943966730&reply_comment_id={comment_id}"
+                ),
+                "links": [],
+            },
+        ]
+
+        repaired, diagnostics = repair_parent_relationships(entities)
+        comment = next(entity for entity in repaired if entity["itemType"] == "comment")
+
+        self.assertEqual(f"post:{post_pfbid}", comment["parentId"])
+        self.assertEqual(post_pfbid, comment["postId"])
+        self.assertEqual(numeric_post_id, comment["observedPostId"])
+        self.assertEqual("comment_permalink", comment["parentRelationshipMethod"])
+        self.assertEqual("high", comment["parentRelationshipConfidence"])
+        self.assertEqual(1, diagnostics["linkedComments"])
+        self.assertEqual(1, diagnostics["repairedComments"])
+        self.assertEqual(0, diagnostics["orphanComments"])
+
     def test_unrelated_story_link_does_not_reparent_comment(self):
         entities = [
             {
