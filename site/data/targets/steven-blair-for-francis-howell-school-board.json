@@ -27,7 +27,7 @@
       "bulkMissingRatioThreshold": 0.1,
       "bulkThreadMissingAbsoluteThreshold": 3
     },
-    "publicNotes": "Target configured on 2026-09-14. The repository's existing 806-item School Watchlist Sep. 13 raw artifact does not contain recoverable Blair page records; a separate 1,164-item local export does, so Blair historical content should be imported from that exact source as a partial baseline rather than inferred from the School Watchlist archive."
+    "publicNotes": "Target configured on 2026-09-14 and included in generated public indexes before its first canonical snapshot. The repository's existing 806-item School Watchlist Sep. 13 raw artifact does not contain recoverable Blair page records; a separate 1,164-item local export does, so Blair historical content should be imported from that exact source as a partial baseline rather than inferred from the School Watchlist archive."
   },
   "summary": {
     "entities": 0,
