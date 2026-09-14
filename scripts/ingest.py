@@ -11,8 +11,9 @@ from .core import initial_state, normalize_item, normalize_space, now_iso, summa
 from .coverage import apply_coverage_snapshot
 from .enrich import enrich_normalized
 from .io_utils import read_json, write_json_gz, write_raw_gz
+from .ownership import split_obvious_foreign_target_items
 from .relationships import repair_parent_relationships
-from .route_snapshot import configured_profile_ids, observed_profile_ids
+from .route_snapshot import configured_profile_ids, load_target_configs, observed_profile_ids
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -118,6 +119,22 @@ def main():
         print(f"Duplicate snapshot SHA {sha}; already ingested for target {args.target}. No state change made.")
         return
 
+    # Keep the immutable raw export exactly as collected, but prevent records
+    # strongly owned by another *configured* Facebook page from entering this
+    # target's canonical state. This catches stale cross-page crawler carry-over
+    # without treating a foreign page account merely commenting here as foreign.
+    items, foreign_items, ownership_diagnostics = split_obvious_foreign_target_items(
+        items,
+        config,
+        load_target_configs(ROOT),
+    )
+    if foreign_items:
+        print(
+            "Foreign target filtering: "
+            f"suppressed {len(foreign_items)} record(s) from canonical target {args.target}: "
+            f"{ownership_diagnostics.get('foreignByTarget', {})}"
+        )
+
     normalized = []
     for item in items:
         if not isinstance(item, dict):
@@ -147,6 +164,7 @@ def main():
         "completionReason": crawl_meta.get("completionReason", ""),
         "coverageMode": "complete" if args.complete else "partial",
         "targetValidation": validation,
+        "ownershipDiagnostics": ownership_diagnostics,
         "relationshipDiagnostics": relationship_diagnostics,
     }
     state = apply_coverage_snapshot(
