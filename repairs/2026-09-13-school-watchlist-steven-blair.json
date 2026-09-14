@@ -1,0 +1,7 @@
+{
+  "sourceTarget": "school-watchlist",
+  "foreignTarget": "steven-blair-for-francis-howell-school-board",
+  "sourceRaw": "archive/school-watchlist/raw/2026-09-13T20-58-33.066Z-09cc03cf8482.json.gz",
+  "sourceRawSha256": "09cc03cf8482b57d3ae0d3e92050930f14f76106dd09aa46d66aa85dd1d6b954",
+  "reason": "Recover Steven Blair page-owned records from the mixed School Watchlist export while preserving the immutable original raw evidence."
+}
