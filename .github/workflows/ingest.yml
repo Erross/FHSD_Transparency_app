@@ -8,6 +8,7 @@ on:
     paths:
       - 'incoming/complete/*.json'
       - 'incoming/partial/*.json'
+      - 'repairs/*.json'
 
 permissions:
   contents: write
@@ -26,6 +27,8 @@ jobs:
           python-version: '3.12'
       - name: Validate before ingest
         run: python -m unittest discover -s tests -v
+      - name: Apply explicit archive repairs
+        run: python -m scripts.repair_mixed_target
       - name: Ingest inbox and rebuild public indexes
         run: python -m scripts.ingest_inbox --consume
       - name: Validate generated result
@@ -47,6 +50,6 @@ jobs:
           if git diff --cached --quiet; then
             echo 'No generated changes to commit.'
           else
-            git commit -m 'Ingest public archive snapshot'
+            git commit -m 'Repair mixed target archive data'
             git push
           fi
