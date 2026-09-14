@@ -26,5 +26,5 @@
     "bulkMissingRatioThreshold": 0.1,
     "bulkThreadMissingAbsoluteThreshold": 3
   },
-  "publicNotes": "The initial archive baseline includes public Steven Blair page records recovered from a mixed School Watchlist crawler export. Those recovered records are treated as partial observations, not as a complete historical snapshot."
+  "publicNotes": "Target configured on 2026-09-14. The repository's existing 806-item School Watchlist Sep. 13 raw artifact does not contain recoverable Blair page records; a separate 1,164-item local export does, so Blair historical content should be imported from that exact source as a partial baseline rather than inferred from the School Watchlist archive."
 }
