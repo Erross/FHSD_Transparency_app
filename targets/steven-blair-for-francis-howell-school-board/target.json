@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "steven-blair-for-francis-howell-school-board",
+  "displayName": "Steven Blair For Francis Howell School Board",
+  "description": "Public archive of the Steven Blair For Francis Howell School Board Facebook page and its visible discussion threads.",
+  "platform": "facebook",
+  "sourceUrls": [
+    "https://www.facebook.com/profile.php?id=61550067735304",
+    "https://www.facebook.com/StevenBlairForFrancisHowellSchoolBoard"
+  ],
+  "authorAliases": [
+    "Steven Blair For Francis Howell School Board",
+    "Steven Blair for Francis Howell School Board"
+  ],
+  "filenameAliases": [
+    "Steven_Blair_For_Francis_Howell_School_Board",
+    "Steven Blair For Francis Howell School Board",
+    "Steven_Blair"
+  ],
+  "crawl": {
+    "comparisonMode": "full_snapshot",
+    "requiresCompleteSnapshotForMissing": true,
+    "missingRecheckThreshold": 2,
+    "confirmationRequiresDirectCheck": true,
+    "bulkMissingAbsoluteThreshold": 5,
+    "bulkMissingRatioThreshold": 0.1,
+    "bulkThreadMissingAbsoluteThreshold": 3
+  },
+  "publicNotes": "The initial archive baseline includes public Steven Blair page records recovered from a mixed School Watchlist crawler export. Those recovered records are treated as partial observations, not as a complete historical snapshot."
+}
