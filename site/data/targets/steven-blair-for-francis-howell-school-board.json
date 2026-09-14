@@ -1,0 +1,61 @@
+{
+  "target": {
+    "schemaVersion": 1,
+    "id": "steven-blair-for-francis-howell-school-board",
+    "displayName": "Steven Blair For Francis Howell School Board",
+    "description": "Public archive of the Steven Blair For Francis Howell School Board Facebook page and its visible discussion threads.",
+    "platform": "facebook",
+    "sourceUrls": [
+      "https://www.facebook.com/profile.php?id=61550067735304",
+      "https://www.facebook.com/StevenBlairForFrancisHowellSchoolBoard"
+    ],
+    "authorAliases": [
+      "Steven Blair For Francis Howell School Board",
+      "Steven Blair for Francis Howell School Board"
+    ],
+    "filenameAliases": [
+      "Steven_Blair_For_Francis_Howell_School_Board",
+      "Steven Blair For Francis Howell School Board",
+      "Steven_Blair"
+    ],
+    "crawl": {
+      "comparisonMode": "full_snapshot",
+      "requiresCompleteSnapshotForMissing": true,
+      "missingRecheckThreshold": 2,
+      "confirmationRequiresDirectCheck": true,
+      "bulkMissingAbsoluteThreshold": 5,
+      "bulkMissingRatioThreshold": 0.1,
+      "bulkThreadMissingAbsoluteThreshold": 3
+    },
+    "publicNotes": "Target configured on 2026-09-14. The repository's existing 806-item School Watchlist Sep. 13 raw artifact does not contain recoverable Blair page records; a separate 1,164-item local export does, so Blair historical content should be imported from that exact source as a partial baseline rather than inferred from the School Watchlist archive."
+  },
+  "summary": {
+    "entities": 0,
+    "posts": 0,
+    "comments": 0,
+    "active": 0,
+    "missing": 0,
+    "confirmedUnavailable": 0,
+    "editedEntities": 0,
+    "events": 0,
+    "snapshots": 0
+  },
+  "entities": [],
+  "events": [],
+  "snapshots": [],
+  "authors": [],
+  "discussionCounts": {},
+  "commentVisibility": {},
+  "relationshipDiagnostics": {
+    "totalComments": 0,
+    "linkedComments": 0,
+    "repairedComments": 0,
+    "orphanComments": 0
+  },
+  "latestDelta": {
+    "observedAt": "",
+    "previousObservedAt": "",
+    "counts": {},
+    "eventCount": 0
+  }
+}
