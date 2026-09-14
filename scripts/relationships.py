@@ -13,7 +13,7 @@ from __future__ import annotations
 
 from collections import Counter
 from typing import Any, Iterable
-from urllib.parse import parse_qs, urlparse
+from urllib.parse import parse_qs, unquote, urlparse
 
 
 def _norm(value: Any) -> str:
@@ -33,7 +33,28 @@ def _query_value(url: str, *keys: str) -> str:
 
 
 def _story_id(url: str) -> str:
-    return _query_value(url, "story_fbid", "fbid")
+    """Return a strong Facebook story/post id encoded in a permalink.
+
+    Facebook exposes the same post in several URL shapes.  Older archive
+    relationship repair only understood query-string forms such as
+    ``?story_fbid=...`` and ``/photo/?fbid=...``.  Page post/comment permalinks
+    commonly encode the canonical pfbid in the path instead, for example
+    ``/SomePage/posts/pfbidXYZ?comment_id=...``.  Treat that path segment as
+    equally strong permalink evidence.
+    """
+    query_value = _query_value(url, "story_fbid", "fbid")
+    if query_value:
+        return query_value
+
+    try:
+        path = unquote(urlparse(_norm(url)).path)
+    except ValueError:
+        return ""
+    segments = [segment for segment in path.split("/") if segment]
+    for index, segment in enumerate(segments[:-1]):
+        if segment.casefold() == "posts":
+            return _norm(segments[index + 1])
+    return ""
 
 
 def _comment_ids(url: str) -> set[str]:
