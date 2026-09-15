@@ -13,7 +13,7 @@ from __future__ import annotations
 
 from collections import Counter
 from typing import Any, Iterable
-from urllib.parse import parse_qs, urlparse
+from urllib.parse import parse_qs, unquote, urlparse
 
 
 def _norm(value: Any) -> str:
@@ -33,7 +33,28 @@ def _query_value(url: str, *keys: str) -> str:
 
 
 def _story_id(url: str) -> str:
-    return _query_value(url, "story_fbid", "fbid")
+    """Return a strong Facebook story/post id encoded in a permalink.
+
+    Facebook exposes the same post in several URL shapes.  Older archive
+    relationship repair only understood query-string forms such as
+    ``?story_fbid=...`` and ``/photo/?fbid=...``.  Page post/comment permalinks
+    commonly encode the canonical pfbid in the path instead, for example
+    ``/SomePage/posts/pfbidXYZ?comment_id=...``.  Treat that path segment as
+    equally strong permalink evidence.
+    """
+    query_value = _query_value(url, "story_fbid", "fbid")
+    if query_value:
+        return query_value
+
+    try:
+        path = unquote(urlparse(_norm(url)).path)
+    except ValueError:
+        return ""
+    segments = [segment for segment in path.split("/") if segment]
+    for index, segment in enumerate(segments[:-1]):
+        if segment.casefold() == "posts":
+            return _norm(segments[index + 1])
+    return ""
 
 
 def _comment_ids(url: str) -> set[str]:
@@ -145,6 +166,8 @@ def repair_parent_relationships(entities: Iterable[dict[str, Any]]) -> tuple[lis
     post_aliases = _post_alias_map(posts)
 
     diagnostics = Counter(totalComments=0, linkedComments=0, repairedComments=0, orphanComments=0)
+    unresolved_strong_posts: set[str] = set()
+    unresolved_legacy_posts: set[str] = set()
 
     for entity in records:
         if entity.get("itemType") == "post":
@@ -156,11 +179,12 @@ def repair_parent_relationships(entities: Iterable[dict[str, Any]]) -> tuple[lis
         resolved_post_id = ""
         method = ""
         confidence = ""
+        candidates = _relationship_candidates(entity)
 
         # Always evaluate the ordered evidence. This lets an exact source link
         # correct a stale-but-existing parent alias rather than automatically
         # preserving the weaker prior normalization.
-        for candidate, candidate_method, candidate_confidence in _relationship_candidates(entity):
+        for candidate, candidate_method, candidate_confidence in candidates:
             archive_post_id = post_aliases.get(candidate, "")
             if archive_post_id:
                 resolved_entity_id = archive_post_id
@@ -184,7 +208,20 @@ def repair_parent_relationships(entities: Iterable[dict[str, Any]]) -> tuple[lis
             entity["parentRelationshipConfidence"] = confidence
         else:
             diagnostics["orphanComments"] += 1
+            if _norm(entity.get("parentCommentId")):
+                diagnostics["orphanReplies"] += 1
+            strong_candidates = {candidate for candidate, _, candidate_confidence in candidates if candidate_confidence == "high"}
+            if strong_candidates:
+                diagnostics["orphanStrongCandidateMissingPost"] += 1
+                unresolved_strong_posts.update(strong_candidates)
+            elif candidates:
+                diagnostics["orphanLegacyCandidateMissingPost"] += 1
+                unresolved_legacy_posts.update(candidate for candidate, _, _ in candidates)
+            else:
+                diagnostics["orphanNoCandidate"] += 1
             entity["parentRelationshipMethod"] = "unresolved"
             entity["parentRelationshipConfidence"] = "unknown"
 
+    diagnostics["orphanStrongCandidateUniquePosts"] = len(unresolved_strong_posts)
+    diagnostics["orphanLegacyCandidateUniquePosts"] = len(unresolved_legacy_posts)
     return records, dict(diagnostics)

@@ -233,6 +233,16 @@ def main():
                 f"repaired {relationship_diagnostics.get('repairedComments', 0)} existing relationships; "
                 f"unresolved {relationship_diagnostics.get('orphanComments', 0)}"
             )
+            if relationship_diagnostics.get("orphanComments"):
+                print(
+                    f"{tid}: unresolved evidence: "
+                    f"strong-parent-missing={relationship_diagnostics.get('orphanStrongCandidateMissingPost', 0)} "
+                    f"across {relationship_diagnostics.get('orphanStrongCandidateUniquePosts', 0)} candidate post id(s); "
+                    f"legacy-id-missing={relationship_diagnostics.get('orphanLegacyCandidateMissingPost', 0)} "
+                    f"across {relationship_diagnostics.get('orphanLegacyCandidateUniquePosts', 0)} candidate post id(s); "
+                    f"no-parent-candidate={relationship_diagnostics.get('orphanNoCandidate', 0)}; "
+                    f"replies={relationship_diagnostics.get('orphanReplies', 0)}"
+                )
 
     people = sorted(global_people.values(), key=lambda a: (a["comments"], a["posts"], a["latestActivity"]), reverse=True)
     (out / "catalog.json").write_text(dumps({"targets": catalog}), encoding="utf-8")
