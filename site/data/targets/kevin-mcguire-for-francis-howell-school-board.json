@@ -46318,7 +46318,11 @@
     "totalComments": 425,
     "linkedComments": 409,
     "repairedComments": 0,
-    "orphanComments": 16
+    "orphanComments": 16,
+    "orphanStrongCandidateMissingPost": 16,
+    "orphanReplies": 4,
+    "orphanStrongCandidateUniquePosts": 12,
+    "orphanLegacyCandidateUniquePosts": 0
   },
   "latestDelta": {
     "observedAt": "2026-09-10T20:48:02.201Z",

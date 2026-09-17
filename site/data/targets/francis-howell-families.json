@@ -113517,7 +113517,13 @@
     "totalComments": 1135,
     "linkedComments": 1107,
     "repairedComments": 0,
-    "orphanComments": 28
+    "orphanComments": 28,
+    "orphanLegacyCandidateMissingPost": 11,
+    "orphanStrongCandidateMissingPost": 15,
+    "orphanReplies": 4,
+    "orphanNoCandidate": 2,
+    "orphanStrongCandidateUniquePosts": 14,
+    "orphanLegacyCandidateUniquePosts": 11
   },
   "latestDelta": {
     "observedAt": "2026-09-10T14:12:21.423Z",
