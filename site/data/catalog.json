@@ -72,17 +72,17 @@
         "https://www.facebook.com/profile.php?id=61581121856469"
       ],
       "summary": {
-        "entities": 4748,
-        "posts": 589,
-        "comments": 4159,
-        "active": 2407,
-        "missing": 2341,
+        "entities": 4831,
+        "posts": 617,
+        "comments": 4214,
+        "active": 1814,
+        "missing": 3017,
         "confirmedUnavailable": 0,
-        "editedEntities": 140,
-        "events": 8886,
-        "snapshots": 19
+        "editedEntities": 159,
+        "events": 13367,
+        "snapshots": 21
       },
-      "latestSnapshot": "2026-10-09T15:31:42.533Z"
+      "latestSnapshot": "2026-10-11T01:34:55.822Z"
     },
     {
       "id": "steven-blair-for-francis-howell-school-board",
